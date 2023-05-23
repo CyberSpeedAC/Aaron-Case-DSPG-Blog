@@ -1,0 +1,95 @@
+---
+title: "Week Two"
+author: "Aaron Case"
+date: "2023-05-23"
+categories: ["Week Two", code]
+---
+
+
+```{r,include=FALSE ,warning=FALSE, Message=FALSE}
+#Imports for both Graph and Map
+
+library(tidycensus)
+library(tidyverse)
+library(magrittr)
+library(dplyr)
+library(scales)
+library(plotly)
+library(ggiraph)
+library(htmlwidgets)
+library(tigris)
+library(mapview)
+library(plotly)
+library(viridisLite)
+library(sf) 
+sf_use_s2(FALSE) # Removing water on map
+options(tigris_use_cache = TRUE)
+
+#Grabing median_income for bar blot
+median_income <- get_acs(
+  geography = "county",
+  variables = "B19013_001",
+  state = "IA", 
+  year = 2021
+)
+
+#The Bar plot
+md_plot_ggiraph <- ggplot(data, aes(x = estimate, 
+                                    y = reorder(NAME, estimate),
+                                    tooltip = estimate,
+                                    data_id = GEOID)) +
+  #Generating the error bars
+  geom_errorbar(aes(xmin = estimate - moe, 
+                    xmax = estimate + moe),
+                    width = 0.5, 
+                    size = 1) + 
+  #Coloring the estimate dot 
+  geom_point_interactive(color = "darkblue", size = 1.5) +
+  #Bottom Label range
+  scale_x_continuous(labels = label_dollar()) + 
+  #County names and removing the Unnecessary words
+  scale_y_discrete(labels = function(x) str_remove(x, " County, Iowa|, Iowa")) +
+  #Graph labeling for views convince 
+  labs(title = "Median Income 2021 ACS",
+       #subtitle = "Counties in Iowa",
+       caption = "Data acquired with R and tidycensus. \nError bars represent margin of error around estimates of Median income.",
+       x = "ACS Estimate Mean Income",
+       y = "Counties in Iowa") + 
+  #Text Sizing
+  theme_minimal(base_size = 8)
+#Making the graph interactive
+girafe(ggobj = md_plot_ggiraph) %>% girafe_options(opts_hover(css = "fill:purple;"))
+
+
+median_income_map <- get_acs(
+  geography = "tract",
+  variables = "B19013_001",
+  state = "IA",
+  year = 2021,
+  geometry = TRUE
+)
+# The Map
+md_Map <- ggplot(median_income_map, aes(fill = estimate)) + 
+  #The map display
+  geom_sf() + 
+  #Empty theme of the map
+  theme_void() + 
+  #Colors the map 
+  scale_fill_viridis_c(option = "G", n.breaks = 10) + 
+  #Information
+  labs(title = "Median Income ACS Census tract",
+       subtitle = "",
+       fill = "ACS estimates",
+       caption = " Median Income by ACS tidycensus R package in 2021")
+
+```
+
+```{r}
+md_plot_ggiraph
+```
+
+```{r}
+md_Map
+```
+
+

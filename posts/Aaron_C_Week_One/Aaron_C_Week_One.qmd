@@ -1,0 +1,12 @@
+---
+title: "Week One Blog"
+author: "Aaron Case"
+date: "2023-05-23"
+category: "Week One"
+---
+
+# Week One
+
+Week goal is to learn and debriefing
+
+

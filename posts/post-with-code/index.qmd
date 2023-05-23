@@ -1,0 +1,13 @@
+---
+title: "Post With Code"
+author: "Aaron Case"
+date: "2023-05-23"
+categories: [code, analysis]
+image: "image.jpg"
+---
+
+This is a post with executable code.
+
+```{r}
+1 + 1
+```
