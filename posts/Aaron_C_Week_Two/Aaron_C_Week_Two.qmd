@@ -6,7 +6,10 @@ categories: ["Week Two", code]
 ---
 
 
-```{r,include=FALSE ,warning=FALSE, Message=FALSE}
+
+
+
+```{r,warning=FALSE, Message=FALSE}
 #Imports for both Graph and Map
 
 library(tidycensus)
@@ -33,8 +36,15 @@ median_income <- get_acs(
   year = 2021
 )
 
+#View the mid range of countys mean income
+median_income_data <- median_income %>%
+  #ordering from estimate highest to estimate lowest
+  arrange(desc(estimate)) %>%
+  #reducing the number of countys the graph can display
+  slice(floor(99 * 0.25):floor(99 * 0.75)+1)
+
 #The Bar plot
-md_plot_ggiraph <- ggplot(data, aes(x = estimate, 
+md_plot_ggiraph <- ggplot(median_income_data, aes(x = estimate, 
                                     y = reorder(NAME, estimate),
                                     tooltip = estimate,
                                     data_id = GEOID)) +
@@ -60,7 +70,7 @@ md_plot_ggiraph <- ggplot(data, aes(x = estimate,
 #Making the graph interactive
 girafe(ggobj = md_plot_ggiraph) %>% girafe_options(opts_hover(css = "fill:purple;"))
 
-
+#The Map
 median_income_map <- get_acs(
   geography = "tract",
   variables = "B19013_001",
@@ -91,5 +101,3 @@ md_plot_ggiraph
 ```{r}
 md_Map
 ```
-
-
