@@ -2,12 +2,8 @@
 title: "Week Two"
 author: "Aaron Case"
 date: "2023-05-23"
-categories: ["Week Two", code]
+categories: [Week Two, code]
 ---
-
-
-
-
 
 ```{r,warning=FALSE, Message=FALSE}
 #Imports for both Graph and Map
