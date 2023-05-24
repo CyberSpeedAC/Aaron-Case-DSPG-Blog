@@ -2,7 +2,7 @@
 title: "Census Visual"
 author: "Aaron Case"
 date: "2023-05-23"
-categories: [Week Two, code]
+categories: [Week Two, Code]
 ---
 
 Both a bar plot, and chorpleth map were made from the American Community Survey (ASC) data using Tidycensus library in R.
