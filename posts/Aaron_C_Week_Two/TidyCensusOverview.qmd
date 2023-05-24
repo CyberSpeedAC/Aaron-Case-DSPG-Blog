@@ -5,16 +5,15 @@ date: "2023-05-23"
 categories: [Week Two, code]
 ---
 
-During week two I learned how to get data from the American Community Survey (ASC). Turning this data into both a bar plot, and chorpleth map using Tidycensus in R.
+Both a bar plot, and chorpleth map were made from the American Community Survey (ASC) data using Tidycensus library in R.
 
 ```{r, results='hide', message=FALSE, warning=FALSE}
 #Imports for both Graph and Map
-
 library(tidycensus)
 library(tidyverse)
 library(scales)
 library(plotly)
-library(ggiraph)
+library(ggiraph) 
 
 #Grabing median_income for bar blot
 median_income <- get_acs(
@@ -26,13 +25,13 @@ median_income <- get_acs(
 
 #View the mid range of countys mean income
 median_income_data <- median_income %>%
-  #ordering from estimate highest to estimate lowest
-  arrange(desc(estimate)) %>%
   #reducing the number of countys the graph can display
-  slice(floor(99 * 0.25):floor(99 * 0.75)+1)
+  slice(floor(99 * 0.25):floor(99 * 0.75)+1) %>%
+  #ordering from estimate highest to estimate lowest
+  arrange(desc(estimate))
 
 #The Bar plot
-md_plot_ggiraph <- ggplot(median_income_data, aes(x = estimate, 
+md_bar_plot <- ggplot(median_income_data, aes(x = estimate, 
                                     y = reorder(NAME, estimate),
                                     tooltip = estimate,
                                     data_id = GEOID)) +
@@ -56,7 +55,7 @@ md_plot_ggiraph <- ggplot(median_income_data, aes(x = estimate,
   #Text Sizing
   theme_minimal(base_size = 8)
 #Making the graph interactive
-md_plot_ggiraph <- girafe(ggobj = md_plot_ggiraph) %>% girafe_options(opts_hover(css = "fill:purple;"))
+md_bar_plot_interactive <- girafe(ggobj = md_bar_plot) %>% girafe_options(opts_hover(css = "fill:purple;"))
 
 #The Map
 median_income_map <- get_acs(
@@ -67,7 +66,7 @@ median_income_map <- get_acs(
   geometry = TRUE
 )
 # The Map
-md_Map <- ggplot(median_income_map, aes(fill = estimate)) + 
+md_chorpleth_map <- ggplot(median_income_map, aes(fill = estimate)) + 
   #The map display
   geom_sf() + 
   #Empty theme of the map
@@ -83,9 +82,9 @@ md_Map <- ggplot(median_income_map, aes(fill = estimate)) +
 ```
 
 ```{r}
-md_plot_ggiraph
+md_bar_plot_interactive
 ```
 
 ```{r}
-md_Map
+md_chorpleth_map
 ```
