@@ -1,5 +1,5 @@
 ---
-title: "Week One Blog"
+title: "Week One"
 author: "Aaron Case"
 date: "2023-05-23"
 categories: [Week One]
