@@ -3,8 +3,22 @@ title: "Week One Blog"
 author: "Aaron Case"
 date: "2023-05-23"
 categories: [Week One]
+image: "DatacampLogo.png"
 ---
 
 # Week One
 
-Week goal is to learn and debriefing
+During week one my week goal is to learn as much as possible about Python and R in Datacamp
+
+Lessons completed:
+
+-   Introduction to R
+-   Intermediate R
+-   Cleaning Data in R
+-   Introduction to Python
+-   Intermediate Python
+-   Data Manipulation with pandas
+-   AI Fundamentals
+-   GitHub Concepts
+
+Also during week one I did a debriefing of project with the Employer.
