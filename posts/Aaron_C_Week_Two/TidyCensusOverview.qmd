@@ -5,7 +5,7 @@ date: "2023-05-23"
 categories: [Week Two, code]
 ---
 
-During week two I learned how to get data from the American Community Survey (ASC) an turn it into both a bar plot and chorpleth map using Tidycensus in R.
+During week two I learned how to get data from the American Community Survey (ASC). Turning this data into both a bar plot, and chorpleth map using Tidycensus in R.
 
 ```{r,warning=FALSE, message=FALSE}
 #Imports for both Graph and Map
