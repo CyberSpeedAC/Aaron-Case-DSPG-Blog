@@ -30,26 +30,21 @@ A potential source to find and locate local farmers that grow Heirloom Tomatoes.
 [Instacart](https://www.instacart.com/products/3133368-heirloom-tomatoes-per-lb):\
 A cite that could be of use to find Items.
 
-[NFMD](https://nfmd.org/ia/fort-dodge/1000603/): Market on Central - Farmers Market in Historic Downtown Fort Dodge
+[NFMD](https://nfmd.org/ia/fort-dodge/1000603/): \
+Market on Central - Farmers Market in Historic Downtown Fort Dodge
 
 **Local Farms Found**
 
 -   [Butcher Crick Farms](https://www.facebook.com/butchercrick/)
-
 -   [heart land fresh family farm](https://heartlandfreshfamilyfarm.com/)
-
 -   [A family market place](https://www.afamilymarketplace.com/)
-
 -   [Alices Garden](https://www.facebook.com/AlicesGarden/)
 
 **Stores that sell Heirloom Tomatoes that we can collect data from**
 
 -   [Gateway market](https://gatewaymarket.storebyweb.com/s/1000-1/b?q=heirloom%20tomato)
-
 -   [Russ's Market](https://www.russmarket.com/shop#!/?q=Heirloom%20Tomatoes&search_option_id=product)
-
 -   [Fresh thyme](https://ww2.freshthyme.com/sm/planning/rsid/104/results?q=heirloom%20tomatoes)
-
 -   [Hy-Vee](https://www.hy-vee.com/aisles-online/p/37174/Heirloom-Tomatoes)
 
 **Places that might use Heirloom Tomatoes**
@@ -73,30 +68,15 @@ Contains the average Price of Tomatoes( Tomatoes, Field Grown (Cost per Pound/45
 **Investigated Stores**
 
 -   [Dogpatch](https://dogpatchurbangardens.com/search?type=product%2Carticle%2Cpage%2Ccollection&options%5Bprefix%5D=last&q=Heirloom%20Tomatoes*): They have seeds but no tomatoes for sale
-
 -   [Fairway](https://www.fairwaymarket.com/sm/planning/rsid/4000/results?q=Heirloom%20tomatoes): They don't have any heirloom tomatoes for sale
-
 -   [Walmart](https://www.walmart.com/search?q=heirloom+tomatoes): They have seeds but no tomatoes for sale
-
 -   [Target](https://www.target.com/s?searchTerm=heirloom+tomatoes): They don't have any heirloom tomatoes for sale
-
 -   [Costco](https://www.costco.com/CatalogSearch?dept=All&keyword=heirloom+tomatoes): They don't have any heirloom tomatoes for sale
-
 -   [Whole Foods Market](https://www.wholefoodsmarket.com/search?text=Heirloom+tomatoes): They don't have any heirloom tomatoes for sale in Iowa
-
 -   [Aldi](https://www.aldi.us/en/products/fresh-produce/fresh-vegetables-salads/): They don't have any heirloom tomatoes for sale
-
 -   [New Pioneer](https://shop.newpi.coop/shop#!/?q=heirloom%20tomatoes&shelf_tag_id=214132): They don't have any heirloom tomatoes for sale
-
 -   [Trader Joe's](https://www.traderjoes.com/home/search?q=Heirloom+Tomatoes&global=yes): They don't have any heirloom tomatoes for sale
-
 -   [Campbell's Nutrition](https://campbellsnutrition.infretailers.com/circulars/search/): They don't have any heirloom tomatoes for sale
-
-**Potential Dead Ends**
-
--   [C Fresh Market](https://cfreshmarket.com/): Bad webpage doesn't say what they have
-
--   [Wheats Field](https://www.wheatsfield.coop/departments/): Bad webpage doesn't say what they have
 
 ## EGGs
 
@@ -105,6 +85,13 @@ Contains the average Price of Tomatoes( Tomatoes, Field Grown (Cost per Pound/45
 [NASS Eggs](https://www.nass.usda.gov/Statistics_by_Subject/index.php?sector=ANIMALS%20&%20PRODUCTS):\
 Contains tons of data that could be useful
 
-**Stores that sell Heirloom Tomatoes that we can collect data from**
+**Stores that sell Eggs that we can collect data from**
 
 -   [dogpatch](https://dogpatchurbangardens.com/collections/eggs)
+-   [GoPuff](https://www.gopuff.com/)
+
+## Bacon
+
+**Stores that sell Bacon that we can collect data from** - [GoPuff](https://www.gopuff.com/)
+
+**Total Websites looked**: 99
