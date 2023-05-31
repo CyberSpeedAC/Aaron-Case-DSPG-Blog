@@ -1,0 +1,12 @@
+---
+title: "Week Three"
+author: "Aaron Case"
+date: "2023-05-30"
+categories: [Week Three]
+---
+
+This week was dedicated to collecting data \
+
+Data Camp Lessons completed:
+
+-   Writing Efficient R Code

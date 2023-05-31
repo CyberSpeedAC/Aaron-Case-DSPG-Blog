@@ -1,0 +1,174 @@
+---
+title: "Importing Census Data"
+author: "Aaron Case"
+date: "2023-05-26"
+categories: [Week Two, Code]
+---
+
+Since I needed to extract a large amount of data from the American Community Survey (ASC) and convert it into a CSV file. In light of this I wrote this code to extract ASC data from the table codes. The Code takes in a list of names that you want the file name to be. Along with the corresponding table code. It also takes in a folder name. It then makes (if needed) and adds the CVS files to the specified folder (For a clean directory). Its important to note that where you run the R file is where a folder is made. I made this with the intentions of it being editable (and hopefully user friendly).
+
+```{r, eval=FALSE, message=FALSE, warning=FALSE}
+
+####################
+#  Inserting Data  #
+####################
+
+
+folder <- "Folder_Name_Here" # <---------- Change this value FIRST!
+
+ACSList <- c(
+    # "Data Name","DataCode", 
+    # ...
+  ) 
+ACSListToCSV(ACSList,folder)
+
+
+##########################################
+#  Global Variables That can be Changed  #
+##########################################
+
+#To change the get_acs() geography variable
+geographyType <- "county"
+
+#To change the get_acs() servay variable
+servayType <- "ACS5"
+
+#Change to NULL if no state
+stateType <- "IA"
+
+#This will make a geometry file as well if TRUE
+withGeometry <- FALSE
+
+#checking the year
+year = NULL
+
+###################################
+#  Functions that make life easy  #
+###################################
+
+#Imports 
+library(tidycensus) #For ACS extractions
+library(stringi) #For folderNameFixer()
+library(tigris)
+options(tigris_use_cache = TRUE)
+
+
+#File name changers. This will set the name of the file. Feel free to edit this
+renameFile <- function(tableTitle, tableCode, isGeometric){
+  fileName <- paste(tableTitle, " (", tableCode, sep='')
+  if(isGeometric){
+    fileName = paste(fileName, ", ",capFirst("tract"), sep='')
+  } else {
+    fileName = paste(fileName, ", ",capFirst(geographyType), sep='')
+  }
+  if(is.null(stateType) == FALSE){
+    fileName = paste(fileName, ", ", stateType, sep='')
+  }
+  if(is.null(year) == FALSE){
+    fileName = paste(fileName, ", ", year, sep='')
+  }
+  fileName = paste(fileName, ", ", servayType, sep='')
+  if(isGeometric){
+    fileName = paste(fileName, ", Geometry).csv", sep='')
+  } else {
+    fileName = paste(fileName, ").csv", sep='')
+  }
+  return(fileName)
+}
+
+#ACS extractions.
+#Feel free to add to this list.
+geoACSDataFrame = function(tableCode){
+  get_acs(
+    #Add Changes here
+    geography = "tract",
+    table = tableCode,
+    servay = servayType,
+    state = stateType,
+    geometry = TRUE
+  )
+}
+
+defaultACSDataFrame = function(tableCode){
+  get_acs(
+    #Add Changes here
+    geography = geographyType,
+    table = tableCode,
+    servay = servayType,
+    state = stateType
+  )
+}
+
+#Conditions for files fell free to edit this
+fileImplications <- function(tableTitle, tableCode){
+  #Add a condition and apply both the ACS extraction and the File name changer
+  #Example
+  if(withGeometry){
+    fileName <- renameFile(tableTitle, tableCode, TRUE)
+    #output with Geometry
+    dataToCSV(geoACSDataFrame(tableCode), fileName)
+  }
+  
+  fileName <- renameFile(tableTitle, tableCode, FALSE)
+  #Default
+  #This Makes the CSV File
+  #format dataToCSV(your ACS DataFrame, File name changer() )
+  dataToCSV(defaultACSDataFrame(tableCode), fileName)
+}
+
+
+#For clarity capitalizes the first letter in a string and lowercases the rest (Feel free to Use)
+capFirst = function(xStr){
+   paste(toupper(substring(xStr, 1, 1)), tolower(substring(xStr, 2, nchar(xStr))), sep = "")
+}
+#Validates and fixes folder name string (Feel free to edit)
+nameFixer <- function(xStr, fixType){
+  #Replaces bad characters with ''
+  xStr <- stri_replace_all_regex(xStr, 
+                         pattern=c('/', ':', '\\*', '"', '<', '>', '\\|'),
+                         replacement=c('-', '', '', '', '', '', ''),
+                         vectorize=FALSE)
+  if(xStr == ""){
+    if(capFirst(fixType) == "Folder"){
+      print("Ops the folder name has all bad characters lets fix that")
+      xStr <- "New_Data_Folder"
+    }
+    else{
+      print("Ops the file name has all bad characters lets fix that")
+      xStr <- "New_Data_file"
+    }
+  }
+  return(xStr)
+}
+#For bulk downloading tables
+ACSListToCSV <- function(bulkArray, folder){
+  if(length(bulkArray) %% 2){
+    #Scream if array is odd length. We don't need any mistakes!
+    print("Somethings Missing. List format should be like c( Data Name, DataCode, ... )")
+    return("ERROR")
+  }
+  #Validates folder name
+  folder <- nameFixer(folder, "Folder")
+  #Makes a folder if needed
+  if(!file.exists(folder)){
+    dir.create(folder)
+    print("New Folder Made Adding Files")
+  }
+  index <- 1
+  #Adds files
+  while(index < length(bulkArray)){
+    fileImplications(nameFixer(bulkArray[index], "File"), bulkArray[index+1]) # (title , code)
+    index <- index + 2
+  }
+  print("All Files have been downloaded")
+}
+#ACS Data frame to CSV file
+dataToCSV <- function(data, fileName){
+  #This adds the file to the folder
+  path <- paste(".\\",folder,"\\", fileName, sep='')
+  #Makes the CSV
+  write.csv(data, path)
+  print(paste("Added File:",fileName))
+}
+
+```

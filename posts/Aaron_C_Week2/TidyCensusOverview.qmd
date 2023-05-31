@@ -7,7 +7,7 @@ categories: [Week Two, Code]
 
 Both a bar plot, and chorpleth map were made from the American Community Survey (ASC) data using Tidycensus library in R.
 
-```{r, results='hide', message=FALSE, warning=FALSE}
+```{r, eval=FALSE, message=FALSE, warning=FALSE}
 #Imports for both Graph and Map
 library(tidycensus)
 library(tidyverse)
@@ -79,12 +79,14 @@ md_chorpleth_map <- ggplot(median_income_map, aes(fill = estimate)) +
        fill = "ACS estimates",
        caption = "Median Income by ACS tidycensus R package in 2021")
 
-```
 
-```{r}
+#This renders the bar plot 
 md_bar_plot_interactive
-```
 
-```{r}
+#This renders the chorpleth map
 md_chorpleth_map
 ```
+
+![Bar Plot](Median%20Plot.png){width="416"}
+
+![Chorpleth Map](Median%20Map.png){width="400"}

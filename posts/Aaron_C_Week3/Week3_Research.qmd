@@ -1,0 +1,110 @@
+---
+title: "Week Three Research"
+author: "Aaron Case"
+date: "2023-05-30"
+categories: [Week Three, Research]
+---
+
+## Heirloom Tomatoes
+
+**Some helpful data that was found**
+
+[Farmers Market Prices](https://practicalfarmers.org/2015/06/farmers-market-prices-dsm-and-around-iowa/):\
+At the 2015 PFI Annual Conference, Kay Jensen collected farmers' vegetable prices. Recent data shows price ranges for tomatoes, ranging from \$2.50 to \$4 per pound.
+
+[Expatistan](https://www.expatistan.com/price/tomatoes/des-moines):\
+Tells the price of 1 kg (2 lb.) of tomatoes in Des Moines IA can be used to find other prices located in IA.
+
+[AgMRC](https://www.agmrc.org/commodities-products/vegetables/tomatoes):\
+Provides a some detailed and helpful references for tomatoes.
+
+[Market Maker](https://ia.foodmarketmaker.com/business/search?qb=eyJzZWFyY2hUZXJtIjoiSGVpcmxvb20gVG9tYXRvZXMifQ):\
+A potential source to find and locate local farmers that grow Heirloom Tomatoes.
+
+[Local Harvest](https://www.localharvest.org/search.jsp?jmp&scale=7&lat=41.657959&lon=-91.52806&nm=heirloom+tomatos):\
+A potential source to find and locate local farmers that grow Heirloom Tomatoes.
+
+[Practical farmers](https://practicalfarmers.org/):\
+A potential source to find and locate local farmers that grow Heirloom Tomatoes.
+
+[Instacart](https://www.instacart.com/products/3133368-heirloom-tomatoes-per-lb):\
+A cite that could be of use to find Items.
+
+[NFMD](https://nfmd.org/ia/fort-dodge/1000603/): Market on Central - Farmers Market in Historic Downtown Fort Dodge
+
+**Local Farms Found**
+
+-   [Butcher Crick Farms](https://www.facebook.com/butchercrick/)
+
+-   [heart land fresh family farm](https://heartlandfreshfamilyfarm.com/)
+
+-   [A family market place](https://www.afamilymarketplace.com/)
+
+-   [Alices Garden](https://www.facebook.com/AlicesGarden/)
+
+**Stores that sell Heirloom Tomatoes that we can collect data from**
+
+-   [Gateway market](https://gatewaymarket.storebyweb.com/s/1000-1/b?q=heirloom%20tomato)
+
+-   [Russ's Market](https://www.russmarket.com/shop#!/?q=Heirloom%20Tomatoes&search_option_id=product)
+
+-   [Fresh thyme](https://ww2.freshthyme.com/sm/planning/rsid/104/results?q=heirloom%20tomatoes)
+
+-   [Hy-Vee](https://www.hy-vee.com/aisles-online/p/37174/Heirloom-Tomatoes)
+
+**Places that might use Heirloom Tomatoes**
+
+-   [Java House](https://thejavahouse.com/heirloom-menu/)
+
+**Potential Useful Sources**
+
+[National Retail Report - Specialty Crops](https://www.marketnews.usda.gov/mnp/fv-report-retail?repType=&run=&portal=fv&locChoose=&commodityClass=&startIndex=1&type=retail&class=VEGETABLES&commodity=TOMATOES&region=MIDWEST+U.S.&organic=ALL&repDate=&endDate=&compareLy=No) ( [USDA Fruits & Vegetables Market Report](https://www.agmrc.org/fruit-and-vegetable-market-data?StartDate=2023-05-23&EndDate=2023-05-29&RegionIDs=3&CommodityIDs=67&VarietyIDs=53&UnitIDs=24&page=1&items=25) ):\
+Advertised Prices for Specialty Crops at Major Retail Supermarket Outlets it contains Heirloom Tomatoes but only specifies the Midwest U.S.
+
+[FRED Economic Data](https://fred.stlouisfed.org/series/APU0000712311):\
+Contains the average Price of Tomatoes( Tomatoes, Field Grown (Cost per Pound/453.6 Grams) in U.S. City Average) All fresh field grown and vine ripened round red tomatoes. Includes organic and non-organic.
+
+[Farmers Market Nutrition Program](https://data.iowaagriculture.gov/fmnp/): Lists farmers markets in Iowa
+
+**Dead Ends**
+
+[Iowa Food Cooperative](https://iowafood.coop/shop/product_list.php?type=search&query=heirloom+tomatos&action=Search) ([Iowa Food Coop](https://iowafood.coop/?s=Heirloom+Tomatoes&submit=Search)): does not have heirloom tomatoes
+
+**Investigated Stores**
+
+-   [Dogpatch](https://dogpatchurbangardens.com/search?type=product%2Carticle%2Cpage%2Ccollection&options%5Bprefix%5D=last&q=Heirloom%20Tomatoes*): They have seeds but no tomatoes for sale
+
+-   [Fairway](https://www.fairwaymarket.com/sm/planning/rsid/4000/results?q=Heirloom%20tomatoes): They don't have any heirloom tomatoes for sale
+
+-   [Walmart](https://www.walmart.com/search?q=heirloom+tomatoes): They have seeds but no tomatoes for sale
+
+-   [Target](https://www.target.com/s?searchTerm=heirloom+tomatoes): They don't have any heirloom tomatoes for sale
+
+-   [Costco](https://www.costco.com/CatalogSearch?dept=All&keyword=heirloom+tomatoes): They don't have any heirloom tomatoes for sale
+
+-   [Whole Foods Market](https://www.wholefoodsmarket.com/search?text=Heirloom+tomatoes): They don't have any heirloom tomatoes for sale in Iowa
+
+-   [Aldi](https://www.aldi.us/en/products/fresh-produce/fresh-vegetables-salads/): They don't have any heirloom tomatoes for sale
+
+-   [New Pioneer](https://shop.newpi.coop/shop#!/?q=heirloom%20tomatoes&shelf_tag_id=214132): They don't have any heirloom tomatoes for sale
+
+-   [Trader Joe's](https://www.traderjoes.com/home/search?q=Heirloom+Tomatoes&global=yes): They don't have any heirloom tomatoes for sale
+
+-   [Campbell's Nutrition](https://campbellsnutrition.infretailers.com/circulars/search/): They don't have any heirloom tomatoes for sale
+
+**Potential Dead Ends**
+
+-   [C Fresh Market](https://cfreshmarket.com/): Bad webpage doesn't say what they have
+
+-   [Wheats Field](https://www.wheatsfield.coop/departments/): Bad webpage doesn't say what they have
+
+## EGGs
+
+**Some helpful data that was found**
+
+[NASS Eggs](https://www.nass.usda.gov/Statistics_by_Subject/index.php?sector=ANIMALS%20&%20PRODUCTS):\
+Contains tons of data that could be useful
+
+**Stores that sell Heirloom Tomatoes that we can collect data from**
+
+-   [dogpatch](https://dogpatchurbangardens.com/collections/eggs)

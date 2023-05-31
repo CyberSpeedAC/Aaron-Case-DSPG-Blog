@@ -2,9 +2,12 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/Aaron_C_Week_One/Aaron_C_Week_One.html",
-      "/posts/Aaron_C_Week_Two/Aaron_C_Week_Two.html",
-      "/posts/Aaron_C_Week_Two/TidyCensusOverview.html"
+      "/posts/Aaron_C_Week3/Aaron_C_Week3.html",
+      "/posts/Aaron_C_Week3/Week3_Research.html",
+      "/posts/Aaron_C_Week2/Aaron_C_Week2.html",
+      "/posts/Aaron_C_Week2/Importing Census Data.html",
+      "/posts/Aaron_C_Week1/Aaron_C_Week1.html",
+      "/posts/Aaron_C_Week2/TidyCensusOverview.html"
     ]
   }
 ]

@@ -1,7 +1,7 @@
 ---
 title: "Week Two"
 author: "Aaron Case"
-date: "2023-05-23"
+date: "2023-05-29"
 categories: [Week Two]
 ---
 
@@ -9,11 +9,7 @@ For week two my goal was to continue to learn in Datacamp
 
 Lessons completed:
 
-- Writing Efficient Python Code
-- Web Scraping in Python
-- Writing Efficient R Code
-- Intro to Data Visualization with Mathplotlib
+-   Writing Efficient Python Code
+-   Web Scraping in Python
 
 I also learned how to visualize data using Tidycensus with the American Community Survey Data
-
-
