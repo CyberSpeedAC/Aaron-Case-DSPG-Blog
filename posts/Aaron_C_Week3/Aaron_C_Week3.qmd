@@ -5,7 +5,7 @@ date: "2023-05-30"
 categories: [Week Three]
 ---
 
-This week was dedicated to collecting data \
+This week was dedicated to collecting data
 
 Data Camp Lessons completed:
 

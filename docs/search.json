@@ -11,7 +11,7 @@
     "href": "index.html",
     "title": "Aaron Case DSPG Blog",
     "section": "",
-    "text": "Week Three\n\n\n\n\n\n\n\nWeek Three\n\n\n\n\n\n\n\n\n\n\n\nMay 30, 2023\n\n\nAaron Case\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek Three Research\n\n\n\n\n\n\n\nWeek Three\n\n\nResearch\n\n\n\n\n\n\n\n\n\n\n\nMay 30, 2023\n\n\nAaron Case\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek Two\n\n\n\n\n\n\n\nWeek Two\n\n\n\n\n\n\n\n\n\n\n\nMay 29, 2023\n\n\nAaron Case\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nImporting Census Data\n\n\n\n\n\n\n\nWeek Two\n\n\nCode\n\n\n\n\n\n\n\n\n\n\n\nMay 26, 2023\n\n\nAaron Case\n\n\n\n\n\n\n  \n\n\n\n\nWeek One\n\n\n\n\n\n\n\nWeek One\n\n\n\n\n\n\n\n\n\n\n\nMay 23, 2023\n\n\nAaron Case\n\n\n\n\n\n\n  \n\n\n\n\nCensus Visual\n\n\n\n\n\n\n\nWeek Two\n\n\nCode\n\n\n\n\n\n\n\n\n\n\n\nMay 23, 2023\n\n\nAaron Case\n\n\n\n\n\n\nNo matching items"
+    "text": "AI/Local Food Week 3 Wrap Up\n\n\n\n\n\n\n\nWeek Three\n\n\nWrap Up\n\n\n\n\n\n\n\n\n\n\n\nJun 2, 2023\n\n\nAaron C\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek Three\n\n\n\n\n\n\n\nWeek Three\n\n\n\n\n\n\n\n\n\n\n\nMay 30, 2023\n\n\nAaron Case\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek Three Research\n\n\n\n\n\n\n\nWeek Three\n\n\nResearch\n\n\n\n\n\n\n\n\n\n\n\nMay 30, 2023\n\n\nAaron Case\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek Two\n\n\n\n\n\n\n\nWeek Two\n\n\n\n\n\n\n\n\n\n\n\nMay 29, 2023\n\n\nAaron Case\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nImporting Census Data\n\n\n\n\n\n\n\nWeek Two\n\n\nCode\n\n\n\n\n\n\n\n\n\n\n\nMay 26, 2023\n\n\nAaron Case\n\n\n\n\n\n\n  \n\n\n\n\nWeek One\n\n\n\n\n\n\n\nWeek One\n\n\n\n\n\n\n\n\n\n\n\nMay 23, 2023\n\n\nAaron Case\n\n\n\n\n\n\n  \n\n\n\n\nCensus Visual\n\n\n\n\n\n\n\nWeek Two\n\n\nCode\n\n\n\n\n\n\n\n\n\n\n\nMay 23, 2023\n\n\nAaron Case\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/Aaron_C_Week1/Aaron_C_Week1.html",
@@ -46,27 +46,55 @@
     "href": "posts/Aaron_C_Week3/Aaron_C_Week3.html",
     "title": "Week Three",
     "section": "",
-    "text": "This week was dedicated to collecting data\n\nData Camp Lessons completed:\n\nWriting Efficient R Code"
+    "text": "This week was dedicated to collecting data\nData Camp Lessons completed:\n\nWriting Efficient R Code"
   },
   {
     "objectID": "posts/Aaron_C_Week3/Week3_Research.html",
     "href": "posts/Aaron_C_Week3/Week3_Research.html",
     "title": "Week Three Research",
     "section": "",
-    "text": "Some helpful data that was found\nFarmers Market Prices:\nAt the 2015 PFI Annual Conference, Kay Jensen collected farmers’ vegetable prices. Recent data shows price ranges for tomatoes, ranging from $2.50 to $4 per pound.\nExpatistan:\nTells the price of 1 kg (2 lb.) of tomatoes in Des Moines IA can be used to find other prices located in IA.\nAgMRC:\nProvides a some detailed and helpful references for tomatoes.\nMarket Maker:\nA potential source to find and locate local farmers that grow Heirloom Tomatoes.\nLocal Harvest:\nA potential source to find and locate local farmers that grow Heirloom Tomatoes.\nPractical farmers:\nA potential source to find and locate local farmers that grow Heirloom Tomatoes.\nInstacart:\nA cite that could be of use to find Items.\nNFMD:\nMarket on Central - Farmers Market in Historic Downtown Fort Dodge\nLocal Farms Found\n\nButcher Crick Farms\nheart land fresh family farm\nA family market place\nAlices Garden\n\nStores that sell Heirloom Tomatoes that we can collect data from\n\nGateway market\nRuss’s Market\nFresh thyme\nHy-Vee\n\nPlaces that might use Heirloom Tomatoes\n\nJava House\n\nPotential Useful Sources\nNational Retail Report - Specialty Crops ( USDA Fruits & Vegetables Market Report ):\nAdvertised Prices for Specialty Crops at Major Retail Supermarket Outlets it contains Heirloom Tomatoes but only specifies the Midwest U.S.\nFRED Economic Data:\nContains the average Price of Tomatoes( Tomatoes, Field Grown (Cost per Pound/453.6 Grams) in U.S. City Average) All fresh field grown and vine ripened round red tomatoes. Includes organic and non-organic.\nFarmers Market Nutrition Program: Lists farmers markets in Iowa\nDead Ends\nIowa Food Cooperative (Iowa Food Coop): does not have heirloom tomatoes\nInvestigated Stores\n\nDogpatch: They have seeds but no tomatoes for sale\nFairway: They don’t have any heirloom tomatoes for sale\nWalmart: They have seeds but no tomatoes for sale\nTarget: They don’t have any heirloom tomatoes for sale\nCostco: They don’t have any heirloom tomatoes for sale\nWhole Foods Market: They don’t have any heirloom tomatoes for sale in Iowa\nAldi: They don’t have any heirloom tomatoes for sale\nNew Pioneer: They don’t have any heirloom tomatoes for sale\nTrader Joe’s: They don’t have any heirloom tomatoes for sale\nCampbell’s Nutrition: They don’t have any heirloom tomatoes for sale"
+    "text": "Farmers Market Prices:\nAt the 2015 PFI Annual Conference, Kay Jensen collected farmers’ vegetable prices. Recent data shows price ranges for tomatoes, ranging from $2.50 to $4 per pound.\nExpatistan:\nTells the price of 1 kg (2 lb.) of tomatoes in Des Moines IA can be used to find other prices located in IA.\nAgMRC:\nProvides a some detailed and helpful references for tomatoes.\nMarket Maker:\nA potential source to find and locate local farmers that grow Heirloom Tomatoes.\nLocal Harvest:\nA potential source to find and locate local farmers that grow Heirloom Tomatoes.\nPractical farmers:\nA potential source to find and locate local farmers that grow Heirloom Tomatoes.\nInstacart:\nA cite that could be of use to find Items.\nNFMD:\nMarket on Central - Farmers Market in Historic Downtown Fort Dodge\nNational Retail Report - Specialty Crops ( USDA Fruits & Vegetables Market Report ):\nAdvertised Prices for Specialty Crops at Major Retail Supermarket Outlets it contains Heirloom Tomatoes but only specifies the Midwest U.S.\nFRED Economic Data:\nContains the average Price of Tomatoes( Tomatoes, Field Grown (Cost per Pound/453.6 Grams) in U.S. City Average) All fresh field grown and vine ripened round red tomatoes. Includes organic and non-organic.\nFarmers Market Nutrition Program:\nLists farmers markets in Iowa\nIowa Food Cooperative (Iowa Food Coop):\nContains some data that could be useful\nNASS Eggs:\nContains tons of data that could be useful\nList of Egg Farms in Iowa:\ncould be useful to source eggs"
   },
   {
-    "objectID": "posts/Aaron_C_Week3/Week3_Research.html#eggs",
-    "href": "posts/Aaron_C_Week3/Week3_Research.html#eggs",
+    "objectID": "posts/Aaron_C_Week3/Week3_Research.html#heirloom-tomatoes",
+    "href": "posts/Aaron_C_Week3/Week3_Research.html#heirloom-tomatoes",
     "title": "Week Three Research",
-    "section": "EGGs",
-    "text": "EGGs\nSome helpful data that was found\nNASS Eggs:\nContains tons of data that could be useful\nStores that sell Eggs that we can collect data from\n\ndogpatch\nGoPuff"
+    "section": "Heirloom Tomatoes",
+    "text": "Heirloom Tomatoes\nPlaces that might use Heirloom Tomatoes\n\nJava House\n\nStores that sell Heirloom Tomatoes that we can collect data from\n\nGateway market\nRuss’s Market\nFresh thyme\nHy-Vee\nNew Pioneer coop\n\nInvestigated Stores\n\nDogpatch: They have seeds but no tomatoes for sale\nFairway: They don’t have any heirloom tomatoes for sale\nWalmart: They have seeds but no tomatoes for sale\nTarget: They don’t have any heirloom tomatoes for sale\nCostco: They don’t have any heirloom tomatoes for sale\nWhole Foods Market: They don’t have any heirloom tomatoes for sale in Iowa\nAldi: They don’t have any heirloom tomatoes for sale\nTrader Joe’s: They don’t have any heirloom tomatoes for sale\nCampbell’s Nutrition: They don’t have any heirloom tomatoes for sale\nRamsey’s Market: They don’t have any heirloom tomatoes for sale\nGoPuff: They don’t have any heirloom tomatoes for sale\nOver 150+ Other Websites searched"
+  },
+  {
+    "objectID": "posts/Aaron_C_Week3/Week3_Research.html#egg",
+    "href": "posts/Aaron_C_Week3/Week3_Research.html#egg",
+    "title": "Week Three Research",
+    "section": "EGG",
+    "text": "EGG\nStores that sell Eggs that we can collect data from\n\nGateway market\nRuss’s Market\nFresh Thyme Market\nHv-Vee\nNew Pioneer coop\ndogpatch\nFairway\nwalmart\nTarget\nWhole Foods Market\nAldi\nTrader Joe’s\nRamsey’s Market\nGoPuff"
   },
   {
     "objectID": "posts/Aaron_C_Week3/Week3_Research.html#bacon",
     "href": "posts/Aaron_C_Week3/Week3_Research.html#bacon",
     "title": "Week Three Research",
     "section": "Bacon",
-    "text": "Bacon\nStores that sell Bacon that we can collect data from - GoPuff\nTotal Websites looked: 99"
+    "text": "Bacon\nStores that sell Bacon that we can collect data from\n\nGateway market\nRuss’s Market\nFresh Thyme Market\nHv-Vee\nNew Pioneer coop\ndogpatch\nFairway\nWalmart\nTarget\nCostco\nWhole Foods Market\nAldi\nTrader Joe’s\nRamsey’s Market\nGoPuff"
+  },
+  {
+    "objectID": "posts/Aaron_C_Week3/Week3_WrapUp.html",
+    "href": "posts/Aaron_C_Week3/Week3_WrapUp.html",
+    "title": "AI/Local Food Week 3 Wrap Up",
+    "section": "",
+    "text": "The currents project objectives for this week was to\n\nCatch up on any additional training.\nCollect and find data on heirloom tomatoes, eggs, and bacon.\nLearning how to do web scraping in python."
+  },
+  {
+    "objectID": "posts/Aaron_C_Week3/Week3_WrapUp.html#works-in-progress",
+    "href": "posts/Aaron_C_Week3/Week3_WrapUp.html#works-in-progress",
+    "title": "AI/Local Food Week 3 Wrap Up",
+    "section": "Works in Progress",
+    "text": "Works in Progress\nAn excel sheet that contains a list of small bussineses of Iowa grocers that we had to go through and find places that had the data we wanted.\n\nThese are some examples of what we were looking for"
+  },
+  {
+    "objectID": "posts/Aaron_C_Week3/Week3_WrapUp.html#dspg-questions",
+    "href": "posts/Aaron_C_Week3/Week3_WrapUp.html#dspg-questions",
+    "title": "AI/Local Food Week 3 Wrap Up",
+    "section": "DSPG Questions",
+    "text": "DSPG Questions\n\nAre there stores or market places that would be helpful for us to look into?\nIs anyone experienced in webscraping and if so there any advice that you have for us?"
   }
 ]

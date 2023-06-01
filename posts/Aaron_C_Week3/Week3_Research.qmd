@@ -5,9 +5,7 @@ date: "2023-05-30"
 categories: [Week Three, Research]
 ---
 
-## Heirloom Tomatoes
-
-**Some helpful data that was found**
+## Some helpful data found
 
 [Farmers Market Prices](https://practicalfarmers.org/2015/06/farmers-market-prices-dsm-and-around-iowa/):\
 At the 2015 PFI Annual Conference, Kay Jensen collected farmers' vegetable prices. Recent data shows price ranges for tomatoes, ranging from \$2.50 to \$4 per pound.
@@ -30,28 +28,8 @@ A potential source to find and locate local farmers that grow Heirloom Tomatoes.
 [Instacart](https://www.instacart.com/products/3133368-heirloom-tomatoes-per-lb):\
 A cite that could be of use to find Items.
 
-[NFMD](https://nfmd.org/ia/fort-dodge/1000603/): \
+[NFMD](https://nfmd.org/ia/fort-dodge/1000603/):\
 Market on Central - Farmers Market in Historic Downtown Fort Dodge
-
-**Local Farms Found**
-
--   [Butcher Crick Farms](https://www.facebook.com/butchercrick/)
--   [heart land fresh family farm](https://heartlandfreshfamilyfarm.com/)
--   [A family market place](https://www.afamilymarketplace.com/)
--   [Alices Garden](https://www.facebook.com/AlicesGarden/)
-
-**Stores that sell Heirloom Tomatoes that we can collect data from**
-
--   [Gateway market](https://gatewaymarket.storebyweb.com/s/1000-1/b?q=heirloom%20tomato)
--   [Russ's Market](https://www.russmarket.com/shop#!/?q=Heirloom%20Tomatoes&search_option_id=product)
--   [Fresh thyme](https://ww2.freshthyme.com/sm/planning/rsid/104/results?q=heirloom%20tomatoes)
--   [Hy-Vee](https://www.hy-vee.com/aisles-online/p/37174/Heirloom-Tomatoes)
-
-**Places that might use Heirloom Tomatoes**
-
--   [Java House](https://thejavahouse.com/heirloom-menu/)
-
-**Potential Useful Sources**
 
 [National Retail Report - Specialty Crops](https://www.marketnews.usda.gov/mnp/fv-report-retail?repType=&run=&portal=fv&locChoose=&commodityClass=&startIndex=1&type=retail&class=VEGETABLES&commodity=TOMATOES&region=MIDWEST+U.S.&organic=ALL&repDate=&endDate=&compareLy=No) ( [USDA Fruits & Vegetables Market Report](https://www.agmrc.org/fruit-and-vegetable-market-data?StartDate=2023-05-23&EndDate=2023-05-29&RegionIDs=3&CommodityIDs=67&VarietyIDs=53&UnitIDs=24&page=1&items=25) ):\
 Advertised Prices for Specialty Crops at Major Retail Supermarket Outlets it contains Heirloom Tomatoes but only specifies the Midwest U.S.
@@ -59,11 +37,31 @@ Advertised Prices for Specialty Crops at Major Retail Supermarket Outlets it con
 [FRED Economic Data](https://fred.stlouisfed.org/series/APU0000712311):\
 Contains the average Price of Tomatoes( Tomatoes, Field Grown (Cost per Pound/453.6 Grams) in U.S. City Average) All fresh field grown and vine ripened round red tomatoes. Includes organic and non-organic.
 
-[Farmers Market Nutrition Program](https://data.iowaagriculture.gov/fmnp/): Lists farmers markets in Iowa
+[Farmers Market Nutrition Program](https://data.iowaagriculture.gov/fmnp/):\
+Lists farmers markets in Iowa
 
-**Dead Ends**
+[Iowa Food Cooperative](https://iowafood.coop/shop/product_list.php?type=search&query=&action=Search) ([Iowa Food Coop](https://shop.iowafood.coop/product-search)):\
+Contains some data that could be useful
 
-[Iowa Food Cooperative](https://iowafood.coop/shop/product_list.php?type=search&query=heirloom+tomatos&action=Search) ([Iowa Food Coop](https://iowafood.coop/?s=Heirloom+Tomatoes&submit=Search)): does not have heirloom tomatoes
+[NASS Eggs](https://www.nass.usda.gov/Statistics_by_Subject/index.php?sector=ANIMALS%20&%20PRODUCTS):\
+Contains tons of data that could be useful
+
+[List of Egg Farms in Iowa](https://chickenandchicksinfo.com/egg-farms-in-iowa/): \
+could be useful to source eggs
+
+## Heirloom Tomatoes
+
+**Places that might use Heirloom Tomatoes**
+
+-   [Java House](https://thejavahouse.com/heirloom-menu/)
+
+**Stores that sell Heirloom Tomatoes that we can collect data from**
+
+-   [Gateway market](https://gatewaymarket.storebyweb.com/s/1000-1/b?q=heirloom%20tomato)
+-   [Russ's Market](https://www.russmarket.com/shop#!/?q=Heirloom%20Tomatoes&search_option_id=product)
+-   [Fresh thyme](https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=heirloom%20tomatoes)
+-   [Hy-Vee](https://www.hy-vee.com/aisles-online/p/37174/Heirloom-Tomatoes)
+-   [New Pioneer coop](https://shop.newpi.coop/shop#!/?q=heirloom%20tomato)
 
 **Investigated Stores**
 
@@ -74,24 +72,47 @@ Contains the average Price of Tomatoes( Tomatoes, Field Grown (Cost per Pound/45
 -   [Costco](https://www.costco.com/CatalogSearch?dept=All&keyword=heirloom+tomatoes): They don't have any heirloom tomatoes for sale
 -   [Whole Foods Market](https://www.wholefoodsmarket.com/search?text=Heirloom+tomatoes): They don't have any heirloom tomatoes for sale in Iowa
 -   [Aldi](https://www.aldi.us/en/products/fresh-produce/fresh-vegetables-salads/): They don't have any heirloom tomatoes for sale
--   [New Pioneer](https://shop.newpi.coop/shop#!/?q=heirloom%20tomatoes&shelf_tag_id=214132): They don't have any heirloom tomatoes for sale
 -   [Trader Joe's](https://www.traderjoes.com/home/search?q=Heirloom+Tomatoes&global=yes): They don't have any heirloom tomatoes for sale
 -   [Campbell's Nutrition](https://campbellsnutrition.infretailers.com/circulars/search/): They don't have any heirloom tomatoes for sale
+-   [Ramsey's Market](https://shop.freshootb.com/online/freshoutofthebox/search?q=Heirloom%20tomatoes): They don't have any heirloom tomatoes for sale
+-   [GoPuff](https://www.gopuff.com/): They don't have any heirloom tomatoes for sale
+-   **Over 150+ Other Websites searched**
 
-## EGGs
-
-**Some helpful data that was found**
-
-[NASS Eggs](https://www.nass.usda.gov/Statistics_by_Subject/index.php?sector=ANIMALS%20&%20PRODUCTS):\
-Contains tons of data that could be useful
+## EGG
 
 **Stores that sell Eggs that we can collect data from**
 
--   [dogpatch](https://dogpatchurbangardens.com/collections/eggs)
+-   [Gateway market](https://gatewaymarket.storebyweb.com/s/1000-1/mb?q=eggs)
+-   [Russ's Market](https://www.russmarket.com/shop/dairy/eggs/d/22508118#!/?search_option_id=product&q=Eggs)
+-   [Fresh Thyme Market](https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Eggs)
+-   [Hv-Vee](https://www.hy-vee.com/aisles-online/search?search=egg&searchFilterOptions=CATEGORY%3AEGGS)
+-   [New Pioneer coop](https://shop.newpi.coop/shop#!/?q=eggs)
+-   [dogpatch](https://dogpatchurbangardens.com/search?type=product%2Carticle%2Cpage%2Ccollection&options%5Bprefix%5D=last&q=eggs&filter.p.product_type=Eggs)
+-   [Fairway](https://shop.fareway.com/093#/search?q=eggs)
+-   [walmart](https://www.walmart.com/search?q=eggs)
+-   [Target](https://www.target.com/s?searchTerm=eggs)
+-   [Whole Foods Market](https://www.wholefoodsmarket.com/search?text=eggs)
+-   [Aldi](https://www.aldi.us/en/products/dairy-eggs/)
+-   [Trader Joe's](https://www.traderjoes.com/home/search?q=eggs&section=products&global=yes)
+-   [Ramsey's Market](https://shop.freshootb.com/online/freshoutofthebox/search?f=false&filterBy=categoryIds%255B%255D%3Dcf489e1d-06a6-4882-b361-acc30104fb94&q=eggs)
 -   [GoPuff](https://www.gopuff.com/)
 
 ## Bacon
 
-**Stores that sell Bacon that we can collect data from** - [GoPuff](https://www.gopuff.com/)
+**Stores that sell Bacon that we can collect data from**
 
-**Total Websites looked**: 99
+-   [Gateway market](https://gatewaymarket.storebyweb.com/s/1000-1/b?q=bacon)
+-   [Russ's Market](https://www.russmarket.com/shop#!/?q=bacon&search_option_id=product)
+-   [Fresh Thyme Market](https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon)
+-   [Hv-Vee](https://www.hy-vee.com/aisles-online/search?search=bacon&searchFilterOptions=CATEGORY%3ABACON)
+-   [New Pioneer coop](https://shop.newpi.coop/shop/meat/bacon/d/1322093#!/?q=bacon)
+-   [dogpatch](https://dogpatchurbangardens.com/search?type=product%2Carticle%2Cpage%2Ccollection&options%5Bprefix%5D=last&q=bacon)
+-   [Fairway](https://shop.fareway.com/093#/search?q=bacon)
+-   [Walmart](https://www.walmart.com/search?q=bacon)
+-   [Target](https://www.target.com/s?searchTerm=bacon)
+-   [Costco](https://www.costco.com/grocery-household.html?keyword=bacon)
+-   [Whole Foods Market](https://www.wholefoodsmarket.com/search?text=bacon)
+-   [Aldi](https://www.aldi.us/en/products/deli/deli-meat/)
+-   [Trader Joe's](https://www.traderjoes.com/home/search?q=bacon&section=products&global=yes)
+-   [Ramsey's Market](https://shop.freshootb.com/online/freshoutofthebox/search?f=false&filterBy=categoryIds%255B%255D%3D508282ea-8f56-4077-bd1c-acc30104fb94&q=bacon)
+-   [GoPuff](https://www.gopuff.com/)

@@ -1,0 +1,34 @@
+---
+title: "AI/Local Food Week 3 Wrap Up"
+author: "Aaron C"
+date: "2023-06-02"
+categories: [Week Three, Wrap Up]
+---
+
+## Current Project Objectives
+
+The currents project objectives for this week was to
+
+-   Catch up on any additional training.
+
+-   Collect and find data on heirloom tomatoes, eggs, and bacon.
+
+-   Learning how to do web scraping in python.
+
+## Works in Progress
+
+An excel sheet that contains a list of small bussineses of Iowa grocers that we had to go through and find places that had the data we wanted.
+
+![](DataCollection.PNG)
+
+These are some examples of what we were looking for
+
+![](TomatoesData.PNG){width="662"}
+
+![](EggsData.PNG)
+
+## DSPG Questions
+
+-   Are there stores or market places that would be helpful for us to look into?
+
+-   Is anyone experienced in webscraping and if so there any advice that you have for us?
