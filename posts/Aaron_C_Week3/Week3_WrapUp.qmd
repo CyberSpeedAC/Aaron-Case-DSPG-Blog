@@ -15,17 +15,25 @@ The currents project objectives for this week was to
 
 -   Learning how to do web scraping in python.
 
+-   Building programs to do web scraping
+
 ## Works in Progress
 
 An excel sheet that contains a list of small bussineses of Iowa grocers that we had to go through and find places that had the data we wanted.
 
 ![](DataCollection.PNG)
 
+![](PrathamData.png)
+
 These are some examples of what we were looking for
 
 ![](TomatoesData.PNG){width="662"}
 
 ![](EggsData.PNG)
+
+Along with some manual data scraping. We started work on some data scraping programs (spiders). This image shows an example of the data we were able to scrape.
+
+![](SpiderExample.PNG)
 
 ## DSPG Questions
 

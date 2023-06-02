@@ -5,8 +5,14 @@ date: "2023-05-30"
 categories: [Week Three]
 ---
 
-This week was dedicated to collecting data
+This week was dedicated to collecting data and doing research for our project. It was also spent to learn how to webscrapers (Spiders). At the end of the week was tasked to presented the Week three wrap up for our team.
 
 Data Camp Lessons completed:
 
 -   Writing Efficient R Code
+
+[Week Three Research](https://cyberspeedac.github.io/Aaron-Case-DSPG-Blog/posts/Aaron_C_Week3/Week3_Research.html)
+
+[Week Three Spider](https://cyberspeedac.github.io/Aaron-Case-DSPG-Blog/posts/Aaron_C_Week3/Week3_Spider)
+
+[Week Three Wrap Up](https://cyberspeedac.github.io/Aaron-Case-DSPG-Blog/posts/Aaron_C_Week3/Week3_WrapUp.html)

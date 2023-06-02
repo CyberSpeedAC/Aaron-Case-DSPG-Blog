@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.475">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Aaron Case">
+<meta name="dcterms.date" content="2023-05-30">
+
+<title>Aaron Case DSPG Blog - Week Three Spiders</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Aaron Case DSPG Blog</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/CyberSpeedAC"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Week Three Spiders</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Week Three</div>
+                <div class="quarto-category">Code</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Aaron Case </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">May 30, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>During week the I started to developing spiders to extract data from webpages. This example is capable from extracting data from the privided weblink and putting the data into a pandas data frame. However this example is nowhere near finished.</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scrapy</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scrapy.crawler <span class="im">import</span> CrawlerProcess</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scrapy.utils.log <span class="im">import</span> configure_logging</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> FreshThymeBaconSpider(scrapy.Spider):</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    name <span class="op">=</span> <span class="st">'Fresh Thyme Market Bacon Spider'</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> start_requests( <span class="va">self</span> ):</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        start_urls <span class="op">=</span> [<span class="st">'https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage'</span>]</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> url <span class="kw">in</span> start_urls:</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">yield</span> scrapy.Request( url <span class="op">=</span> url, callback <span class="op">=</span> <span class="va">self</span>.cardsParse)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> cardsParse(<span class="va">self</span>, response):</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        <span class="co">#Fail safe for links</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>            <span class="co">#grabs all cards from list and saves the link to follow</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>            xpath <span class="op">=</span> <span class="st">'//*[contains(@class,"Listing")]/div/a/@href'</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>            listCards <span class="op">=</span> response.xpath(xpath)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>            linklist.append(listCards.extract())</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> url <span class="kw">in</span> listCards:</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>                <span class="cf">yield</span> response.follow( url <span class="op">=</span> url, callback <span class="op">=</span> <span class="va">self</span>.itemParse, meta<span class="op">=</span>{<span class="st">'link'</span>: url} )</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span> <span class="pp">AttributeError</span>:</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>           <span class="cf">pass</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> itemParse(<span class="va">self</span>, response):</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        <span class="co">#xpaths to the name and price</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>        nameXpath <span class="op">=</span> <span class="st">'//*[contains(@class, "PdpInfoTitle")]/text()'</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        priceXpath <span class="op">=</span> <span class="st">'//*[contains(@class, "PdpMainPrice")]/text()'</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>        url <span class="op">=</span> response.meta.get(<span class="st">'link'</span>)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>        <span class="co">#Grabs the name and price from the xpaths and adds them to the bacon list</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>        bacon.append({<span class="st">'bacon'</span>: response.xpath(nameXpath).extract(), <span class="st">'price'</span>: response.xpath(priceXpath).extract()})</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Start</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>configure_logging()</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>bacon <span class="op">=</span> []</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>linklist <span class="op">=</span> []</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>process <span class="op">=</span> CrawlerProcess()</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>process.crawl(FreshThymeBaconSpider)</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>process.start()</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>process.stop()</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>baconFrame <span class="op">=</span> pd.DataFrame(bacon)</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(baconFrame)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:15 [scrapy.utils.log] INFO: Scrapy 2.6.2 started (bot: scrapybot)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:15 [scrapy.utils.log] INFO: Versions: lxml 4.9.1.0, libxml2 2.9.14, cssselect 1.1.0, parsel 1.6.0, w3lib 1.21.0, Twisted 22.2.0, Python 3.10.9 | packaged by conda-forge | (main, Jan 11 2023, 15:15:40) [MSC v.1916 64 bit (AMD64)], pyOpenSSL 22.0.0 (OpenSSL 1.1.1s  1 Nov 2022), cryptography 37.0.1, Platform Windows-10-10.0.19044-SP0</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:15 [scrapy.crawler] INFO: Overridden settings:
+{}</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:15 [scrapy.utils.log] DEBUG: Using reactor: twisted.internet.selectreactor.SelectReactor</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:15 [scrapy.extensions.telnet] INFO: Telnet Password: c5df1fb3cf48c019</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:15 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.logstats.LogStats']</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:16 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:16 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:16 [scrapy.middleware] INFO: Enabled item pipelines:
+[]</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:16 [scrapy.core.engine] INFO: Spider opened</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:17 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:17 [scrapy.extensions.telnet] INFO: Telnet console listening on 127.0.0.1:6023</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:17 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage&gt; (referer: None)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:18 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/boars-head-uncured-turkey-bacon-00042421130669&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:18 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/fresh-thyme-smoked-sliced-uncured-bacon-00841330117590&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:18 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/farm-promise-smoked-applewood-uncured-bacon-00070919021595&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:18 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/deli-sliced-thick-cut-bacon-in-bag-00201120000004&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:19 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/farm-promise-smoked-hardwood-uncured-bacon-00070919021601&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:19 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/deli-sliced-thick-cut-applewood-bacon-in-bag-00201121000003&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:19 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/applegate-naturals-uncured-hickory-smoked-sunday-bacon-00025317101004&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:19 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/deli-sliced-thick-cut-peppered-bacon-00201267000004&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:19 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/deli-sliced-thick-cut-applewood-bacon-00201249000008&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:19 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/boars-head-canadian-style-uncured-bacon-00042421500875&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:19 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/fresh-thyme-smoked-sliced-uncured-turkey-bacon-00841330117606&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:20 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/deli-sliced-thick-cut-bacon-00201247000000&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:20 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/boars-head-hot-smoked-uncured-sausage-00042421003659&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:20 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/pedersons-natural-farms-organic-no-sugar-uncured-smoked-bacon-00641227601405&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:20 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/hatfield-hardwood-smoked-uncured-bacon-00070919021564&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:20 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/boars-head-fully-cooked-traditional-bacon-00042421014808&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:20 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/boars-head-naturally-smoked-traditional-bacon-00042421225792&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:20 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/boars-head-breakfast-turkey-sausage-00042421130799&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:20 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/boars-head-bratwurst-00042421246803&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:20 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/boars-head-breakfast-chicken-sausage-links-00042421140286&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:20 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/boars-head-all-natural-honeycrisp-apple-chicken-sausages-00042421140187&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:20 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/boars-head-all-natural-robust-italian-chicken-sausages-00042421140132&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:21 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/boars-head-all-natural-chorizo-chicken-sausages-00042421140255&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:21 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/boars-head-all-natural-breakfast-pork-sausage-00042421140293&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:21 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/bilinskis-organic-wild-mushrooms-with-italian-herbs-chicken-sausage-00071728071207&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:21 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/bilinskis-organic-spinach-&amp;-spring-greens-chicken-sausage-00071728071009&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:21 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/bilinskis-antibiotic-free-tomato-basil-&amp;-chicken-zesty-italian-style-blended-sausage-00071728070057&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:21 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/bilinskis-organic-mild-italian-with-bell-peppers-chicken-sausage-00071728071153&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:21 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/bilinskis-antibiotic-free-spinach-&amp;-chicken-garlic-seasoned-blended-sausage-00071728070002&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:21 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/bilinskis-antibiotic-free-cajun-style-chicken-&amp;-peppers-blended-sausage-00071728070408&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:21 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/beyond-meat-beyond-sausage-plantbased-original-brat-links-00852629004774&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:21 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/beyond-meat-beyond-sausage-hot-italian-style-plantbased-sausages-00852629004750&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:22 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/applegate-naturals-uncured-turkey-hot-dogs-00025317775205&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:22 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/beddar-cheddar-00077782023930&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:22 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/applegate-naturals-uncured-beef-hot-dog-00025317775304&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:22 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/applegate-naturals-chicken-&amp;-sage-breakfast-sausage-00025317006972&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:22 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/applegate-naturals-classic-pork-breakfast-sausage-00025317693004&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:22 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/applegate-naturals-gluten-free-uncured-beef-corn-dogs-00025317007214&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:22 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/applegate-naturals-do-good-dog-uncured-beef-hot-dogs-6ct-00025317218603&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:22 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/applegate-great-organic-uncured-beef-hot-dog-00025317775700&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:23 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/apple-bulk-chicken-sausage-00201465000004&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:23 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/andouille-sausage-00077782026979&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:23 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/pedersons-natural-farms-no-sugar-uncured-hickory-bacon-00641227301404&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:23 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/indiana-kitchen-hardwood-smoked-thick-cut-bacon-00759199801249&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:23 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/deli-sliced-thick-cut-peppered-bacon-in-bag-00201122000002&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:23 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/indiana-kitchen-hardwood-smoked-bacon-00759199801171&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:23 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/fresh-thyme-fully-cooked-uncured-turkey-bacon-00841330115077&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:23 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://ww2.freshthyme.com/sm/planning/rsid/951/product/applegate-organics-uncured-hickory-smoked-turkey-bacon-00025317122009&gt; (referer: https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&amp;take=48&amp;f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:23 [scrapy.core.engine] INFO: Closing spider (finished)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:23 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 21280,
+ 'downloader/request_count': 49,
+ 'downloader/request_method_count/GET': 49,
+ 'downloader/response_bytes': 15558006,
+ 'downloader/response_count': 49,
+ 'downloader/response_status_count/200': 49,
+ 'elapsed_time_seconds': 6.895619,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2023, 6, 2, 18, 59, 23, 901878),
+ 'httpcompression/response_bytes': 46584003,
+ 'httpcompression/response_count': 49,
+ 'log_count/DEBUG': 50,
+ 'log_count/INFO': 10,
+ 'request_depth_max': 1,
+ 'response_received_count': 49,
+ 'scheduler/dequeued': 49,
+ 'scheduler/dequeued/memory': 49,
+ 'scheduler/enqueued': 49,
+ 'scheduler/enqueued/memory': 49,
+ 'start_time': datetime.datetime(2023, 6, 2, 18, 59, 17, 6259)}</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-06-02 13:59:23 [scrapy.core.engine] INFO: Spider closed (finished)</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                                bacon            price
+0       [Boar's Head Uncured Turkey Bacon - 12 Ounce]          [$6.99]
+1   [Fresh Thyme Smoked Sliced Uncured Bacon - 12 ...          [$6.49]
+2   [Farm Promise Smoked Applewood Uncured Bacon -...          [$6.99]
+3      [Deli Sliced Thick Cut Bacon In Bag - 3 Pound]  [$17.97 avg/ea]
+4   [Farm Promise Smoked Hardwood Uncured Bacon - ...          [$6.99]
+5   [Deli Sliced Thick Cut Applewood Bacon In Bag ...  [$17.97 avg/ea]
+6   [Applegate Naturals Uncured Hickory Smoked Sun...          [$6.49]
+7    [Deli Sliced Thick Cut Peppered Bacon - 1 Pound]   [$5.99 avg/ea]
+8   [Deli Sliced Thick Cut Applewood Bacon - 1 Pound]   [$5.99 avg/ea]
+9   [Boar's Head Canadian Style Uncured Bacon - 6 ...          [$5.99]
+10  [Fresh Thyme Smoked Sliced Uncured Turkey Baco...          [$4.69]
+11            [Deli Sliced Thick Cut Bacon - 1 Pound]   [$5.99 avg/ea]
+12  [Boar's Head Hot Smoked Uncured Sausage - 16 O...          [$7.99]
+13  [Pederson's Natural Farms Organic No Sugar Unc...          [$7.49]
+14  [Hatfield Hardwood Smoked Uncured Bacon - 16 O...          [$6.99]
+15  [Boar's Head Fully Cooked Traditional Bacon - ...          [$7.49]
+16  [Boar's Head Naturally Smoked Traditional Baco...          [$7.99]
+17   [Boar's Head Breakfast Turkey Sausage - 6 Ounce]          [$4.99]
+18                 [Boar's Head Bratwurst - 16 Ounce]          [$8.29]
+19  [Boar's Head Breakfast Chicken Sausage Links -...          [$5.99]
+20  [Boar's Head All Natural Honeycrisp Apple Chic...          [$7.99]
+21  [Boar's Head All Natural Robust Italian Chicke...          [$8.99]
+22  [Boar's Head All Natural Chorizo Chicken Sausa...          [$8.99]
+23  [Boar's Head All Natural Breakfast Pork Sausag...          [$4.99]
+24  [Bilinski's Organic Wild Mushrooms With Italia...          [$7.49]
+25  [Bilinski's Organic Spinach &amp; Spring Greens Ch...          [$7.49]
+26  [Bilinski's Antibiotic Free Tomato Basil &amp; Chi...          [$4.49]
+27  [Bilinski's Organic Mild Italian With Bell Pep...          [$7.49]
+28  [Bilinski's Antibiotic Free Spinach &amp; Chicken ...          [$4.49]
+29  [Bilinski's Antibiotic Free Cajun Style Chicke...          [$4.49]
+30  [Beyond Meat Beyond Sausage Plant-based Origin...          [$6.99]
+31  [Beyond Meat Beyond Sausage Hot Italian Style ...          [$6.99]
+32  [Applegate Naturals Uncured Turkey Hot Dogs - ...          [$5.99]
+33                        [Beddar Cheddar - 14 Ounce]          [$4.99]
+34  [Applegate Naturals Uncured Beef Hot Dog - 10 ...          [$5.79]
+35  [Applegate Naturals Chicken &amp; Sage Breakfast S...          [$4.99]
+36  [Applegate Naturals Classic Pork Breakfast Sau...          [$4.99]
+37  [Applegate Naturals Gluten Free Uncured Beef C...          [$6.99]
+38  [Applegate Naturals Do Good Dog Uncured Beef H...          [$7.99]
+39  [Applegate Great Organic Uncured Beef Hot Dog ...          [$8.99]
+40             [Apple Bulk Chicken Sausage - 1 Pound]   [$3.99 avg/ea]
+41                   [Andouille Sausage - 13.5 Ounce]          [$4.99]
+42  [Pederson's Natural Farms No Sugar Uncured Hic...          [$7.49]
+43  [Indiana Kitchen Hardwood Smoked Thick Cut Bac...          [$5.49]
+44  [Deli Sliced Thick Cut Peppered Bacon In Bag -...  [$17.97 avg/ea]
+45  [Indiana Kitchen Hardwood Smoked Bacon - 16 Ou...          [$5.49]
+46  [Fresh Thyme Fully Cooked Uncured Turkey Bacon...          [$3.99]
+47  [Applegate Organics Uncured Hickory Smoked Tur...          [$7.49]</code></pre>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="posts/Aaron_C_Week3/SpiderExample.PNG" class="img-fluid figure-img" width="485"></p>
+<p></p><figcaption class="figure-caption">Output</figcaption><p></p>
+</figure>
+</div>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

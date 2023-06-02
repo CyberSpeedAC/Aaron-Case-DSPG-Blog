@@ -46,7 +46,7 @@ Contains some data that could be useful
 [NASS Eggs](https://www.nass.usda.gov/Statistics_by_Subject/index.php?sector=ANIMALS%20&%20PRODUCTS):\
 Contains tons of data that could be useful
 
-[List of Egg Farms in Iowa](https://chickenandchicksinfo.com/egg-farms-in-iowa/): \
+[List of Egg Farms in Iowa](https://chickenandchicksinfo.com/egg-farms-in-iowa/):\
 could be useful to source eggs
 
 ## Heirloom Tomatoes
