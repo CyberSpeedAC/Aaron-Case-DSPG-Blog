@@ -11,12 +11,13 @@ During week four I participated in the collection of housing data in Slater Iowa
 
 For a detailed explanation as well as my endeavors the link below will direct you to what I've learn.
 
-[Spiders]()
+[Spiders](https://cyberspeedac.github.io/Aaron-Case-DSPG-Blog/posts/Aaron_C_MultiWeek/Aaron_C_Spiders.html)
 
 This spider was build using scrapy
 
 ```{python}
-#|eval=FALSE
+# python
+
 from datetime import datetime
 import pandas as pd
 import scrapy
@@ -126,7 +127,8 @@ Output of the Fresh Thyme Market Spider![](Fresh%20Thyme%20Spider%20Output.PNG)
 This is the scraper for Hyvee made using selenium python package
 
 ```{python}
-#|eval=FALSE
+#python
+
 #Imports
 from datetime import datetime
 import pandas as pd
@@ -430,7 +432,7 @@ Output of the Hy-Vee Spider ![](Hyvee%20Spider%20Output.PNG)
 This is the scraper for Gateway market was made using selenium python package as well
 
 ```{python}
-#|eval=FALSE
+#python
 
 #Imports
 from datetime import datetime

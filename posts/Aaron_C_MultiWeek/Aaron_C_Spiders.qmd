@@ -50,13 +50,13 @@ Ideally for this project I strongly recommend using Scrapy spiders were ever pos
 This code covers the bare minimum of Scrapy and is rather (hopefully) intuitive. This can be edited/modified to fit your needs and is just an example.
 
 ```{Python}
-#|eval=FALSE
-#Imports for Scrapy Example
+# python
+# Imports for Scrapy Example
 import scrapy #Required Import
 from scrapy.crawler import CrawlerProcess
 from scrapy.utils.log import configure_logging # For debugging
 
-#The Class name can be anything but you need to call this later
+# The Class name can be anything but you need to call this later
 class SpiderClassName(scrapy.Spider):
     name = "spider name" 
 
@@ -119,7 +119,7 @@ print(Text_Element_List)
 As for Selenium this code covers the bare minimum and serves as a deminstration of how to handle JavaScript websites. Once again this can be edited/modified to fit your needs and is just an example.
 
 ```{Python}
-#|eval=FALSE
+# python
 # Imports for Scraping
 import selenium
 from selenium import webdriver

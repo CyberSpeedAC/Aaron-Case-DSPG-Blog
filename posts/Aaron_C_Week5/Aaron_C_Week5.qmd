@@ -1,0 +1,16 @@
+---
+title: "Week Five"
+author: "Aaron Case"
+date: "2023-06-9"
+categories: [Week Five]
+image: ITAG VI.png
+execute: 
+  enabled: false
+---
+
+During week five I attended the ITAG VI conference. However the majority of the week was dedicated to building and optimizing spiders. At the end of the week I finished building four more spiders making seven spider built for the project. There are still many small improvements that need to be made. I also started to work on implementing a cleaning program that will clean the data while the spider runs.
+
+Here is a link to what I've learn about building spiders: [Spider](https://cyberspeedac.github.io/Aaron-Case-DSPG-Blog/posts/Aaron_C_MultiWeek/Aaron_C_Spiders.html)
+
+Here is a link to the code of all the modified and added spiders that was made during the week: [Week 5 Spider Code]()
+

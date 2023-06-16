@@ -36,7 +36,7 @@ These are some examples of what we were looking for
 Along with some manual data scraping. We started work on some data scraping programs (spiders). This code block is a spider that I recently created. However, there are still some improvements that still need to be made.
 
 ```{python}
-#|eval=FALSE
+#python
 import pandas as pd
 import scrapy
 from scrapy.crawler import CrawlerProcess
