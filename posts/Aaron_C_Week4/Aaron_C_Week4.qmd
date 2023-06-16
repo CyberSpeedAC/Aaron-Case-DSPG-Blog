@@ -1,0 +1,750 @@
+---
+title: "Week Four"
+author: "Aaron Case"
+date: "2023-06-9"
+categories: [Week Four, Code]
+execute: 
+  enabled: false
+---
+
+During week four I participated in the collection of housing data in Slater Iowa for the WINVEST project. However the majority of the week was solely dedicated to learning and building spiders. At the end of the week I finished building three separate spiders though there are many improvements that need to be made. The Code for each is below. Along with some of there outputs
+
+For a detailed explanation as well as my endeavors the link below will direct you to what I've learn.
+
+[Spiders]()
+
+This spider was build using scrapy
+
+```{python}
+#|eval=FALSE
+from datetime import datetime
+import pandas as pd
+import scrapy
+from scrapy.crawler import CrawlerProcess
+from scrapy.utils.log import configure_logging
+
+class FreshThymeSpider(scrapy.Spider):
+    name = 'Fresh Thyme Market Spider'
+
+    def start_requests( self ):
+        #Bacon Scraper part
+        bacon_urls = ['https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Bacon&take=48&f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage',
+                      'https://ww2.freshthyme.com/sm/planning/rsid/952/results?q=Bacon&take=48&f=Category%3AHot+Dogs%2C+Bacon+%26+Sausage']
+        for url in bacon_urls:
+            yield scrapy.Request( url = url, callback = self.cardsParse, meta={'type': 'bacon', 'url': url})
+
+        #Egg Scraper part
+        egg_urls = ['https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=Eggs&take=48&f=Category%3AEggs',
+                      'https://ww2.freshthyme.com/sm/planning/rsid/952/results?q=Eggs&take=48&f=Category%3AEggs']
+        for url in egg_urls:
+            yield scrapy.Request( url = url, callback = self.cardsParse, meta={'type': 'egg', 'url': url})
+
+        #Heirloom Tomatoes part
+        tomato_urls = ['https://ww2.freshthyme.com/sm/planning/rsid/951/results?q=heirloom%20tomatoes',
+                       'https://ww2.freshthyme.com/sm/planning/rsid/952/results?q=heirloom%20tomatoes']
+
+        for url in tomato_urls:
+            yield scrapy.Request( url = url, callback = self.cardsParse, meta={'type': 'tomato', 'url': url})
+
+    def cardsParse(self, response):
+        #Failsafe for links
+        try:
+            #grabs the store location
+            storeXpath = '//*[contains(@class,"HeaderSubtitle")]/text()'
+            store = response.xpath(storeXpath).extract_first()
+            #grabs all cards from list and saves the link to follow
+            xpath = '//*[contains(@class,"Listing")]/div/a/@href'
+            listCards = response.xpath(xpath)
+            for url in listCards:
+                yield response.follow( url = url, callback = self.itemParse, meta={'store': store, 'type': response.meta.get('type'), 'url': response.meta.get('url')} )
+        except AttributeError:
+           pass
+    
+    def itemParse(self, response):
+        #xpaths to extract 
+        nameXpath = '//*[contains(@class, "PdpInfoTitle")]/text()'
+        priceXpath = '//*[contains(@class, "PdpMainPrice")]/text()'
+        unitPriceXpath = '//*[contains(@class, "PdpPreviousPrice")]/text()'
+        prevPriceXpath = '//*[contains(@class, "PdpUnitPrice")]/text()'
+        #Adding the data to data frame
+        itemType = response.meta.get('type')
+        if(itemType == "bacon"):
+            baconFrame.loc[len(baconFrame)] = [response.xpath(nameXpath).extract_first(),
+                                               response.xpath(priceXpath).extract_first(), 
+                                               response.xpath(unitPriceXpath).extract_first(), 
+                                               response.xpath(prevPriceXpath).extract_first(), 
+                                               response.meta.get('store'),
+                                               response.meta.get('url')]
+        elif(itemType == "egg"):
+            eggFrame.loc[len(eggFrame)] = [response.xpath(nameXpath).extract_first(),
+                                           response.xpath(priceXpath).extract_first(), 
+                                           response.xpath(prevPriceXpath).extract_first(), 
+                                           response.meta.get('store'),
+                                           response.meta.get('url')]
+        elif(itemType == "tomato"):
+            tomatoFrame.loc[len(tomatoFrame)] = [response.xpath(nameXpath).extract_first(),
+                                                 response.xpath(priceXpath).extract_first(), 
+                                                 response.xpath(prevPriceXpath).extract_first(), 
+                                                 response.meta.get('store'),
+                                                 response.meta.get('url')]
+
+# Start
+#DEBUG Switch
+DEBUG = 0
+
+#Data frames
+baconFrame = pd.DataFrame(columns=['Bacon', 'Current Price', 'Unit Price', 'Sale', 'Store Location', 'Url'])
+eggFrame = pd.DataFrame(columns=['Egg', 'Current Price', 'Sale', 'Store Location', 'Url'])
+tomatoFrame = pd.DataFrame(columns=['Heirloom Tomato', 'Current Price', 'Sale', 'Store Location', 'Url'])
+
+if(DEBUG):
+    #To see the inner mechanics of the spider
+    configure_logging()
+
+#This is to start the spider
+process = CrawlerProcess()
+process.crawl(FreshThymeSpider)
+process.start()
+process.stop()
+
+if(DEBUG):
+    #To see the outputs
+    print(baconFrame)
+    print(eggFrame)
+    print(tomatoFrame)
+
+#Adds the date that the data was scraped
+currentDate = str(datetime(datetime.today().year, datetime.today().month, datetime.today().day))[:-8]
+#To CSV files
+baconFrame.to_csv(currentDate + "Fresh Thyme Bacon.csv")
+eggFrame.to_csv(currentDate + "Fresh Thyme Egg.csv")
+tomatoFrame.to_csv(currentDate + "Fresh Thyme Heirloom Tomatoes.csv")
+```
+
+Output of the Fresh Thyme Market Spider![](Fresh%20Thyme%20Spider%20Output.PNG)
+
+This is the scraper for Hyvee made using selenium python package
+
+```{python}
+#|eval=FALSE
+#Imports
+from datetime import datetime
+import pandas as pd
+#Imports for Scraping
+from selenium import webdriver
+from selenium.webdriver.firefox.service import Service as FirefoxService
+from webdriver_manager.firefox import GeckoDriverManager
+from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import StaleElementReferenceException
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from os import path
+import time
+
+
+class HyveeSpider():
+    name = "Hyvee Spider"
+    baconFrame = pd.DataFrame(columns=['Bacon', 'Current Price', 'Sale', 'Weight', 'Url'])
+    eggFrame = pd.DataFrame(columns=['Egg', 'Current Price', 'Sale', 'Amount', 'Url'])
+    tomatoFrame = pd.DataFrame(columns=['Heirloom Tomato', 'Current Price', 'Sale', 'Weight', 'Url'])
+    
+    def __init__(self):
+        self.driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install(), log_path=path.devnull))
+        self.baconUrls = ['https://www.hy-vee.com/aisles-online/p/11315/Hormel-Black-Label-Thick-Cut-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/47128/Hormel-Black-Label-Fully-Cooked-Original-Thick-Cut-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/41626/Applegate-Naturals-Uncured-Sunday-Bacon-Hickory-Smoked',
+                     'https://www.hy-vee.com/aisles-online/p/57278/HyVee-Double-Smoked-Thick-Sliced-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/2405550/Applegate-Naturals-No-Sugar-Uncured-Bacon-Hickory-Smoked',
+                     'https://www.hy-vee.com/aisles-online/p/57279/HyVee-Sweet-Smoked-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/11366/Hormel-Black-Label-Original-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/2455081/Jimmy-Dean-Premium-Hickory-Smoked-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/3595492/Farmland-Bacon-Double-Smoked-Double-Thick-Cut',
+                     'https://www.hy-vee.com/aisles-online/p/47117/Hormel-Black-Label-Center-Cut-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/57277/HyVee-Center-Cut-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/2199424/Country-Smokehouse-Thick-Applewood-Slab-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/77228/Hormel-Black-Label-Original-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/21239/Farmland-Naturally-Hickory-Smoked-Classic-Cut-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/2456254/Jimmy-Dean-Premium-Applewood-Smoked-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/21240/Farmland-Naturally-Hickory-Smoked-Thick-Cut-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/47159/Hormel-Black-Label-Original-Bacon-4Pk',
+                     'https://www.hy-vee.com/aisles-online/p/50315/Oscar-Mayer-Naturally-Hardwood-Smoked-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/50321/Oscar-Mayer-Center-Cut-Original-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/50316/Oscar-Mayer-Thick-Cut-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/2199421/Country-Smokehouse-Thick-Hickory-Smoked-Slab-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/104466/Hickory-Country-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/23975/HyVee-Hickory-House-Applewood-Naturally-Smoked-Thick-Sliced-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/23949/HyVee-Sweet-Smoked-Thick-Sliced-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/23963/HyVee-Fully-Cooked-Hickory-Smoked-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/11173/Hormel-Black-Label-Applewood-Thick-Cut-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/21317/Farmland-Naturally-Applewood-Smoked-Classic-Cut-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/21238/Farmland-Naturally-Hickory-Smoked-Thick-Cut-Bacon-Package',
+                     'https://www.hy-vee.com/aisles-online/p/23948/HyVee-Lower-Sodium-Sweet-Smoked-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/458259/Wright-Naturally-Hickory-Smoked-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/11384/Hormel-Natural-Choice-Uncured-Original-Bacon-12-oz',
+                     'https://www.hy-vee.com/aisles-online/p/2476490/Jimmy-Dean-FC-Hickory-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/1646677/Smithfield-Hometown-Original-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/53849/Farmland-Naturally-Hickory-Smoked-Lower-Sodium-Classic-Cut-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/47121/Hormel-Black-Label-Maple-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/164627/Oscar-Mayer-Fully-Cooked-Original-Bacon-252-oz-Box',
+                     'https://www.hy-vee.com/aisles-online/p/23974/HyVee-Hickory-House-Hickory-Smoked-Thick-Sliced-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/50319/Oscar-Mayer-Selects-Smoked-Uncured-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/2471760/Jimmy-Dean-FC-Applewood-Smoked-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/16239/Oscar-Mayer-Center-Cut-Thick-Sliced-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/2214511/Hormel-Black-Label-Original-Thick-Cut-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/1008152/Wright-Naturally-Smoked-Applewood-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/1813260/Smithfield-Naturally-Hickory-Smoked-Thick-Cut-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/23976/HyVee-Hickory-House-Peppered-Naturally-Smoked-Thick-Sliced-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/21320/Farmland-Naturally-Applewood-Smoked-Thick-Cut-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/21253/Farmland-Naturally-Hickory-Smoked-Extra-Thick-Cut-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/1255920/Hormel-Black-Label-Cherrywood-Thick-Cut-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/57304/HyVee-Blue-Ribbon-Maple-Naturally-Smoked-Thick-Sliced-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/21252/Farmland-Naturally-Hickory-Smoked-30-Less-Fat-Center-Cut-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/2501872/Bourbon-And-Brown-Sugar-Slab-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/2516586/Hormel-Natural-ChoiceOriginal-Thick-Cut-Uncured-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/21319/Farmland-Naturally-Hickory-Smoked-Double-Smoked-Classic-Cut-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/317829/Des-Moines-Bacon-And-Meat-Company-Hardwood-Smoked-Uncured-Country-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/1255919/Hormel-Black-Label-Jalapeno-Thick-Cut-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/3538865/Oscar-Mayer-Bacon-Thick-Cut-Applewood',
+                     'https://www.hy-vee.com/aisles-online/p/317830/Des-Moines-Bacon-And-Meat-Company-Applewood-Smoked-Bacon',
+                     'https://www.hy-vee.com/aisles-online/p/3308731/Oscar-Mayer-Natural-Fully-Cooked-Uncured-Bacon'
+                     ]
+        self.eggsUrls = ['https://www.hy-vee.com/aisles-online/p/57236/HyVee-Grade-A-Large-Eggs',
+                    'https://www.hy-vee.com/aisles-online/p/23899/HyVee-Grade-A-Large-Eggs',
+                    'https://www.hy-vee.com/aisles-online/p/715446/Farmers-Hen-House-Free-Range-Organic-Large-Brown-Grade-A-Eggs',
+                    'https://www.hy-vee.com/aisles-online/p/2849570/Thats-Smart-Large-Shell-Eggs',
+                    'https://www.hy-vee.com/aisles-online/p/31351/Farmers-Hen-House-Free-Range-Grade-A-Large-Brown-Eggs',
+                    'https://www.hy-vee.com/aisles-online/p/23900/HyVee-Grade-A-Extra-Large-Eggs',
+                    'https://www.hy-vee.com/aisles-online/p/71297/Egglands-Best-Farm-Fresh-Grade-A-Large-Eggs',
+                    'https://www.hy-vee.com/aisles-online/p/36345/Egglands-Best-Grade-A-Large-Eggs',
+                    'https://www.hy-vee.com/aisles-online/p/3192325/HyVee-Free-Range-Large-Brown-Egg-Grade-A',
+                    'https://www.hy-vee.com/aisles-online/p/23903/HyVee-Grade-A-Jumbo-Eggs',
+                    'https://www.hy-vee.com/aisles-online/p/3192323/HyVee-Cage-Free-Large-Brown-Egg-Grade-A',
+                    'https://www.hy-vee.com/aisles-online/p/36346/Egglands-Best-Cage-Free-Brown-Grade-A-Large-Eggs',
+                    'https://www.hy-vee.com/aisles-online/p/3192322/HyVee-Cage-Free-Large-Brown-Egg-Grade-A',
+                    'https://www.hy-vee.com/aisles-online/p/858343/HyVee-Cage-Free-Omega3-Grade-A-Large-Brown-Eggs',
+                    'https://www.hy-vee.com/aisles-online/p/1901565/Farmers-Hen-House-Pasture-Raised-Organic-Grade-A-Large-Brown-Eggs',
+                    'https://www.hy-vee.com/aisles-online/p/60364/HyVee-HealthMarket-Organic-Grade-A-Large-Eggs',
+                    'https://www.hy-vee.com/aisles-online/p/71298/Egglands-Best-Extra-Large-Eggs',
+                    'https://www.hy-vee.com/aisles-online/p/23902/HyVee-Grade-A-Extra-Large-Eggs',
+                    'https://www.hy-vee.com/aisles-online/p/453006/Egglands-Best-XL-Eggs',
+                    'https://www.hy-vee.com/aisles-online/p/2668550/HyVee-One-Step-Pasture-Raised-Large-Brown-Eggs',
+                    'https://www.hy-vee.com/aisles-online/p/66622/Farmers-Hen-House-Jumbo-Brown-Eggs',
+                    'https://www.hy-vee.com/aisles-online/p/3274825/Nellies-Eggs-Brown-Free-Range-Large',
+                    'https://www.hy-vee.com/aisles-online/p/57235/HyVee-Grade-A-Medium-Eggs',
+                    'https://www.hy-vee.com/aisles-online/p/2437128/Pete-And-Gerrys-Eggs-Organic-Brown-Free-Range-Large',
+                    'https://www.hy-vee.com/aisles-online/p/36347/Egglands-Best-Organic-Cage-Free-Grade-A-Large-Brown-Eggs',
+                    'https://www.hy-vee.com/aisles-online/p/2698224/Nellies-Free-Range-Eggs-Large-Fresh-Brown-Grade-A',
+                    'https://www.hy-vee.com/aisles-online/p/57237/HyVee-Grade-A-Large-Eggs',
+                    'https://www.hy-vee.com/aisles-online/p/190508/Farmers-Hen-House-Organic-Large-Brown-Eggs'
+                   ]
+        self.tomatoesUrls = ['https://www.hy-vee.com/aisles-online/p/37174/']
+        self.count = 0
+
+    def dataWait(self, xpath):
+        ignored_exceptions=(NoSuchElementException,StaleElementReferenceException,)
+        element = WebDriverWait(self.driver, 3, ignored_exceptions=ignored_exceptions).until(EC.visibility_of_element_located((By.XPATH, xpath))).text
+        return element
+       
+    def dataWaitForAll(self, xpath):
+            ignored_exceptions=(NoSuchElementException,StaleElementReferenceException,)
+            elements = WebDriverWait(self.driver, 30, ignored_exceptions=ignored_exceptions).until(EC.visibility_of_all_elements_located((By.XPATH, xpath)))
+            return len(elements)
+
+    def restart(self):
+        self.driver.close()
+        self.driver.quit()
+        self.driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install(), log_path=path.devnull))
+
+    def start_requests( self ):
+        attemps = 3
+
+        self.count = 0
+        for trying in range(attemps):
+            try:
+                self.requestBacon()
+                print("Bacon Finished")
+                break
+            except:
+                print("Bacon Export Failed Recovering extraction and continueing")
+                self.restart()        
+        self.count = 0
+        for trying in range(attemps):
+            try:
+                self.requestEgg()
+                print("Eggs Finished")
+                break
+            except:
+                print("Eggs Export Failed. Recovering extraction and continueing")
+                self.restart()  
+        
+        self.count = 0
+        for trying in range(attemps):
+            try:
+                self.requestTomato()
+                print("Heirloom Tomatoes Successfully Finished")
+                break
+            except:
+                print("Tomatoes Export Failed Recovering extraction and continueing")
+                self.restart()
+                
+        self.driver.close()
+        self.driver.quit()
+
+    def requestBacon( self ):
+        total = len(self.baconUrls)
+        while self.count < total:
+            url = self.baconUrls[self.count]
+            self.driver.get(url)
+            time.sleep(1) # marionette Error Fix
+            pXpath = '//*[contains(@class, "product-details_detailsContainer")]/p'
+            nameXpath = '//*[contains(@class, "product-details_detailsContainer")]/h1'
+            priceXpath = '//*[contains(@class, "product-details_detailsContainer")]/p[1]'
+            sale = self.dataWaitForAll(pXpath) #Ensures the page is loaded
+            name = self.dataWait(nameXpath) 
+            price = self.dataWait(priceXpath)
+            if sale == 2:
+                weightXpath = '//*[contains(@class, "product-details_detailsContainer")]/p[2]'
+                weight = self.dataWait(weightXpath)
+                self.baconFrame.loc[len(self.baconFrame)] = [name,
+                                                price,
+                                                "False",
+                                                weight,
+                                                url]
+            elif sale == 3:
+                prevPriceXpath = '//*[contains(@class, "product-details_detailsContainer")]/p[2]'
+                weightXpath = '//*[contains(@class, "product-details_detailsContainer")]/p[3]'
+                prevPrice = self.dataWait(prevPriceXpath)
+                weight = self.dataWait(weightXpath)
+                self.baconFrame.loc[len(self.baconFrame)] = [name,
+                                                price,
+                                                prevPrice,
+                                                weight,
+                                                url]
+            else:
+                # Catch if there is anything missing elements
+                self.baconFrame.loc[len(self.baconFrame)] = ["SKIPPED",
+                                                   "SKIPPED",
+                                                   "SKIPPED",
+                                                   "SKIPPED",
+                                                   url]
+            self.count += 1
+            print("Bacon item added", self.count," of ", total, " :  ", name)
+        self.count = 0
+
+    def requestEgg(self): 
+        total = len(self.eggsUrls)
+        while self.count < total:
+            url = self.eggsUrls[self.count]
+            self.driver.get(url)
+            time.sleep(1) # marionette Error Fix
+            pXpath = '//*[contains(@class, "product-details_detailsContainer")]/p'
+            nameXpath = '//*[contains(@class, "product-details_detailsContainer")]/h1'
+            priceXpath = '//*[contains(@class, "product-details_detailsContainer")]/p[1]'
+            sale = self.dataWaitForAll(pXpath) #Ensures the page is loaded
+            name = self.dataWait(nameXpath) 
+            price = self.dataWait(priceXpath)
+            if sale == 2:
+                weightXpath = '//*[contains(@class, "product-details_detailsContainer")]/p[2]'
+                weight = self.dataWait(weightXpath)
+                self.eggFrame.loc[len(self.eggFrame)] = [name,
+                                                price,
+                                                "False",
+                                                weight,
+                                                url]
+            elif sale == 3:
+                prevPriceXpath = '//*[contains(@class, "product-details_detailsContainer")]/p[2]'
+                weightXpath = '//*[contains(@class, "product-details_detailsContainer")]/p[3]'
+                prevPrice = self.dataWait(prevPriceXpath)
+                weight = self.dataWait(weightXpath)
+                self.eggFrame.loc[len(self.eggFrame)] = [name,
+                                                price,
+                                                prevPrice,
+                                                weight,
+                                                url]
+            else:
+                # Catch if there is anything missing elements
+                self.eggFrame.loc[len(self.eggFrame)] = ["SKIPPED",
+                                                   "SKIPPED",
+                                                   "SKIPPED",
+                                                   "SKIPPED",
+                                                   url]
+            self.count += 1
+            print("Eggs item added", self.count," of ", total, " :  ", name)
+        self.count = 0
+
+    def requestTomato( self ):
+        total = len(self.tomatoesUrls)
+        while self.count < total:
+            url = self.tomatoesUrls[self.count]
+            self.driver.get(url)
+            time.sleep(1) # marionette Error Fix
+            pXpath = '//*[contains(@class, "product-details_detailsContainer")]/p'
+            nameXpath = '//*[contains(@class, "product-details_detailsContainer")]/h1'
+            priceXpath = '//*[contains(@class, "product-details_detailsContainer")]/p[1]'
+            sale = self.dataWaitForAll(pXpath) #Ensures the page is loaded
+            name = self.dataWait(nameXpath) 
+            price = self.dataWait(priceXpath)
+            if sale == 2:
+                weightXpath = '//*[contains(@class, "product-details_detailsContainer")]/p[2]'
+                weight = self.dataWait(weightXpath)
+                self.tomatoFrame.loc[len(self.tomatoFrame)] = [name,
+                                                price,
+                                                "False",
+                                                weight,
+                                                url]
+            elif sale == 3:
+                prevPriceXpath = '//*[contains(@class, "product-details_detailsContainer")]/p[2]'
+                weightXpath = '//*[contains(@class, "product-details_detailsContainer")]/p[3]'
+                prevPrice = self.dataWait(prevPriceXpath)
+                weight = self.dataWait(weightXpath)
+                self.tomatoFrame.loc[len(self.tomatoFrame)] = [name,
+                                                price,
+                                                prevPrice,
+                                                weight,
+                                                url]
+            else:
+                # Catch if there is anything missing elements
+                self.tomatoFrame.loc[len(self.tomatoFrame)] = ["SKIPPED",
+                                                   "SKIPPED",
+                                                   "SKIPPED",
+                                                   "SKIPPED",
+                                                   url]
+            self.count += 1
+            print("Tomato item added", self.count,"of", total, ":  ", name)
+        self.count = 0
+
+# Start
+spider = HyveeSpider()
+spider.start_requests()
+#Adds the date that the data was scraped
+currentDate = str(datetime(datetime.today().year, datetime.today().month, datetime.today().day))[:-8]
+#To CSV files
+spider.baconFrame.to_csv(currentDate + "Hyvee Bacon.csv")
+spider.eggFrame.to_csv(currentDate + "Hyvee Egg.csv")
+spider.tomatoFrame.to_csv(currentDate + "Hyvee Heirloom Tomatoes.csv")
+```
+
+Output of the Hy-Vee Spider ![](Hyvee%20Spider%20Output.PNG)
+
+This is the scraper for Gateway market was made using selenium python package as well
+
+```{python}
+#|eval=FALSE
+
+#Imports
+from datetime import datetime
+import pandas as pd
+from enum import Enum
+#Imports for Scraping
+from selenium import webdriver
+from selenium.webdriver.firefox.service import Service as FirefoxService
+from webdriver_manager.firefox import GeckoDriverManager
+from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import StaleElementReferenceException
+from selenium.common.exceptions import WebDriverException
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from os import path
+import time
+
+#This class is here so that we can expand to differnet products easier make the spider 
+#more dynamic and expandable
+class Products(Enum):
+    #Name = Index, URL list
+    Bacon = 1, ['https://gatewaymarket.storebyweb.com/s/1000-1/i/INV-1000-18483',
+                'https://gatewaymarket.storebyweb.com/s/1000-1/i/INV-1000-18485',
+                'https://gatewaymarket.storebyweb.com/s/1000-1/i/INV-1000-24190',
+                'https://gatewaymarket.storebyweb.com/s/1000-1/i/INV-1000-18553',
+                'https://gatewaymarket.storebyweb.com/s/1000-1/i/INV-1000-33732',
+                'https://gatewaymarket.storebyweb.com/s/1000-1/i/INV-1000-18521',
+                'https://gatewaymarket.storebyweb.com/s/1000-1/i/INV-1000-18548',
+                'https://gatewaymarket.storebyweb.com/s/1000-1/i/INV-1000-18469',
+                'https://gatewaymarket.storebyweb.com/s/1000-1/i/INV-1000-33734',
+                'https://gatewaymarket.storebyweb.com/s/1000-1/i/INV-1000-33736',
+                'https://gatewaymarket.storebyweb.com/s/1000-1/i/INV-1000-33731',
+                'https://gatewaymarket.storebyweb.com/s/1000-1/i/INV-1000-29349',
+                'https://gatewaymarket.storebyweb.com/s/1000-1/i/INV-1000-18524',
+                'https://gatewaymarket.storebyweb.com/s/1000-1/i/INV-1000-24260',
+                'https://gatewaymarket.storebyweb.com/s/1000-1/i/INV-1000-24163',
+                'https://gatewaymarket.storebyweb.com/s/1000-1/i/INV-1000-18482'
+                ]
+    Eggs = 2, ['https://gatewaymarket.storebyweb.com/s/1000-1/i/INV-1000-22775',
+               'https://gatewaymarket.storebyweb.com/s/1000-1/i/INV-1000-22776',
+               'https://gatewaymarket.storebyweb.com/s/1000-1/i/INV-1000-12603',
+              ]
+    
+    HeirloomTomatoes = 3, ['https://gatewaymarket.storebyweb.com/s/1000-1/i/INV-1000-11820',
+                           'https://gatewaymarket.storebyweb.com/s/1000-1/i/INV-1000-22455',
+                           'https://gatewaymarket.storebyweb.com/s/1000-1/i/INV-1000-11896',
+                           'https://gatewaymarket.storebyweb.com/s/1000-1/i/INV-1000-11973',
+                           'https://gatewaymarket.storebyweb.com/s/1000-1/i/INV-1000-22343',
+                          ]
+
+class GatewaySpider():
+    name = "Gateway Market Spider"
+    baconFrame = pd.DataFrame(columns=['Bacon', 'Current Price', 'Original Price', 'Brand', 'Location', 'Url'])
+    eggFrame = pd.DataFrame(columns=['Egg', 'Current Price', 'Original Price', 'Brand', 'Location', 'Url'])
+    tomatoFrame = pd.DataFrame(columns=['Heirloom Tomato', 'Current Price', 'Original Price', 'Brand', 'Location', 'Url'])
+    spiderLogs = []
+    skipped = []
+
+    #These are methods that are available for your convences
+    def log(self, *args):
+        self.spiderLogs.append(('Logger:', args))
+        if self.LOGGER:
+            print('Logger:', *args)
+
+    def debug(self, *args):
+        self.spiderLogs.append(('Debug:', args))
+        if self.DEBUGGER:
+            print('Debug:', *args)
+    
+    def printer(self, *args):
+        self.spiderLogs.append(('Printer:', args))
+        print(*args)
+    
+    def printLogs(self):
+        print("\n< --- Printing Logs --- >\n")
+        for entry in self.spiderLogs:
+            print(*entry)
+
+    def Logs_to_file(self, filename):
+        with open(filename, 'w') as file:
+            for log_entry in self.spiderLogs:
+                file.write('{} {}\n'.format(log_entry[0], log_entry[1]))
+    
+    def __init__(self):
+        self.DEBUGGER = False #The debugger switch to see whats going on. The Default is False
+        self.LOGGER = False #When you need to see everything that happends. The Default is False
+        self.attempts = 3 #The number of attempts the spider can retry if an error occurs. Default is 3
+        self.waitTime = 10 #The number of seconds WebDriver will wait. Default is 10
+        self.count = 0 #This saves the location of the url we are going through
+        self.runTime = 0 #Total time of extractions
+        self.totalRecoveries = 0 #Number of recoveries made while running
+        #Selenium needs a webdriver to work. I chose Firefox however you can do another if you need too
+        self.driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install(), log_path=path.devnull))
+        self.log("Driver started")
+        
+    def restart(self):
+        self.driver.close()
+        self.driver.quit()
+        self.driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install(), log_path=path.devnull))
+        self.log("Driver restarted")
+    
+    def forceQuit(self):
+        self.printer("Browser window was closed by user. Stopping program")
+        self.log('\n < --- Total runtime took %s seconds with %d recoveries --- >' % (time.time() - self.runTime, self.totalRecoveries))
+        self.Logs_to_file(self.name + ' Logs.txt')
+        self.driver.quit()
+
+    def requestExtraction(self, productType):
+        self.count = 0
+        errors = 0
+        extractionType = productType.value[0]
+        start = time.time()
+        for trying in range(self.attempts):
+            try:
+                if extractionType == 1:
+                    self.requestBacon()
+                elif extractionType == 2:
+                    self.requestEgg()
+                elif extractionType == 3:
+                    self.requestHeirloomTomatoes()
+                # Add elif for more products here
+                else:
+                    self.debug("An error extractionType for " + str(extractionType) + " has occured")
+                self.debug(productType.name + " Finished")    
+                self.log('\n< --- ' + productType.name + ' scrape took %s seconds with %d recoveries --- >\n' % ((time.time() - start), errors))
+                self.totalRecoveries += errors
+                return self.totalRecoveries
+            except WebDriverException:
+                self.forceQuit()
+                return None
+            except Exception as e:
+                errors += 1
+                self.debug("An error occurred:", e)
+                self.debug("Recovering extraction and continueing")
+                self.restart() 
+        self.debug(productType.name + " Did not Finished after " + str(self.attempts) + " Time wasted: %s seconds" % (time.time() - start))
+        self.totalRecoveries += errors
+        return self.totalRecoveries
+
+    def start_requests( self ):
+        self.runTime = time.time()
+        self.totalRecoveries = 0 
+        result = self.requestExtraction(Products.Bacon)
+        if(result == None): return
+        result = self.requestExtraction(Products.Eggs)
+        if(result == None): return
+        result = self.requestExtraction(Products.HeirloomTomatoes)
+        if(result == None): return
+        self.driver.close()
+        self.driver.quit()
+        #Adds the date that the data was scraped
+        currentDate = str(datetime(datetime.today().year, datetime.today().month, datetime.today().day))[:-8]
+        self.log("Exporting files")
+        #Dataframes to CSV files
+        self.baconFrame.to_csv(currentDate + "Gateway Market Bacon.csv")
+        self.eggFrame.to_csv(currentDate + "Gateway Market Egg.csv")
+        self.tomatoFrame.to_csv(currentDate + "Gateway Market Heirloom Tomatoes.csv")
+        self.log('\n', self.baconFrame.to_string())
+        self.log('\n', self.eggFrame.to_string())
+        self.log('\n', self.tomatoFrame.to_string())
+        self.debug('\n < --- Total runtime took %s seconds with %d recoveries --- >' % (time.time() - self.runTime, self.totalRecoveries))
+        self.debug('\n < --- Number of skips ' + str(len(self.skipped)) +' --->')
+        if len(self.skipped) != 0:
+            self.debug(self.skipped)
+        self.Logs_to_file(currentDate + self.name + ' Logs.txt')
+
+
+    
+    #This handles the xpaths 
+    #most websites have simular xpaths for each item. You might need to make differnet xpaths for each item 
+    #if that is the case
+    #For assigning xpaths mark them if they are optional meaning it could or could not be present on the page 
+    #we do this for speed up if you mark it as non optional and its not pressent it will skip the value 
+    #and hurt the preformence
+    #best practice is to render the optional last so it reduces the chances of skipping 
+    def xpathMaker(self):
+        #Add the xpaths here and mark if they are optional
+        nameXpath = '//*[@id="item-details"]/h1[contains(@class, "name")]'
+        priceXpath = '//*[@id="item-details"]//*[contains(@class, "wc-pricing")]/div[1]'
+        prevPriceXpath = '//*[@id="item-details"]//*[contains(@class, "wc-pricing")]/div[2]/s' # optional
+        brandXpath = '//*[@id="item-details"]/div[1]' # optional
+        #xpath, Optional
+        xpathList = [(nameXpath, False),
+                     (priceXpath, False),
+                     (prevPriceXpath, True),
+                     (brandXpath, True)]
+        return xpathList
+    
+    #Collecting the data from the xpath in JavaScript is faster and results in fewer errors than doing it in python
+    def javascriptXpath(self, xpath):
+        try: 
+            #Waits for page to load 
+            ignored_exceptions=(NoSuchElementException,StaleElementReferenceException)
+            elements = WebDriverWait(self.driver, self.waitTime, ignored_exceptions=ignored_exceptions).until(EC.presence_of_all_elements_located((By.XPATH, xpath)))
+            for quickRetry in range(self.attempts): #this is for fast computers
+                #Runs the javascript and collects the text data from the inputed xpath
+                text = self.driver.execute_script("""
+                    const element = document.evaluate(arguments[0], document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+                    if (!element) {
+                        return 'Skip';
+                    }
+                    return element.textContent.trim();
+                """, 
+                xpath)
+                if self.checkOutput(text):
+                    time.sleep(1)
+                else:
+                    self.log('found ', text, ' for xpath: ', xpath)
+                    return text
+        except TimeoutException:
+            #This means the xpath wasnt found in the page
+            self.log('Could not find xpath for: ', xpath)
+        return 'Empty'
+
+    def checkOutput(self, check):
+        self.log('Validing input')
+        invalidOutputs = {"error", 'skip', "$nan", ''}
+        if check.lower() in invalidOutputs:
+            self.log("Invalid word:", check)
+            return True
+        else:
+            self.log("Valid")
+            return False
+
+    #This handles the reqests 
+    def makeRequest(self, url):
+        xpathList = self.xpathMaker()
+        self.log("xpath list retrieved ", xpathList)
+        item = []
+        time.sleep(1) # marionette Error Fix
+        for xpath in xpathList:
+            data = 'skip'
+            #Retrying the xpath given the number of attempts
+            for attempt in range(self.attempts):
+                data = self.javascriptXpath(xpath[0])
+                if(self.checkOutput(data)): # Data not found
+                    self.debug("Missing item retrying")
+                elif data == 'Empty':     
+                    if xpath[1]:
+                        self.debug("xpath wasnt avaliable")
+                        item.append(None)
+                        break
+                    self.debug("Missing item retrying")
+                else:  #Data found
+                    item.append(data)
+                    self.log(data + ' was added to the list for: ', url)
+                    break
+            if data == 'skip':  #To help clean the data we skip the item with gaps of data 
+                self.debug("An Item has been skipped for: ", url)  
+                item = ['Skipped']*(len(xpathList))
+                self.skipped.append(url)
+        return self.DataCleaning(item, url)
+    
+    def requestBacon( self ):
+        baconUrls = Products.Bacon.value[1]
+        total = len(baconUrls)
+        while self.count < total:
+            url = baconUrls[self.count]
+            self.driver.get(url)
+            self.log("Making a request for: ", url)
+            items = self.makeRequest(url) 
+            self.debug('Extracted: ', items)
+            self.baconFrame.loc[len(self.baconFrame)] = items                    
+            self.count += 1
+            self.printer("Bacon item added ", self.count, " of ", total, ":  ", items)
+
+    def requestEgg(self): 
+        eggsUrls = Products.Eggs.value[1]
+        total = len(eggsUrls)
+        while self.count < total:
+            url = eggsUrls[self.count]
+            self.driver.get(url)
+            self.log("Making a request for: ", url)
+            items = self.makeRequest(url) 
+            self.debug('Extracted: ', items)
+            self.eggFrame.loc[len(self.eggFrame)] = items                    
+            self.count += 1
+            self.printer("Egg item added ", self.count, " of ", total, ":  ", items)
+    
+    def requestHeirloomTomatoes(self):
+        tomatoesUrls = Products.HeirloomTomatoes.value[1]
+        total = len(tomatoesUrls)
+        while self.count < total:
+            url = tomatoesUrls[self.count]
+            self.driver.get(url)
+            self.log("Making a request for: ", url)
+            items = self.makeRequest(url) 
+            self.debug('Extracted: ', items)
+            self.tomatoFrame.loc[len(self.tomatoFrame)] = items                    
+            self.count += 1
+            self.printer("Heirloom tomato item added ", self.count, " of ", total, ":  ", items)
+
+    #This part is a special case for this particular spider cleaning could be implemented here
+    def DataCleaning(self, item, url):
+        self.debug('Data cleaning started: ', item)
+        item.append("2002 Woodland Avenue Des Moines, IA 50312")
+        item.append(url)
+        self.debug('Data cleaning finished: ', item)
+        return item
+
+# Start
+#DEBUG Switch
+SHOW = True
+spider = GatewaySpider()
+spider.LOGGER = True
+spider.DEBUGGER = True
+spider.start_requests()
+if(SHOW):
+    print(spider.baconFrame)
+    print(spider.eggFrame)
+    print(spider.tomatoFrame)
+    spider.printLogs()
+```
+
+Output of the Gateway Market Spider ![](Gateway%20Market%20Spider%20Output.PNG)

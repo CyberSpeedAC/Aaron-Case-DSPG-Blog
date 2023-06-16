@@ -7,7 +7,8 @@ categories: [Week Three, Code]
 
 During week the I started to developing spiders to extract data from webpages. This example is capable from extracting data from the privided weblink and putting the data into a pandas data frame. However this example is nowhere near finished.
 
-```{python,eval=FALSE, message=FALSE, warning=FALSE}
+```{python}
+#|eval=FALSE
 import pandas as pd
 import scrapy
 from scrapy.crawler import CrawlerProcess
