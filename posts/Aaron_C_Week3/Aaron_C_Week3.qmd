@@ -9,6 +9,6 @@ During week three, our focus was primarily on research and data collection for o
 
 In addition to our focus on research and data collection, I also prioritized learning during week three. Using Data camps and successfully completed Writing Efficient R Code lecture. Recognizing the crucial role of data collection in our project, I took the initiative in learning how to create web scrapers, also known as spiders. This involved dedicating a large portion of the week as well as most of my free time to acquire the necessary skills and knowledge in this area. My efforts in this yielded some positive results. I was able to successfully created a spider that efficiently extracts data from the provided weblink and organizes it into a pandas dataframe. The reason we store the data in this dataframe is because it makes it much easier to work with, especially when it comes to cleaning and exporting it into a comma-separated values (CSV) file for future use. It is important to note that while this image showcases an output of the extraction process, it is crucial to understand that it is far from being considered a finished product.
 
-![Output](posts/Aaron_C_Week3/SpiderExample.PNG){width="485"}
+![Output](SpiderExample.PNG)
 
 Finally at the end of the week I was tasked to present our weekly wrap up for the Team. This covers what the AI Local food team was able to accomplished for the week and can be view in [Week Three Wrap Up](https://cyberspeedac.github.io/Aaron-Case-DSPG-Blog/posts/Aaron_C_Week3/Week3_WrapUp.html).
