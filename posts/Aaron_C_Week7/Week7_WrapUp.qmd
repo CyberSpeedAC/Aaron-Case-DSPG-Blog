@@ -1,0 +1,97 @@
+---
+title: "AI/Local Food Team Week Seven Wrap Up"
+author: "AI/Local Food Team"
+date: "2023-06-30"
+categories: [Week Seven]
+---
+
+## **Optimization of the crop flow, from the point of supply to the point of demand that maximizes overall profit**
+
+![](images/Figure_1.png){fig-align="center"}
+
+1.  The red points represent the counties.
+
+2.  The green lines represent the flow of crops, and the blue arrow shows the direction of the flow.
+
+3.  Maximizes the revenue by selling the crops.
+
+4.  Minimizes the cost of distance traveled.
+
+5.  Relaxed previous assumption "Supply is greater than demand"
+
+The following might be included in the project:
+
+1.  A separate account of fresh and not fresh products.
+
+2.  Consideration of each individual farmer's profit.
+
+3.  Consideration of the flow of trucks rather than the flow of crops.
+
+## **Demand and supply estimation**
+
+![](images/Capture.PNG){fig-align="center" width="653"}
+
+**Disclaimer:** Supply and demand estimation requires further correction, and the methodology needs improvements.
+
+![](images/Figure_2.png)
+
+### **Demand Estimation:**
+
+1.  The population of United States is 334.9 million as of June 26, 2023. (<https://www.census.gov/popclock/>)
+
+2.  In 2017, fresh market consumption was 20.3 pounds per capita. (<https://www.agmrc.org/commodities-products/vegetables/tomatoes>)
+
+3.  So, the demand for fresh tomatoes in the United States is (334.9 million x 20.3 pounds) or 3.08 Million Metric Tons.
+
+4.  There is around 1% of the US population lives in Iowa.
+
+5.  That translates to 30.8 thousand Metric Tons of tomatoes demand in Iowa.
+
+6.  Considering the demand for tomatoes stays the same for 52 weeks. The demand for tomatoes in Iowa per week is 592 Metric Tons.
+
+7.  We will allocate this demand to each county of Iowa by population.
+
+![](images/Capture2.PNG){fig-align="center" width="615"}
+
+### **Supply Estimation:**
+
+1.  The growing season of tomatoes is between May to Mid-September in Iowa. (<https://www.tomatofest.com/Tomato_Growing_Zone_Maps_s/164.htm>)
+
+2.  We have 135 days between planting and harvesting tomatoes.
+
+3.  Tomatoes require 100 days to fully mature. However, there are some special varieties of tomatoes that require 50-60 days to mature.  (<https://www.gardeningknowhow.com/edible/vegetables/tomato/planting-time-for-tomatoes.htm>)
+
+4.  So, we are considering on average tomatoes take 80 days to be harvested.
+
+5.  In this context, we assumed that being mature represents the time between sowing seed and harvesting full-grown tomatoes.
+
+6.  We are only considering single cultivation of tomatoes during a year.
+
+7.  So, the tomatoes will be harvested during the timeline day 80-135 or, during late July to mid-September, that is 7.85 or 8 weeks. 
+
+8.  In our calculations, we will estimate the weekly supply of tomatoes from late July to mid-September.
+
+9.  In 2020, approximately 12,619.2 tons of fresh market tomatoes were harvested from approximately 272,900 acres. (<https://www.agmrc.org/commodities-products/vegetables/tomatoes>)
+
+10. Florida and California account for about two-thirds of the national fresh tomato production (Wu, F., Guan, Z., & Suh, D. H. (2017). The Effects of Tomato Suspension Agreements on Market Price Dynamics.; mentioned in <https://edis.ifas.ufl.edu/publication/FE1027>)
+
+11. The remaining 48 states are responsible for one-third of the national fresh tomatoes. That is 4206.4 tons.
+
+12. Total farming land in USA is 900.21 million acres as of 2022.\
+    Total farm land in Florida is 9.73 million acres as of 2017.\
+    Total farm land in California is 24.23 million acres as of 2017.\
+     (<https://www.nass.usda.gov/AgCensus>)
+
+13. Remaining 48 states have a farm land of 866.25 million acres.
+
+14. Total farmland in Iowa is 30.56 million acres. (<https://www.nass.usda.gov/AgCensus>)
+
+15. Considering tomatoes are grown uniformly in these farmlands, the proportion of farmland Iowa has compared to all 48 states (without California, Florida) is 3.52%.
+
+16. The production of tomatoes in Iowa is (3.52% x 4206.4 tons) or, 148 tons.
+
+17. As the production of tomatoes is distributed over 8 weeks (as mentioned in no 8), the weekly supply quantity of tomatoes is (148/8) or 18.5 tons or 16.78 Metric Tons.
+
+18. Considering the average farm size in each county of Iowa is the same. The supply of tomatoes can be obtained from the number of farms.
+
+![](images/capture3.PNG){fig-align="center" width="415"}

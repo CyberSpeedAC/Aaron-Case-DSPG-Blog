@@ -7,6 +7,4 @@ categories: [Week Seven]
 
 From Saturday to Wednesday, my primary focus was on enhancing, optimizing, and implementing the data cleaner program for all seven spiders, as outlined in week five. I devoted the majority of my time during this period to ensure the successful implementation of these improvements across all spiders, meeting the Wednesday deadline.
 
-In addition to my main focus, I went extra mile by successfully integrating new products into one of the spiders. While the primary objective of this demonstration wasn't to showcase the data cleaning process, as it had already been proven to scale alongside the program by cleaning the data in real-time, the main aim was to highlight the system's dynamic product handling and expansion capabilities, which could be customized to meet the employer's specific requirements. 
-
-
+In addition to my main focus, I went extra mile by successfully integrating new products into one of the spiders. While the primary objective of this demonstration wasn't to showcase the data cleaning process, as it had already been proven to scale alongside the program by cleaning the data in real-time, the main aim was to highlight the system's dynamic product handling and expansion capabilities, which could be customized to meet the employer's specific requirements.

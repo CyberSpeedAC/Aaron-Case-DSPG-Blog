@@ -1,6 +1,6 @@
 ---
 title: "AI/Local Food Week 3 Wrap Up"
-author: "Aaron C"
+author: "AI/Local Food Team"
 date: "2023-06-02"
 categories: [Week Three, Wrap Up]
 ---
@@ -21,19 +21,19 @@ The currents project objectives for this week was to
 
 An excel sheet that contains a list of small businesses of Iowa grocers that we had to go through and find places that had the data we wanted.
 
-![](DataCollection.PNG)
+![](DataCollection.PNG){fig-align="center"}
 
-![](PrathamData.png)
+![](PrathamData.png){fig-align="center"}
 
 These are some examples of what we were looking for
 
-![](TomatoesData.PNG){width="662"}
+![](TomatoesData.PNG){fig-align="center" width="662"}
 
-![](EggsData.PNG)
+![](EggsData.PNG){fig-align="center"}
 
 Along with some manual data scraping. We started work on some data scraping programs (spiders). However, there are still some improvements that still need to be made. This image shows an example output of data we were able to scrape.
 
-![](SpiderExample.PNG)
+![](SpiderExample.PNG){fig-align="center"}
 
 ## DSPG Questions
 
