@@ -1,5 +1,5 @@
 ---
-title: "AI/Local Food Week 3 Wrap Up"
+title: "AI/Local Food Week Three Wrap Up"
 author: "AI/Local Food Team"
 date: "2023-06-02"
 categories: [Week Three, Wrap Up]
