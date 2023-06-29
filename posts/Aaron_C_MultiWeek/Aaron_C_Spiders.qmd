@@ -3,8 +3,6 @@ title: "Spiders"
 author: "Aaron Case"
 date: "2023-06-16"
 categories: [Week Four, Week Five, Code]
-execute: 
-  enabled: false
 ---
 
 Web scraping in essence is the process of extracting data from websites using automated software. As for the process, the web-scraping pipeline goes as follows.
@@ -45,12 +43,12 @@ For the Cons of Selenium:
 2.  It is prone to errors and requires extensive debugging and testing. For example, if say that you close your browser or if it freezes (for long periods of time) the program will not function correctly and throw an error.
 3.  It can be very challenging to set up and configure. Not to mention that It can be difficult to maintain test scripts when the web application is updated or changed. Meaning if you are not dedicated in learning or maintaining your code it will come with a bunch of headaches down the road.
 
-Ideally for this project I strongly recommend using Scrapy spiders were ever possible. Scrapy's speed and efficiency and overall better performance makes this part of the process much more tolerable in building spiders. However when it comes to more complex tasks and websites Selenium is the way to go. I would also like to acknowledge that there are other tools and resources that could be explored and used which may be better or more effenect for the scope of the project. Theses two tools are just some that I found and was able to implement in the time frame I was given. For example, there is a python package called Scrapy Splash. This works as an extension for Scrapy which provides a JavaScript rendering service. Allowing Scrapy to handle JavaScript and other dynamic web content, similar to Selenium. I wasn't able to master this tool nor could I successfully get it this tool to work. If I had more time to develop a clear comprehension of this utility and fully understood how to get it to work. It would have be the tool of choice to handle such websites. I used Selenium since I had more success in getting it to work in comparison.
+Ideally for this project I strongly recommend using Scrapy spiders were ever possible. Scrapy's speed and efficiency and overall better performance makes this part of the process much more tolerable in building spiders. However, when it comes to more complex tasks and websites Selenium is the way to go. I would also like to acknowledge that there are other tools and resources that could have been explored and used which may be better or more efficient for the scope of the project. These two tools are just some that I found and was able to implement in the time frame I was given. For example, there is a python package called Scrapy Splash. This works as an extension for Scrapy which provides a JavaScript rendering service. Allowing Scrapy to handle JavaScript and other dynamic web content, similar to Selenium. I was not able to master this tool, nor could I successfully get it this tool to work. If I had more time to develop a clear comprehension of this utility and fully understood how to get it to work. It would have been the tool of choice to handle such websites. I used Selenium since I had more success in getting it to work in comparison.
 
 This code covers the bare minimum of Scrapy and is rather (hopefully) intuitive. This can be edited/modified to fit your needs and is just an example.
 
-```{Python}
-# python
+```{python}
+#| eval: false
 # Imports for Scrapy Example
 import scrapy #Required Import
 from scrapy.crawler import CrawlerProcess
@@ -113,13 +111,12 @@ process.start()
 process.stop()
 # At this point the spider is finished and now we have everything that was saved
 print(Text_Element_List)
-
 ```
 
 As for Selenium this code covers the bare minimum and serves as a deminstration of how to handle JavaScript websites. Once again this can be edited/modified to fit your needs and is just an example.
 
-```{Python}
-# python
+```{python}
+#| eval: false
 # Imports for Scraping
 import selenium
 from selenium import webdriver

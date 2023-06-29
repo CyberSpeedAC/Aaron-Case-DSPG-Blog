@@ -1,0 +1,24 @@
+---
+title: "Week Six"
+author: "Aaron Case"
+date: "2023-06-22"
+categories: [Week Six]
+---
+
+On Monday of week six, as briefly mentioned in [Week Four](https://cyberspeedac.github.io/Aaron-Case-DSPG-Blog/posts/Aaron_C_Week4/Aaron_C_Week4.html), DSPG conducted assessments of houses in Grundy Center and New Hampton by taking pictures and tracking their characteristics using the Fulcrum app. We then continued our evaluations in Independence on Tuesday, which marked the conclusion of our WINVEST site assessments.
+
+During the assessments, we meticulously examined the houses' structural features and recorded detailed notes on the condition of the driveway, foundation, gutters, paint, porch, roof, siding, walls, and window frames, as well as any other noteworthy features that were in poor condition. We also took into account the condition of the lot, noting any junk or debris present on the site. Additionally, we evaluated the sidewalk connecting to the house and made note of its condition. We paid extra close attention to the gutters, roof, siding, and landscape, assessing whether they were in good, fair, or poor condition. As we took and evaluated the pictures, we meticulously noted any obstructions in the photo(s) taken, paying close attention to whether they were caused by overgrown vegetation (such as bushes or weeds), trees, electrical posts, cars, or any other obstructions.
+
+Along with evaluation of the housing, we also took note of our general impressions of the block. We evaluated the neighborhood sidewalks, taking note of whether they were partial or only on one side, and if they had curb cuts for easy accessibility at intersections. Additionally, we assessed the condition of the sidewalks, ranking them to determine if they were unsafe and in need of repair or replacement. We also assessed the condition of the street trees and evaluated their overall health, marking any that appeared to be in poor condition. We took note of the presence and condition of street lights, paying special attention to the brightness and coverage of the lights. We also marked the location of any street signs for wayfinding. Additionally, we identified the type of storm drain, whether it was a ditch/swale, curb/gutter, or another type of system. Finally to document our observations, we took pictures of both sides of the street block, capturing any notable features or areas of concern. Additionally, if we identified any flaws or damages in the sidewalk, we took pictures to document the issues.
+
+Here are the comprehensive maps of our WINVEST site assessments, as well as a photo of a typical house that we would assess.
+
+![Grundy Center](GrundyCenterFulcrum.jpg "Grundy Center"){width="312"} ![New Hampton](NewHamptonFulcrum.jpg "New Hampton"){width="262"}
+
+![House in Independence Location 1](IndependenceHouseFulcrum.jpg "House in Independence Location 1"){width="229"}
+
+![Independence Location 1](Independence1Fulcrum.jpg "Independence Location 1"){width="257"}
+
+![Independence Location 2](Independence2Fulcrum.jpg "Independence Location 2"){width="255"}
+
+On Wednesday, our team had a much-needed meeting with our client. In light of the team changes that occurred last week, we found it necessary to reevaluate the scope of the project. This allowed us to ensure that we are aligned with the client's expectations and make any necessary adjustments to our plans moving forward. By the end of the meeting, I was assigned to improve all seven spider and finish implementing the data cleaner program that was described in [Week Five](https://cyberspeedac.github.io/Aaron-Case-DSPG-Blog/posts/Aaron_C_Week5/Aaron_C_Week5.html). Additionally, I was tasked with demonstrating that other products could be implemented into the spiders, all by next Wednesday. This means that I have a deadline to complete these tasks and showcase the flexibility of my system in incorporating new products. Which took up the majority of my time to finish.

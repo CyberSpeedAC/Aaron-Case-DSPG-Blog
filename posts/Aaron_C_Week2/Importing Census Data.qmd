@@ -5,7 +5,7 @@ date: "2023-05-26"
 categories: [Week Two, Code]
 ---
 
-Since I needed to extract a large amount of data from the American Community Survey (ASC) and convert it into a CSV file. In light of this I wrote this code to extract ASC data from the table codes. The Code takes in a list of names that you want the file name to be. Along with the corresponding table code. It also takes in a folder name. It then makes (if needed) and adds the CVS files to the specified folder (For a clean directory). Its important to note that where you run the R file is where a folder is made. I made this with the intentions of it being editable (and hopefully user friendly).
+Since the DSPG needed to extract a large amount of data from the American Community Survey (ASC) and convert it into a CSV file. I wrote this R code to extract ASC data from the table codes. The Code takes in a list of names that you want the file name to be. Along with the corresponding table code. It also takes in a folder name. It then makes (if needed) and adds the CVS files to the specified folder (For a clean directory). Its important to note that where you run the R file is where a folder is made. I created this with the intention of making it editable and user-friendly.
 
 ```{r, eval=FALSE, message=FALSE, warning=FALSE}
 

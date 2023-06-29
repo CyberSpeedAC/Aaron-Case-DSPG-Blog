@@ -4,13 +4,27 @@ author: "Aaron Case"
 date: "2023-06-9"
 categories: [Week Five]
 image: ITAG VI.png
-execute: 
-  enabled: false
 ---
 
-During week five I attended the ITAG VI conference. However the majority of the week was dedicated to building and optimizing spiders. At the end of the week I finished building four more spiders making seven spider built for the project. There are still many small improvements that need to be made. I also started to work on implementing a cleaning program that will clean the data while the spider runs.
+During week five, although it may not hold the utmost significance for the scope of the project, I wanted to mention that I had the opportunity to attend the ITAG VI conference. Throughout the conference, I had the privilege of attending various insightful lectures. While this detail may not directly impact the project, it is worth documenting as it contributes to my overall knowledge and professional growth. This conference provided valuable opportunities to learn from experts in their respective fields and gain new perspectives.
 
-Here is a link to what I've learn about building spiders: [Spider](https://cyberspeedac.github.io/Aaron-Case-DSPG-Blog/posts/Aaron_C_MultiWeek/Aaron_C_Spiders.html)
+As for the majority of the week, my primary focus was on building and optimizing spiders. By the end of the week, I successfully completed the construction of four additional spiders, bringing the total number of spiders built for the project to seven. While progress has been made, there are still several improvements that need to be addressed before considering any of the spiders as finished.
 
-Here is a link to the code of all the modified and added spiders that was made during the week: [Week 5 Spider Code]()
+Due to performance issues and consistent absenteeism within our team, we had to make some changes that resulted in substantial delays to the current progression of our project. As a result, I was assigned the task of cleaning the data alongside spider development.
 
+In light of these challenges, I believed it would be best to turn this hindrance into an opportunity by implementing a data cleaning program that runs concurrently within the spider! The purpose of this concurrent operation is to ensure the accuracy of the collected data. By incorporating this data cleaning program within each spider using composition, we can easily monitor the collection and cleaning processes in real time without compromising speed and efficiency.
+
+This approach allows us to efficiently address data quality issues, ensuring that the collected data is reliable and ready for analysis. The main objective of this program is to guarantee that the collected data is thoroughly cleaned before integrating it into the pandas dataframe. This ensures that the data is ready to be exported in the CSV file format, providing a seamless transition for further analysis and utilization.
+
+Not only would this approach solve our current situation, but it would also make our programs more dynamic and easily adaptable. This means that we can easily incorporate more products to be added and cleaned for future development, ensuring that our system remains flexible and scalable!
+
+Expanding upon what I've learned in week four, I would like to direct you to the following link which provides a more in-depth summary of my knowledge of [Spiders](https://cyberspeedac.github.io/Aaron-Case-DSPG-Blog/posts/Aaron_C_MultiWeek/Aaron_C_Spiders.html). This summary not only delves into the concepts and techniques I have learned, but also includes some example code to further illustrate them. Feel free to explore the link and delve deeper into my progress.
+
+As for those who have been following our project and reading my previous posts, I would like to provide a recap of the spiders that have been developed so far:\
+1. Fresh Thyme\
+2. Hy-Vee\
+3. Gateway Market\
+4. New Pioneer Co-op\
+5. Russ's Market\
+6. Iowa Food Hub\
+7. Joia Food Farm

@@ -4,13 +4,12 @@ project:
 
 website:
   title: "Aaron Case DSPG Blog"
-  navbar:
+  navbar: 
+    background: "#cc0000"
     right:
       - about.qmd
       - icon: github
         href: https://github.com/CyberSpeedAC
-      #- icon: twitter
-      #  href: https://twitter.com
 format:
   html:
     theme: cosmo

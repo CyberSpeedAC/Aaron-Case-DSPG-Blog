@@ -22,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -181,114 +215,115 @@ ul.task-list li input[type="checkbox"] {
 <li>It is prone to errors and requires extensive debugging and testing. For example, if say that you close your browser or if it freezes (for long periods of time) the program will not function correctly and throw an error.</li>
 <li>It can be very challenging to set up and configure. Not to mention that It can be difficult to maintain test scripts when the web application is updated or changed. Meaning if you are not dedicated in learning or maintaining your code it will come with a bunch of headaches down the road.</li>
 </ol>
-<p>Ideally for this project I strongly recommend using Scrapy spiders were ever possible. Scrapy’s speed and efficiency and overall better performance makes this part of the process much more tolerable in building spiders. However when it comes to more complex tasks and websites Selenium is the way to go. I would also like to acknowledge that there are other tools and resources that could be explored and used which may be better or more effenect for the scope of the project. Theses two tools are just some that I found and was able to implement in the time frame I was given. For example, there is a python package called Scrapy Splash. This works as an extension for Scrapy which provides a JavaScript rendering service. Allowing Scrapy to handle JavaScript and other dynamic web content, similar to Selenium. I wasn’t able to master this tool nor could I successfully get it this tool to work. If I had more time to develop a clear comprehension of this utility and fully understood how to get it to work. It would have be the tool of choice to handle such websites. I used Selenium since I had more success in getting it to work in comparison.</p>
+<p>Ideally for this project I strongly recommend using Scrapy spiders were ever possible. Scrapy’s speed and efficiency and overall better performance makes this part of the process much more tolerable in building spiders. However, when it comes to more complex tasks and websites Selenium is the way to go. I would also like to acknowledge that there are other tools and resources that could have been explored and used which may be better or more efficient for the scope of the project. These two tools are just some that I found and was able to implement in the time frame I was given. For example, there is a python package called Scrapy Splash. This works as an extension for Scrapy which provides a JavaScript rendering service. Allowing Scrapy to handle JavaScript and other dynamic web content, similar to Selenium. I was not able to master this tool, nor could I successfully get it this tool to work. If I had more time to develop a clear comprehension of this utility and fully understood how to get it to work. It would have been the tool of choice to handle such websites. I used Selenium since I had more success in getting it to work in comparison.</p>
 <p>This code covers the bare minimum of Scrapy and is rather (hopefully) intuitive. This can be edited/modified to fit your needs and is just an example.</p>
-<pre class="{Python}"><code># python
-# Imports for Scrapy Example
-import scrapy #Required Import
-from scrapy.crawler import CrawlerProcess
-from scrapy.utils.log import configure_logging # For debugging
-
-# The Class name can be anything but you need to call this later
-class SpiderClassName(scrapy.Spider):
-    name = "spider name" 
-
-    def start_requests( self ): # This is required to start the spider
-        # For one url
-        Desired_Website = [ 'https://www.example.com' ]
-        yield scrapy.Request( url = Desired_Website, callback = self.Some_Function_Name)
-
-        # For many urls
-        urls = [ 'https://www.examples.com', ... ]
-        for url in urls:
-            yield scrapy.Request( url = url, callback = self.parseAndFollow)
-
-        # When passing in varables from one function to the next you use meta
-        for url in urls:
-            yield scrapy.Request( url = url, callback = self.Meta_Example, meta={'Meta_Name': data, ...})
-    
-    def parseAndFollow( self, response ):
-        # Direct to the links in the xpath
-        Extrated_XPath = '//tag-name(@attribute, "attrib info")'
-        XPath_links = Extrated_XPath.xpath( './@href' )
-        # Anoter way
-        XPath_links = Extrated_XPath.xpath('//tag-name(@attribute, "attrib info")/@href')
-        # Extract the links (as a list of strings)
-        links_to_follow = XPath_links.extract()
-        # Follow the links to the next parser
-        for url in links_to_follow:
-            yield response.follow( url = url, callback = self.parse )
-    
-    def parse( self, response ):
-        # To get the text of the xpath
-        Title_Example = response.xpath('//h1[contains(@class,"title")]/text()') 
-        # Extract text title
-        Title_Extracted = Title_Example.extract_first()
-        # Clean the title text
-        Title_Text = Title_Extracted.strip()
-        # Saving the text so that we dont lose what we just did
-        Text_Element_List.append(Title_Text)
-
-    def Meta_Example( self, response ):
-        #This is how pass in your arguments
-        Meta_Data = response.meta.get('Meta_Name')
-    
-Text_Element_List = []
-# To see the inner mechanics of the spider helpful to have not required
-configure_logging()
-# initiate a CrawlerProcess
-process = CrawlerProcess()
-# Tell the process which spider to use
-process.crawl(SpiderClassName)
-# Start the crawling process
-process.start()
-# This is to stop the spider
-process.stop()
-# At this point the spider is finished and now we have everything that was saved
-print(Text_Element_List)
-</code></pre>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Imports for Scrapy Example</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scrapy <span class="co">#Required Import</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scrapy.crawler <span class="im">import</span> CrawlerProcess</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scrapy.utils.log <span class="im">import</span> configure_logging <span class="co"># For debugging</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># The Class name can be anything but you need to call this later</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> SpiderClassName(scrapy.Spider):</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    name <span class="op">=</span> <span class="st">"spider name"</span> </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> start_requests( <span class="va">self</span> ): <span class="co"># This is required to start the spider</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># For one url</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        Desired_Website <span class="op">=</span> [ <span class="st">'https://www.example.com'</span> ]</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">yield</span> scrapy.Request( url <span class="op">=</span> Desired_Website, callback <span class="op">=</span> <span class="va">self</span>.Some_Function_Name)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># For many urls</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        urls <span class="op">=</span> [ <span class="st">'https://www.examples.com'</span>, ... ]</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> url <span class="kw">in</span> urls:</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>            <span class="cf">yield</span> scrapy.Request( url <span class="op">=</span> url, callback <span class="op">=</span> <span class="va">self</span>.parseAndFollow)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        <span class="co"># When passing in varables from one function to the next you use meta</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> url <span class="kw">in</span> urls:</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>            <span class="cf">yield</span> scrapy.Request( url <span class="op">=</span> url, callback <span class="op">=</span> <span class="va">self</span>.Meta_Example, meta<span class="op">=</span>{<span class="st">'Meta_Name'</span>: data, ...})</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> parseAndFollow( <span class="va">self</span>, response ):</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Direct to the links in the xpath</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        Extrated_XPath <span class="op">=</span> <span class="st">'//tag-name(@attribute, "attrib info")'</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        XPath_links <span class="op">=</span> Extrated_XPath.xpath( <span class="st">'./@href'</span> )</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Anoter way</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        XPath_links <span class="op">=</span> Extrated_XPath.xpath(<span class="st">'//tag-name(@attribute, "attrib info")/@href'</span>)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Extract the links (as a list of strings)</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>        links_to_follow <span class="op">=</span> XPath_links.extract()</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Follow the links to the next parser</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> url <span class="kw">in</span> links_to_follow:</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>            <span class="cf">yield</span> response.follow( url <span class="op">=</span> url, callback <span class="op">=</span> <span class="va">self</span>.parse )</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> parse( <span class="va">self</span>, response ):</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>        <span class="co"># To get the text of the xpath</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>        Title_Example <span class="op">=</span> response.xpath(<span class="st">'//h1[contains(@class,"title")]/text()'</span>) </span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Extract text title</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>        Title_Extracted <span class="op">=</span> Title_Example.extract_first()</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Clean the title text</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>        Title_Text <span class="op">=</span> Title_Extracted.strip()</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Saving the text so that we dont lose what we just did</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>        Text_Element_List.append(Title_Text)</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> Meta_Example( <span class="va">self</span>, response ):</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>        <span class="co">#This is how pass in your arguments</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>        Meta_Data <span class="op">=</span> response.meta.get(<span class="st">'Meta_Name'</span>)</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>Text_Element_List <span class="op">=</span> []</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="co"># To see the inner mechanics of the spider helpful to have not required</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>configure_logging()</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="co"># initiate a CrawlerProcess</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>process <span class="op">=</span> CrawlerProcess()</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Tell the process which spider to use</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>process.crawl(SpiderClassName)</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="co"># Start the crawling process</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>process.start()</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="co"># This is to stop the spider</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>process.stop()</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="co"># At this point the spider is finished and now we have everything that was saved</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Text_Element_List)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>As for Selenium this code covers the bare minimum and serves as a deminstration of how to handle JavaScript websites. Once again this can be edited/modified to fit your needs and is just an example.</p>
-<pre class="{Python}"><code># python
-# Imports for Scraping
-import selenium
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-
-# Since I use Firefox this is how I would typically set it up.
-# Note: This is not the only way to do it. Its just how I do this part 
-from selenium.webdriver.firefox.service import Service as FirefoxService
-from webdriver_manager.firefox import GeckoDriverManager
-from os import path
-driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install(), log_path=path.devnull))
-
-# Another example of how you can do it 
-# Set the path to the driver
-driver_path = "/path/to/chromedriver"
-# Create a new instance of the Chrome driver
-driver = webdriver.Chrome(driver_path)
-
-# Navigate to the website page
-driver.get("https://example.com/")
-
-# Setup
-waitTime = 10
-
-# I like using XPaths because I am most comfortable using them 
-Title_XPath = '//h1(@class,"title")'
-# We need to wait for the page to render before we do anything otherwise the data we want wont be present.
-elements = WebDriverWait(driver, waitTime).until(EC.visibility_of_element_located((By.XPATH, Title_XPath)))
-# You can also do it like this for CSS
-elements = WebDriverWait(driver, waitTime).until(EC.visibility_of_element_located((By.CSS_SELECTOR, Title_CSS)))
-# Extracts the text of the element
-Text = elements[0].text
-
-# Close the browser
-driver.quit()
-
-#Data Has been extracted
-print(Text)</code></pre>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Imports for Scraping</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> selenium</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium <span class="im">import</span> webdriver</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium.webdriver.common.by <span class="im">import</span> By</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium.webdriver.support.ui <span class="im">import</span> WebDriverWait</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium.webdriver.support <span class="im">import</span> expected_conditions <span class="im">as</span> EC</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Since I use Firefox this is how I would typically set it up.</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: This is not the only way to do it. Its just how I do this part </span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium.webdriver.firefox.service <span class="im">import</span> Service <span class="im">as</span> FirefoxService</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> webdriver_manager.firefox <span class="im">import</span> GeckoDriverManager</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> os <span class="im">import</span> path</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>driver <span class="op">=</span> webdriver.Firefox(service<span class="op">=</span>FirefoxService(GeckoDriverManager().install(), log_path<span class="op">=</span>path.devnull))</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Another example of how you can do it </span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the path to the driver</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>driver_path <span class="op">=</span> <span class="st">"/path/to/chromedriver"</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new instance of the Chrome driver</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>driver <span class="op">=</span> webdriver.Chrome(driver_path)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Navigate to the website page</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>driver.get(<span class="st">"https://example.com/"</span>)</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Setup</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>waitTime <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="co"># I like using XPaths because I am most comfortable using them </span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>Title_XPath <span class="op">=</span> <span class="st">'//h1(@class,"title")'</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co"># We need to wait for the page to render before we do anything otherwise the data we want wont be present.</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>elements <span class="op">=</span> WebDriverWait(driver, waitTime).until(EC.visibility_of_element_located((By.XPATH, Title_XPath)))</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="co"># You can also do it like this for CSS</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>elements <span class="op">=</span> WebDriverWait(driver, waitTime).until(EC.visibility_of_element_located((By.CSS_SELECTOR, Title_CSS)))</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Extracts the text of the element</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>Text <span class="op">=</span> elements[<span class="dv">0</span>].text</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Close the browser</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>driver.quit()</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="co">#Data Has been extracted</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
 

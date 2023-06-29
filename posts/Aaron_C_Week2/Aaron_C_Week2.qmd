@@ -5,11 +5,8 @@ date: "2023-05-29"
 categories: [Week Two]
 ---
 
-For week two my goal was to continue to learn in Datacamp
+During week two, the plan in place was to continue learning using Datacamp. I successfully completed two lectures, Writing Efficient Python Code and Web Scraping in Python.
 
-Lessons completed:
+Also during week two I was tasked to learn Tidycensus in R for data visualization. In [Census Visual](https://cyberspeedac.github.io/Aaron-Case-DSPG-Blog/posts/Aaron_C_Week2/TidyCensusOverview.html) provides a demonstration of the code I have written and showcases the knowledge and skills I have acquired using Tidycensus with the American Community Survey Data.
 
--   Writing Efficient Python Code
--   Web Scraping in Python
-
-I also learned how to visualize data using Tidycensus with the American Community Survey Data
+During the week DSPG needed to extract a large amount of data from the American Community Survey. Since this process was lengthy, it became one of the main problems that the DSPG encountered during the week. However, I was able to solve it using the R code provided in [Importing Census Data](https://cyberspeedac.github.io/Aaron-Case-DSPG-Blog/posts/Aaron_C_Week2/Importing%20Census%20Data.html).
