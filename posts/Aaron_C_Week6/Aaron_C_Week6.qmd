@@ -1,7 +1,7 @@
 ---
 title: "Week Six"
 author: "Aaron Case"
-date: "2023-06-22"
+date: "2023-06-23"
 categories: [Week Six]
 ---
 
@@ -23,5 +23,4 @@ Here are the comprehensive maps of our WINVEST site assessments, as well as a ph
 
 On Wednesday, our team had a much-needed meeting with our client. In light of the team changes that occurred last week, we found it necessary to reevaluate the scope of the project. This allowed us to ensure that we are aligned with the client's expectations and make any necessary adjustments to our plans moving forward. By the end of the meeting, I was assigned to improve all seven spider and finish implementing the data cleaner program that was described in [Week Five](https://cyberspeedac.github.io/Aaron-Case-DSPG-Blog/posts/Aaron_C_Week5/Aaron_C_Week5.html). Additionally, I was tasked with demonstrating that other products could be implemented into the spiders, all by next Wednesday. This means that I have a deadline to complete these tasks and showcase the flexibility of my system in incorporating new products. Which took up the majority of my time to finish.
 
-
-On Thursday, I delivered a coffee talk on spiders, providing a concise summary of everything I have learned, which you can view here: 
+On Thursday, I delivered a coffee talk on spiders, providing a concise summary of everything I have learned, which you can view here:
