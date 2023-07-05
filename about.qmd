@@ -9,4 +9,4 @@ about:
       href: https://github.com
 ---
 
-About this blog
+A link to the DSPG Blog: [DSPG 2023](https://dspg-2023.github.io/DSPG2023/)

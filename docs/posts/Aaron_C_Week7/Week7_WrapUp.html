@@ -140,6 +140,120 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<section id="ai-and-local-food-team-plans-to-produce-following-outputs-at-the-end-of-this-years-project" class="level2">
+<h2 class="anchored" data-anchor-id="ai-and-local-food-team-plans-to-produce-following-outputs-at-the-end-of-this-years-project"><strong>AI and local Food team plans to produce following outputs at the end of this year’s project:</strong></h2>
+<p><strong>A comprehensive map to showcase the prices of eggs and bacon across various counties using the collected data.</strong> This map serves as a valuable tool for identifying trends and patterns in pricing, as well as understanding customer preferences towards specific brands. Additionally, the map aids in the selection of suitable selling locations by considering crucial factors such as brand reputation, pricing, and travel distance (cost).</p>
+<p><strong>Several web-scrapping spiders for selected websites to facilitate the creation of a comprehensive product database.</strong> These spiders will automate the process of data scraping, enabling repetitive and efficient collection of data.</p>
+<p><strong>Showcase the capability of the spiders with a specific crop example.</strong> The spiders will be utilized to extract data for one or more of the following six products: tomatoes (regardless of the type), carrots, green onions, potatoes, spinach, lettuce. This demonstration will effectively highlight the functionality and effectiveness of the spiders in retrieving the desired data.</p>
+<p><strong>Optimization of the crop flow, from the point of supply to the point of demand that maximizes overall profit.</strong> We will explore the factors and methodology to estimate the demand and supply.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/week-7.gif" class="img-fluid figure-img" width="270"></p>
+</figure>
+</div>
+<p><strong>This week’s tasks:</strong></p>
+<ul>
+<li>Consolidated all scraped data from all different websites into one master file to be used for data analysis.</li>
+<li>Data Analysis:
+<ol type="1">
+<li>Imported necessary packages in Juypter Notebook for data analysis.</li>
+<li>Started cleaning the data: Missing values, fixing datatypes</li>
+<li>Started exploring the data using various visualizations.</li>
+</ol></li>
+</ul>
+<section id="data-consolidation" class="level4">
+<h4 class="anchored" data-anchor-id="data-consolidation"><strong>Data Consolidation</strong></h4>
+<p>Consolidated all collected data in three master lists of Eggs, Bacon and Heirloom tomato respectively. This would let work separately on each product’s data set and would give us more insights about the dataset.</p>
+</section>
+<section id="data-analysis" class="level4">
+<h4 class="anchored" data-anchor-id="data-analysis"><strong>Data Analysis</strong></h4>
+<p>Started the data analysis by importing the necessary packages, we will keep adding more packages as we go along with analysis part.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/blog 2.PNG" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>Cleaning:</p>
+<p>We found there were a lot of missing values in our data set for various columns</p>
+<ol type="1">
+<li><img src="images/blog 3.PNG" class="img-fluid" width="258"></li>
+</ol>
+<p>We dealt with missing values for filling NA like shown in the snapshot below:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/blog4.PNG" class="img-fluid figure-img" width="460"></p>
+</figure>
+</div>
+</section>
+<section id="price-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="price-analysis"><strong>Price Analysis:</strong></h3>
+<p>we can analyze the relationship between the current price and the original price of the heirloom tomatoes.</p>
+<p>This analysis can help you understand the pricing trends and calculate potential discounts or price differences.</p>
+<p>Visualize the distribution of current prices using histograms, box plots, or kernel density plots to gain insights into the pricing range and identify any outliers.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/blog5.PNG" class="img-fluid figure-img" width="528"></p>
+</figure>
+</div>
+</section>
+<section id="weight-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="weight-analysis"><strong>Weight Analysis:</strong></h3>
+<p>Analyze the weight of the heirloom tomatoes by comparing the weight in pounds and the true weight.</p>
+<p>This analysis can help you determine if there are any variations in weight and assess the accuracy of weight measurements.</p>
+<p>Creating scatter plots or line plots to visualize the relationship between weight in pounds and true weight.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/blog6-01.PNG" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</section>
+<section id="brand-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="brand-analysis"><strong>Brand Analysis:</strong></h3>
+<p>Analyze the different brands of heirloom tomatoes available in the dataset. Calculate the frequency of each brand to determine the most popular ones.</p>
+<p>Creating a bar chart and pie chart to visualize the distribution of brands and identify the market share of each brand.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/blog7.PNG" class="img-fluid figure-img" width="561"></p>
+</figure>
+</div>
+</section>
+<section id="organic-and-local-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="organic-and-local-analysis"><strong>Organic and Local Analysis:</strong></h3>
+<p>Analyze the presence of organic and locally sourced heirloom tomatoes. Calculate the percentage of organic and local products in the dataset. Creating a bar chart or pie chart to visualize the proportion of organic and local tomatoes.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/blog8.PNG" class="img-fluid figure-img" width="616"></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="several-web-scrapping-spiders-for-selected-websites-to-facilitate-the-creation-of-a-comprehensive-product-database." class="level2">
+<h2 class="anchored" data-anchor-id="several-web-scrapping-spiders-for-selected-websites-to-facilitate-the-creation-of-a-comprehensive-product-database."><strong>Several web-scrapping spiders for selected websites to facilitate the creation of a comprehensive product database.</strong></h2>
+<p>To facilitate the creation of a comprehensive product database, we have developed several web-scraping spiders for websites such as<br>
+1. Fresh Thyme<br>
+2. Hy-Vee<br>
+3. Gateway Market<br>
+4. New Pioneer Co-op<br>
+5. Russ’s Market<br>
+6. Iowa Food Hub<br>
+7. Joia Food Farm</p>
+<p>These spiders automate the data scraping process, eliminating the need for repetitive data collection and significantly increasing our efficiency. It’s important to note that this list is not exhaustive, as our web-scraping spiders can be expanded to include other websites beyond those listed here.</p>
+</section>
+<section id="showcase-the-capability-of-the-spiders-with-a-specific-crop-example." class="level2">
+<h2 class="anchored" data-anchor-id="showcase-the-capability-of-the-spiders-with-a-specific-crop-example."><strong>Showcase the capability of the spiders with a specific crop example.</strong></h2>
+<p>It’s worth noting that the capability of these spiders is not limited to a specific product type; they can be utilized to extract data from a wide selection of products. As an example, we have successfully demonstrated their functionality and effectiveness in retrieving data for various products, including specific crops such as tomatoes, carrots, green onions, potatoes, spinach, lettuce, and many more.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/ExampleOfProductsCollected.PNG" class="img-fluid figure-img" width="189"></p>
+</figure>
+</div>
+<p>Moreover, these spiders can be further enhanced to automate the data cleaning processes which runs concurrently within the spider. This approach allows us to efficiently address data quality issues, ensuring that the collected data is reliable and ready for analysis. The main objective of this enhancement is to guarantee that the collected data is thoroughly cleaned before integrating it into a file format, providing a seamless transition for further analysis and utilization. This specific example Highlights Heirloom Tomatoes from the listed stores as mention above.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/ExampleOfCleanedProducts.PNG" class="img-fluid figure-img" width="488"></p>
+</figure>
+</div>
+</section>
 <section id="optimization-of-the-crop-flow-from-the-point-of-supply-to-the-point-of-demand-that-maximizes-overall-profit" class="level2">
 <h2 class="anchored" data-anchor-id="optimization-of-the-crop-flow-from-the-point-of-supply-to-the-point-of-demand-that-maximizes-overall-profit"><strong>Optimization of the crop flow, from the point of supply to the point of demand that maximizes overall profit</strong></h2>
 <div class="quarto-figure quarto-figure-center">
@@ -217,6 +331,7 @@ Total farm land in California is 24.23 million acres as of 2017.<br>
 <p><img src="images/capture3.PNG" class="img-fluid figure-img" width="415"></p>
 </figure>
 </div>
+<p>Teaser video: <video src="Local_food_teaser.mp4" class="img-fluid" controls=""><a href="Local_food_teaser.mp4">Video</a></video></p>
 
 
 </section>
