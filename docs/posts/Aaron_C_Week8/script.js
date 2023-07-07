@@ -1,3 +1,5 @@
+
+
 window.addEventListener('scroll', function() {
     const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
   
