@@ -1,0 +1,174 @@
+---
+title: "AI/Local Food Team Week Eight Wrap Up"
+author: "AI/Local Food Team"
+date: "2023-07-07"
+categories: [Week Eight]
+format: 
+  html:
+    code-fold: true
+css: styles.css
+engine: knitr
+---
+
+## **AI and local Food team plans to produce following outputs at the end of this year's project:**
+
+**A comprehensive map to showcase the prices of eggs and bacon across various counties using the collected data.** This map serves as a valuable tool for identifying trends and patterns in pricing, as well as understanding customer preferences towards specific brands. Additionally, the map aids in the selection of suitable selling locations by considering crucial factors such as brand reputation, pricing, and travel distance (cost).
+
+**Several web-scrapping spiders for selected websites to facilitate the creation of a comprehensive product database.** These spiders will automate the process of data scraping, enabling repetitive and efficient collection of data.
+
+**Showcase the capability of the spiders with a specific crop example.** The spiders will be utilized to extract data for one or more of the following six products: tomatoes (regardless of the type), carrots, green onions, potatoes, spinach, lettuce. This demonstration will effectively highlight the functionality and effectiveness of the spiders in retrieving the desired data.
+
+**Optimization of the crop flow, from the point of supply to the point of demand that maximizes overall profit.** We will explore the factors and methodology to estimate the demand and supply.
+
+## Final Presentation Flow
+
+::: rows
+::: row
+::: columns
+::: {.column width="20%"}
+### Person 
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+### Topic {.centerH3}
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="20%"}
+### Time 
+:::
+:::
+:::
+
+::: row
+::: columns
+::: {.column width="20%"}
+**Swati**
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+#### Introduction
+
+-   What
+-   What to plan to achieve
+-   What we plan to achieve
+-   Why is this important
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="20%"}
+**6 - 8**
+:::
+:::
+:::
+
+::: row
+::: columns
+::: {.column width="20%"}
+**Aaron**
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+#### Web Scrapping (Spiders)
+
+-   With what we started
+-   How we did scraping
+-   What we achieved at the end
+-   Any interesting stuff
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="20%"}
+**10 - 12**
+:::
+:::
+:::
+
+::: row
+::: columns
+::: {.column width="20%"}
+**Swati**
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+#### Data Analysis
+
+-   Visualization (What graph say)
+-   Any predictions
+-   What model we used (if any)
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="20%"}
+**8 - 10**
+:::
+:::
+:::
+
+::: row
+::: columns
+::: {.column width="20%"}
+**Sadat**
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+#### Supply chain opti.
+
+-   Output
+-   How we achieved
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="20%"}
+???
+:::
+:::
+:::
+
+::: row
+::: columns
+::: {.column width="20%"}
+**Sadat / Swati**
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+#### Conclusion
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="20%"}
+**2 - 3**
+:::
+:::
+:::
+:::
