@@ -1,0 +1,20 @@
+---
+title: "Demo"
+categories: [Demo]
+format: 
+  html:
+    code-fold: true
+    js: script.js
+css: styles.css
+---
+
+```{=html}
+<html id="html">
+<script src="script.js"></script>
+<body id="body">
+  <div id="content">
+    <h1>Welcome to the Page!</h1>
+  </div>
+</body>
+</html>
+```

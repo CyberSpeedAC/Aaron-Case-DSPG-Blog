@@ -48,7 +48,7 @@ engine: knitr
 ::: row
 ::: columns
 ::: {.column width="20%"}
-\ 
+ 
 
 **Swati**
 :::
@@ -59,7 +59,7 @@ engine: knitr
 ::: {.column width="50%"}
 #### **Introduction** {.centerH4}
 
--   What the project is about 
+-   What the project is about
 -   What we plan to achieve
 -   Why is this important
 :::
@@ -68,7 +68,7 @@ engine: knitr
 :::
 
 ::: {.column .centerCell width="20%"}
-\ 
+ 
 
 **6 - 8 mins**
 :::
@@ -78,7 +78,7 @@ engine: knitr
 ::: row
 ::: columns
 ::: {.column width="20%"}
-\ 
+ 
 
 **Aaron**
 :::
@@ -99,7 +99,7 @@ engine: knitr
 :::
 
 ::: {.column .centerText width="20%"}
-\ 
+ 
 
 **10 - 12 mins**
 :::
@@ -109,7 +109,7 @@ engine: knitr
 ::: row
 ::: columns
 ::: {.column width="20%"}
-\ 
+ 
 
 **Swati**
 :::
@@ -129,7 +129,7 @@ engine: knitr
 :::
 
 ::: {.column .centerText width="20%"}
-\ 
+ 
 
 **8 - 10 mins**
 :::
@@ -139,7 +139,7 @@ engine: knitr
 ::: row
 ::: columns
 ::: {.column width="20%"}
-\ 
+ 
 
 **Sadat**
 :::
@@ -158,7 +158,7 @@ engine: knitr
 :::
 
 ::: {.column .centerText width="20%"}
-\ 
+ 
 
 **10 - 12** **mins**
 :::
@@ -168,7 +168,7 @@ engine: knitr
 ::: row
 ::: columns
 ::: {.column width="20%"}
-\ 
+ 
 
 **Sadat / Swati**
 :::
@@ -184,7 +184,7 @@ engine: knitr
 :::
 
 ::: {.column .centerText width="20%"}
-\ 
+ 
 
 **2 - 3 mins**
 :::
