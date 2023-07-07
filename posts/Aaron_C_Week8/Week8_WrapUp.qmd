@@ -20,27 +20,28 @@ engine: knitr
 
 **Optimization of the crop flow, from the point of supply to the point of demand that maximizes overall profit.** We will explore the factors and methodology to estimate the demand and supply.
 
+
 ## Final Presentation Flow
 
 ::: rows
 ::: row
 ::: columns
 ::: {.column width="20%"}
-### Person 
+### Person
 :::
 
 ::: {.column width="5%"}
 :::
 
-::: {.column width="50%"}
-### Topic {.centerH3}
+::: {.column .centerText width="50%"}
+### Topic
 :::
 
 ::: {.column width="5%"}
 :::
 
-::: {.column width="20%"}
-### Time 
+::: {.column .centerText width="20%"}
+### Time
 :::
 :::
 :::
@@ -48,6 +49,8 @@ engine: knitr
 ::: row
 ::: columns
 ::: {.column width="20%"}
+\
+
 **Swati**
 :::
 
@@ -55,10 +58,9 @@ engine: knitr
 :::
 
 ::: {.column width="50%"}
-#### Introduction
+#### **Introduction** {.centerH4}
 
--   What
--   What to plan to achieve
+-   What the project is a about
 -   What we plan to achieve
 -   Why is this important
 :::
@@ -66,8 +68,10 @@ engine: knitr
 ::: {.column width="5%"}
 :::
 
-::: {.column width="20%"}
-**6 - 8**
+::: {.column .centerCell width="20%"}
+\
+
+ **6 - 8 mins**
 :::
 :::
 :::
@@ -75,14 +79,16 @@ engine: knitr
 ::: row
 ::: columns
 ::: {.column width="20%"}
-**Aaron**
+\
+
+ **Aaron**
 :::
 
 ::: {.column width="5%"}
 :::
 
 ::: {.column width="50%"}
-#### Web Scrapping (Spiders)
+#### **Web Scrapping (Spiders)** {.centerH4}
 
 -   With what we started
 -   How we did scraping
@@ -93,8 +99,10 @@ engine: knitr
 ::: {.column width="5%"}
 :::
 
-::: {.column width="20%"}
-**10 - 12**
+::: {.column .centerText width="20%"}
+\
+
+**10 - 12 mins**
 :::
 :::
 :::
@@ -102,6 +110,8 @@ engine: knitr
 ::: row
 ::: columns
 ::: {.column width="20%"}
+\
+
 **Swati**
 :::
 
@@ -109,18 +119,20 @@ engine: knitr
 :::
 
 ::: {.column width="50%"}
-#### Data Analysis
+#### **Data Analysis** {.centerH4}
 
 -   Visualization (What graph say)
--   Any predictions
+-   Answering research questions
 -   What model we used (if any)
 :::
 
 ::: {.column width="5%"}
 :::
 
-::: {.column width="20%"}
-**8 - 10**
+::: {.column .centerText width="20%"}
+\
+
+**8 - 10 mins**
 :::
 :::
 :::
@@ -128,6 +140,8 @@ engine: knitr
 ::: row
 ::: columns
 ::: {.column width="20%"}
+\
+
 **Sadat**
 :::
 
@@ -135,7 +149,7 @@ engine: knitr
 :::
 
 ::: {.column width="50%"}
-#### Supply chain opti.
+#### **Crop flow optimization** {.centerH4}
 
 -   Output
 -   How we achieved
@@ -144,8 +158,10 @@ engine: knitr
 ::: {.column width="5%"}
 :::
 
-::: {.column width="20%"}
-???
+::: {.column .centerText width="20%"}
+\
+
+**10 - 12** **mins**
 :::
 :::
 :::
@@ -153,6 +169,8 @@ engine: knitr
 ::: row
 ::: columns
 ::: {.column width="20%"}
+\
+
 **Sadat / Swati**
 :::
 
@@ -160,14 +178,16 @@ engine: knitr
 :::
 
 ::: {.column width="50%"}
-#### Conclusion
+#### **Conclusion and Future Vision** {.centerH4}
 :::
 
 ::: {.column width="5%"}
 :::
 
-::: {.column width="20%"}
-**2 - 3**
+::: {.column .centerText width="20%"}
+\
+
+**2 - 3 mins**
 :::
 :::
 :::
