@@ -1,0 +1,60 @@
+---
+title: "Demand and supply estimation"
+author: "Mohammad Ahnaf Sadat"
+date: "July 07, 2023"
+categories: [Presentation]
+format: 
+  html:
+    code-fold: true
+css: style.css
+---
+
+### Demand Estimation:
+
+1.  In 2017, fresh market consumption was 20.3 pounds per capita. (<https://www.agmrc.org/commodities-products/vegetables/tomatoes>)
+
+2.  We will allocate this demand to each county of Iowa by population.
+
+![](images/Picture6.png){fig-align="center" width="508"}
+
+### Supply Estimation:
+
+1.  The growing season of tomatoes is between May to Mid-September in Iowa. (<https://www.tomatofest.com/Tomato_Growing_Zone_Maps_s/164.htm>)
+
+2.  We have 135 days between planting and harvesting tomatoes.
+
+3.  Tomatoes require 100 days to fully mature. However, there are some special varieties of tomatoes that require 50-60 days to mature. (<https://www.gardeningknowhow.com/edible/vegetables/tomato/planting-time-for-tomatoes.htm>)
+
+4.  So, we are considering on average tomatoes take 80 days to be harvested.
+
+5.  In this context, we assumed that being mature represents the time between sowing seed and harvesting full-grown tomatoes.
+
+6.  We are only considering single cultivation of tomatoes during a year.
+
+7.  So, the tomatoes will be harvested during the timeline day 80-135 or, during late July to mid-September, that is 7.85 or 8 weeks.
+
+8.  In our calculations, we will estimate the weekly supply of tomatoes from late July to mid-September.
+
+9.  In 2017, approximately 157 acres of tomatoes were harvested in the open field. (<https://quickstats.nass.usda.gov/>)
+
+10. In 2018, the yield for tomatoes in Iowa was 246 CWT per acre. (<https://quickstats.nass.usda.gov/>)
+
+11. Considering the yield of tomatoes in 2018 and 2017 same, the total production of tomatoes in Iowa in 2017 was 38622 CWT or 1962 Metric Tons.
+
+12. As the production of tomatoes is distributed over 8 weeks (as mentioned in no 8), the weekly supply quantity of tomatoes is (1962/8) or 245.25 Metric Tons.
+
+13. Considering the average farm size in each county of Iowa is the same. The supply of tomatoes can be obtained from the number of farms.
+
+![](images/Picture7.png){fig-align="center" width="484"}
+
+Supply-Demand Ratio:
+
+1.  This process leads to total supply of 566.6359 Metric Tons/week and demand of 245.2503 Metric Tons/week for 8 weeks (Late July- Mid-September).
+
+2.  As there is no production of tomatoes other than these 8 weeks, the total supply for tomatoes is (245.2503x8) or 1962.0024 Metric Tons.
+
+3.  On the other hand, the total annual demand for tomatoes is (566.6359 x 52) or 29465.0668 Metric Tons.
+
+4.  This number leads to a supply-demand ratio of 0.06658.
+
+5.  In the IMPLAN model for vegetables and melons (not specifically tomatoes), the supply-demand ratio is 0.0380, which is very close to our estimation.

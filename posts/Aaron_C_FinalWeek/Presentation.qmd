@@ -1,0 +1,136 @@
+---
+title: "Presentation"
+author: "AI/Local Food Team"
+date: "2023-07-14"
+categories: [Presentation]
+format: 
+  html:
+    code-fold: true
+    js: script.js
+css: style.css
+---
+
+INTRO HERE
+
+\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~
+
+## Web Scraping: Automating Data Collection
+
+To ensure the success of our project, the first step we take is web scraping. Gathering a substantial amount of data is crucial for our project. Specifically, we aim to track various products and identify the websites that feature these products. Performing this task manually is not only time-consuming but also prone to errors and incredibly tedious.
+
+To overcome these challenges, we have developed web crawlers or Spiders to automate the process. This automation not only saves time but also guarantees accurate and up-to-date data collection.
+
+**Spider (web crawler)**: programs or scripts specifically designed to automate website navigation and extract the desired data.
+
+## General Spider Procedure
+
+![](images/GeneralSpiderProcedure.png)
+
+## Our Spider Procedure
+
+![](images/OurSpiderProcedure.png){fig-align="center"}
+
+## What the spiders were able to achieve
+
+::: {layout-ncol="2"}
+![We were able to scrape all these stores\
+](images/Market%20Logos.PNG){fig-align="center" width="639"}
+
+![Gateway Store](images/GatewayScreenShot.png){fig-align="center" width="569"}
+:::
+
+![The output of the spiders](images/ExtractedData.png){fig-align="center"}
+
+## Future Improvements
+
+1.  General optimizations
+2.  Implementing parallel processing: Splits execution of code and running them simultaneously
+3.  More spiders for additional websites
+4.  Exploration of different web scraping methods
+
+**These Spiders are more than capable to expand to other products!**
+
+![](images/ExtractedDataSample.PNG)
+
+\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~
+
+SWATI PART HERE
+
+\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~
+
+## Optimization of the crop flow
+
+-   The price of the product varies across different stores and cities
+
+-   Local food farms have opportunities to sell their product in high-priced areas
+
+<br/>
+
+-   Analyze crop distribution strategies for local food farms to maximize profit
+
+-   Objective: Maximizing revenue through crop sales while considering transportation costs
+
+-   Ignored production costs as they have no influence on crop distribution
+
+<br/>
+
+We have chosen tomatoes as an example to illustrate our approach. Our analysis begins with estimating the demand and supply of tomatoes in various counties across Iowa. We will then focus on optimizing the distribution of tomato crops over an 8-week timeline, specifically from late July to mid-September.
+
+![](images/Picture1.png){fig-align="center" width="678"}
+
+## Demand and supply estimation
+
+![](images/Supply%20demand-01.png){fig-align="center" width="624"}
+
+Our estimation of the supply-demand ratio for tomatoes in Iowa is 0.06658, which closely aligns with the supply-demand ratio of 0.0380 mentioned in the IMPLAN model for Iowa vegetables and melons (not specifically tomatoes). This indicates that our estimate is a reasonable approximation.
+
+For a detailed explanation of how we estimated the demand and supply, please refer to [HERE](link_need_to_be_inserted).
+
+## Map visualization of demand and supply
+
+<iframe src="https://public.tableau.com/views/supply_demand_diff/Supply?:language=en-US&amp;:display_count=n&amp;:origin=viz_share_link:showVizHome=no&amp;:embed=true&quot;" width="1024" height="614">
+
+</iframe>
+
+## Why a combined strategy is necessary?
+
+Let's imagine a county acting as a single farmer. In order to maximize its profit, the farmer will aim to sell its product to the county that offers the highest price, while also taking transportation costs into account.
+
+In this scenario, all the farmers (counties) will try to sell their tomatoes to a single county that offers the highest price.
+
+As a result, there would be an influx of products, potentially leading to an oversupply where the demand may not match. Consequently, the price could decrease, while certain counties might face a shortage of tomatoes.
+
+Therefore, it becomes crucial for the farmers (counties) to adopt a collaborative strategy.
+
+## Demonstration of the optimization model
+
+To provide a demonstration, we select a small subset of counties (24 out of a total of 99 counties) where the gap between supply and demand is relatively modest.
+
+In these selected counties, we simulate the prices of tomatoes using a normal distribution with a mean of 2.25 and a standard deviation of 0.25.
+
+For our analysis, we took into account the Ford F-350 truck with a carrying capacity of 7640 lb and a fuel efficiency of 15 mpg. We assumed that the truck would travel in a straight line (Euclidean distance) from the origin to the destination. Additionally, we considered a gas price of \$3.5/gallon.
+
+![](images/subset.png){fig-align="center" width="667"}
+
+## Solution of the distribution problem
+
+<iframe title="Report Section" width="1260" height="620" src="https://app.powerbi.com/view?r=eyJrIjoiMjQ5YzBjZTMtMzY5OC00YmY4LWFlYzUtZjJhYTk4ZmJkNmE1IiwidCI6IjAzNDdkODlhLTAxNzQtNGRkMy1hZGViLTMzMzljODljMzVmNSIsImMiOjN9" frameborder="0" allowFullScreen="true">
+
+</iframe>
+
+## Profit retrained in collaborative strategy compared to operating individually
+
+<iframe title="profit_retained" width="1280" height="720" src="https://app.powerbi.com/view?r=eyJrIjoiMWU2YmFhOTUtMTVmZS00Zjg3LTlkMzUtYjIyZmUyNWUyYzQ0IiwidCI6IjAzNDdkODlhLTAxNzQtNGRkMy1hZGViLTMzMzljODljMzVmNSIsImMiOjN9" frameborder="0" allowFullScreen="true">
+
+</iframe>
+
+## Limitations
+
+1.  Consideration of Euclidean distance instead of real-world road distance
+2.  Consideration of \$/Metric Ton/Mile instead of \$/Truck-load/Mile
+
+## Future Work
+
+1.  Taking care of the limitations mentioned above.
+2.  Focus on the profit retained section during optimization.
+3.  Integration of where to plant crops to this model.
