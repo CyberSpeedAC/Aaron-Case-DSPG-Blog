@@ -118,11 +118,11 @@ We conducted data collection on three products, Bacon, eggs and tomatoes, creati
 
 #### **Product**: Bacon {.centerH4}
 
-<iframe src="https://public.tableau.com/views/Book6_16892649643870/Priceanalysis?:language=en-US&amp;publish=yes&amp;:display_count=n&amp;:origin=viz_share_link:showVizHome=no&amp;:embed=true&quot;" width="1024" height="614">
+<iframe src="https://public.tableau.com/views/Book6_16892649643870/Priceanalysis?:language=en-US&amp;publish=yes&amp;:display_count=n&amp;:origin=viz_share_link:showVizHome=no&amp;:embed=true&quot;" width="900" height="614">
 
 </iframe>
 
-<iframe src="https://public.tableau.com/views/Book7_16892664732770/Discountdistribution?:language=en-US&amp;publish=yes&amp;:display_count=n&amp;:origin=viz_share_link:showVizHome=no&amp;:embed=true&quot;" width="1024" height="614">
+<iframe src="https://public.tableau.com/views/Book7_16892664732770/Discountdistribution?:language=en-US&amp;publish=yes&amp;:display_count=n&amp;:origin=viz_share_link:showVizHome=no&amp;:embed=true&quot;" width="900" height="614">
 
 </iframe>
 
@@ -192,19 +192,19 @@ We conducted data collection on three products, Bacon, eggs and tomatoes, creati
 
 ## Optimization of the crop flow {.centerH2}
 
+In the previous section,
+
 -   The price of the product varies across different stores and cities
 
 -   Local food farms have opportunities to sell their product in high-priced areas
 
-<br/>
+In this section,
 
 -   Analyze crop distribution strategies for local food farms to maximize profit
 
 -   Objective: Maximizing revenue through crop sales while considering transportation costs
 
 -   Ignored production costs as they have no influence on crop distribution
-
-<br/>
 
 We have chosen tomatoes as an example to illustrate our approach. Our analysis begins with estimating the demand and supply of tomatoes in various counties across Iowa. We will then focus on optimizing the distribution of tomato crops over an 8-week timeline, specifically from late July to mid-September.
 
@@ -224,6 +224,8 @@ For a detailed explanation of how we estimated the demand and supply, please ref
 
 </iframe>
 
+The supply tab of the visualization indicates the level of demand for each county, with darker shades of blue representing higher demand. Conversely, the demand tab shows the required supply units for each county, with darker shades of golden to red indicating a greater need for supply. Finally, the demand-supply difference tab allows us to observe the disparity between demand and supply. In this tab, darker shades of red indicate a significant deficiency in supply, while darker shades of blue represent a surplus of supply.
+
 ### Why a combined strategy is necessary? {.centerH3}
 
 Let's imagine a county acting as a single farmer. In order to maximize its profit, the farmer will aim to sell its product to the county that offers the highest price, while also taking transportation costs into account.
@@ -242,6 +244,8 @@ In these selected counties, we simulate the prices of tomatoes using a normal di
 
 For our analysis, we took into account the Ford F-350 truck with a carrying capacity of 7640 lb and a fuel efficiency of 15 mpg. We assumed that the truck would travel in a straight line (Euclidean distance) from the origin to the destination. Additionally, we considered a gas price of \$3.5/gallon.
 
+We used Gurobi to solve the optimization problem.
+
 ![](images/subset.png){fig-align="center" width="667"}
 
 ### Solution of the distribution problem {.centerH3}
@@ -250,11 +254,15 @@ For our analysis, we took into account the Ford F-350 truck with a carrying capa
 
 </iframe>
 
+In the first image, the origin is represented by a bubble. When we hover over these bubbles, we can see the counties and the amounts that need to be transported from that specific county. In the next image, the bubble represents the destination. Hovering over the bubble reveals the quantities that should be received from different counties.
+
 ### Profit retrained in collaborative strategy compared to operating individually {.centerH3}
 
 <iframe title="profit_retained" width="900" height="720" src="https://app.powerbi.com/view?r=eyJrIjoiMWU2YmFhOTUtMTVmZS00Zjg3LTlkMzUtYjIyZmUyNWUyYzQ0IiwidCI6IjAzNDdkODlhLTAxNzQtNGRkMy1hZGViLTMzMzljODljMzVmNSIsImMiOjN9" frameborder="0" allowFullScreen="true">
 
 </iframe>
+
+The chart displays the ratio between the highest possible profit that could be achieved if there was only one supplier and all the receivers, and the actual profit being generated with the current strategy. This ratio provides insights into the efficiency and effectiveness of the current approach.
 
 ### Limitations {.centerH3}
 
@@ -266,6 +274,10 @@ For our analysis, we took into account the Ford F-350 truck with a carrying capa
 1.  Taking care of the limitations mentioned above.
 2.  Focus on the profit retained section during optimization.
 3.  Integration of where to plant crops to this model.
+
+Future Improvements:
+
+1.  Further insights can be generated by analyzing more data.
 
 ## CONCLUSION {.centerH2}
 
