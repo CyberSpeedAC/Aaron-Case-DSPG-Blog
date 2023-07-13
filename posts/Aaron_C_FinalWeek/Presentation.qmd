@@ -1,5 +1,5 @@
 ---
-title: "Data Driven Insights for Local Food Market: AI, Pricing and Crop Flow"
+title: ""
 author: "AI/Local Food Team"
 date: "2023-07-14"
 image: "images/TitleImage.PNG"
@@ -8,22 +8,24 @@ format:
   html:
     code-fold: true
     js: script.js
+    fontsize: 1.2em
 css: style.css
+toc: true
 ---
 
-## **Meet our team** {.centerH2}
+# Data Driven Insights for Local Food Market: AI, Pricing and Crop Flow
 
-![](images/MicrosoftTeams-image%20(12).png){fig-align="center" width="652"}
+![](images/MicrosoftTeams-image%20(12).png){fig-align="center"}
 
-#### About the Project {.centerH2}
+## Introduction {.centerH2}
 
-The project aims to address the need for localized and up-to-date demand forecasting information for Iowa's local food producers. For this, we choose three products, eggs, Bacon and Tomatoes as they are non processed food items that are produced locally.
+The project aims to address the need for localized and up-to-date demand forecasting information for Iowa's local food producers. For this, we choose three products, Eggs, Bacon and Tomatoes as they are non processed food items that are produced locally.
 
 Our project is focused on analyzing and understanding the pricing dynamics of eggs and bacon across various counties. We aim to collect comprehensive data on these products and create a graph/map that visually represents their prices. Additionally, we will develop web-scraping spiders to automate data collection for a comprehensive product database. Finally, we will optimize the flow of crops, from supply to demand, to maximize overall profit. By combining data analysis, web scraping, and optimization techniques, our project aims to provide valuable insights and tools for decision-making in the agricultural market.
 
 ![](images/final2.2-01.png){fig-align="center"}
 
-**What** we plan to achieve:
+### What we plan to achieve:
 
 -   Our primary goal is to create a comprehensive map showcasing the prices of eggs and bacon across different counties. This map will enable us to identify trends, patterns, and customer preferences in pricing, helping businesses make informed decisions.
 
@@ -35,11 +37,11 @@ Our project is focused on analyzing and understanding the pricing dynamics of eg
 
 -   Ultimately, we aim to provide insights, tools, and strategies that enhance decision-making and profitability within the local food market.
 
-**How** we plan to achieve:
+### How we plan to achieve:
 
 To achieve our objectives,
 
--   we will employ a multi-faceted approach that combines data analysis, web scraping, and optimization techniques. We will collect comprehensive pricing data for eggs and bacon across different counties, employing data mining and analysis to identify trends, patterns, and customer preferences. The collected data will be visualized in a comprehensive map that highlights key insights.
+-   We will employ a multi-faceted approach that combines data analysis, web scraping, and optimization techniques. We will collect comprehensive pricing data for eggs and bacon across different counties, employing data mining and analysis to identify trends, patterns, and customer preferences. The collected data will be visualized in a comprehensive map that highlights key insights.
 
 -   We will develop web-scraping spiders specifically tailored to gather data from selected websites. These spiders will automate the data collection process, ensuring a continuous and efficient flow of information for our comprehensive product database.
 
@@ -47,7 +49,7 @@ To achieve our objectives,
 
 -   To optimize the crop flow, we will employ demand estimation methodologies, analyze supply dynamics, consider transportation costs, and apply optimization techniques. By considering these factors, we can identify the most profitable routes and strategies for crop distribution, resulting in increased profitability and improved resource allocation.
 
-**Why** it is important:
+### Why it is important:
 
 This project holds immense importance for several reasons.
 
@@ -59,7 +61,7 @@ This project holds immense importance for several reasons.
 
 ## Web Scraping: Automating Data Collection {.centerH2}
 
-Due to the success of last year's project, we were able to gather extensive data on products using web scrapers. This year, we were assigned a similar task but with different products. However, we encountered a significant challenge.
+From the success of last year's project, we were able to gather extensive data on products using web scrapers. This year, we were assigned a similar task but with different products. However, we encountered a significant challenge.
 
 Over the past year, the website we were scraping underwent significant changes, rendering our previous methods and processes obsolete. Upon closer examination, we discovered numerous unintentional flaws in our approach. Unfortunately, the scraper we had built was only capable of functioning under very specific circumstances, severely limiting our ability to collect data effectively even if we were able to repair it.
 
@@ -67,7 +69,7 @@ To ensure the success of our current project, it is crucial to gather a substant
 
 In simple terms, a **Spider** or **Web crawler** is a program or script specifically designed to automate website navigation and extract desired data. These spiders are not only capable of replicating our previous work but also surpassing the achievements of the previous year's project by a considerable margin.
 
-## General Spider Procedure {.centerH2}
+### General Spider Procedure {.centerH2}
 
 ![](images/GeneralSpiderProcedure.png)
 
@@ -77,13 +79,13 @@ Some examples of what the spider would be able to capture include various elemen
 **\<tag-name attribute-name= "attribute info"\> ... what we want (Element contexts) ... \</tag-name\>**
 :::
 
-## Our Spider Procedure {.centerH2}
+### Our Spider Procedure {.centerH2}
 
 ![](images/OurSpiderProcedure.png){fig-align="center"}
 
-We needed to make multiple spiders to handle there own specific websites because not all websites are the same. Which is why our procedure is slightly more complex.
+We needed to make multiple spiders to handle there own specific websites because not all websites are the same. Which is why our procedure is slightly more complex in comparison.
 
-## What the spiders were able to achieve {.centerH2}
+### What the spiders were able to achieve {.centerH2}
 
 ::: {layout-ncol="2"}
 ![We were able to scrape all these stores\
@@ -131,21 +133,21 @@ We have chosen tomatoes as an example to illustrate our approach. Our analysis b
 
 ![](images/Picture1.png){fig-align="center" width="678"}
 
-## Demand and supply estimation {.centerH2}
+### Demand and supply estimation {.centerH2}
 
 ![](images/Supply%20demand-01.png){fig-align="center" width="624"}
 
 Our estimation of the supply-demand ratio for tomatoes in Iowa is 0.06658, which closely aligns with the supply-demand ratio of 0.0380 mentioned in the IMPLAN model for Iowa vegetables and melons (not specifically tomatoes). This indicates that our estimate is a reasonable approximation.
 
-For a detailed explanation of how we estimated the demand and supply, please refer to [HERE](link_need_to_be_inserted).
+For a detailed explanation of how we estimated the demand and supply, please refer to [HERE](https://cyberspeedac.github.io/Aaron-Case-DSPG-Blog/posts/Aaron_C_FinalWeek/estimation.html).
 
-## Map visualization of demand and supply {.centerH2}
+### Map visualization of demand and supply {.centerH2}
 
 <iframe src="https://public.tableau.com/views/supply_demand_diff/Supply?:language=en-US&amp;:display_count=n&amp;:origin=viz_share_link:showVizHome=no&amp;:embed=true&quot;" width="1024" height="614">
 
 </iframe>
 
-## Why a combined strategy is necessary? {.centerH2}
+### Why a combined strategy is necessary? {.centerH2}
 
 Let's imagine a county acting as a single farmer. In order to maximize its profit, the farmer will aim to sell its product to the county that offers the highest price, while also taking transportation costs into account.
 
@@ -155,7 +157,7 @@ As a result, there would be an influx of products, potentially leading to an ove
 
 Therefore, it becomes crucial for the farmers (counties) to adopt a collaborative strategy.
 
-## Demonstration of the optimization model {.centerH2}
+### Demonstration of the optimization model {.centerH2}
 
 To provide a demonstration, we select a small subset of counties (24 out of a total of 99 counties) where the gap between supply and demand is relatively modest.
 
@@ -165,24 +167,24 @@ For our analysis, we took into account the Ford F-350 truck with a carrying capa
 
 ![](images/subset.png){fig-align="center" width="667"}
 
-## Solution of the distribution problem {.centerH2}
+### Solution of the distribution problem {.centerH2}
 
 <iframe title="Report Section" width="1260" height="620" src="https://app.powerbi.com/view?r=eyJrIjoiMjQ5YzBjZTMtMzY5OC00YmY4LWFlYzUtZjJhYTk4ZmJkNmE1IiwidCI6IjAzNDdkODlhLTAxNzQtNGRkMy1hZGViLTMzMzljODljMzVmNSIsImMiOjN9" frameborder="0" allowFullScreen="true">
 
 </iframe>
 
-## Profit retrained in collaborative strategy compared to operating individually {.centerH2}
+### Profit retrained in collaborative strategy compared to operating individually {.centerH2}
 
 <iframe title="profit_retained" width="1280" height="720" src="https://app.powerbi.com/view?r=eyJrIjoiMWU2YmFhOTUtMTVmZS00Zjg3LTlkMzUtYjIyZmUyNWUyYzQ0IiwidCI6IjAzNDdkODlhLTAxNzQtNGRkMy1hZGViLTMzMzljODljMzVmNSIsImMiOjN9" frameborder="0" allowFullScreen="true">
 
 </iframe>
 
-## Limitations {.centerH2}
+### Limitations {.centerH2}
 
 1.  Consideration of Euclidean distance instead of real-world road distance
 2.  Consideration of \$/Metric Ton/Mile instead of \$/Truck-load/Mile
 
-## Future Work {.centerH2}
+### Future Work {.centerH2}
 
 1.  Taking care of the limitations mentioned above.
 2.  Focus on the profit retained section during optimization.
@@ -191,3 +193,17 @@ For our analysis, we took into account the Ford F-350 truck with a carrying capa
 \~\~\~\~\~\~\~\~\~\~\~\~
 
 CONCLUSION
+
+\-\-\-\-\-\-\-\-\-\-\--
+
+## Data Sources
+
+#### Store Websites Scraped
+
+-   [Fresh Thyme](https://ww2.freshthyme.com/sm/planning/rsid/104/?ak=true&path_org=%2f)
+-   [Hy-Vee](https://www.hy-vee.com/)
+-   [Gateway Market](https://www.gatewaymarket.com/market)
+-   [New Pioneer Co-op](https://www.newpi.coop/)
+-   [Russ's Market](https://www.russmarket.com/)
+-   [Iowa Food Hub](https://iowa-food-hub.myshopify.com)
+-   [Joia Food Farm](https://www.joiafoodfarm.com/)
