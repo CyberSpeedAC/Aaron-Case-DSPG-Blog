@@ -65,15 +65,17 @@ Over the past year, the website we were scraping underwent significant changes, 
 
 To ensure the success of our current project, it is crucial to gather a substantial amount of data. However, manually performing this task is not only time-consuming but also prone to errors and incredibly tedious. To overcome these challenges, we have developed web crawlers or spiders to automate the process. This automation not only saves time but also guarantees accurate and up-to-date data collection.
 
-In simple terms, a **spider** or **web crawler** is a program or script specifically designed to automate website navigation and extract desired data. These spiders are not only capable of replicating our previous work but also surpassing the achievements of the previous year's project by a considerable margin.
+In simple terms, a **Spider** or **Web crawler** is a program or script specifically designed to automate website navigation and extract desired data. These spiders are not only capable of replicating our previous work but also surpassing the achievements of the previous year's project by a considerable margin.
 
 ## General Spider Procedure {.centerH2}
 
 ![](images/GeneralSpiderProcedure.png)
 
-Some examples of what the spider would be able to see are is esentally anything on the web page. So for example Text content, Images, Links, etc. Their vision would look something like this:
+Some examples of what the spider would be able to capture include various elements present on the web page. This encompasses text content, images, links, and more. Its vision would something similar to this:
 
+::: centerText
 **\<tag-name attribute-name= "attribute info"\> ... what we want (Element contexts) ... \</tag-name\>**
+:::
 
 ## Our Spider Procedure {.centerH2}
 
