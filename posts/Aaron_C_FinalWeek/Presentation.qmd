@@ -17,6 +17,8 @@ toc: true
 
 ![](images/MicrosoftTeams-image%20(12).png){fig-align="center"}
 
+## Introduction {.centerH2}
+
 The project aims to address the need for localized and up-to-date demand forecasting information for Iowa's local food producers. For this, we choose three products, Eggs, Bacon and Tomatoes as they are non processed food items that are produced locally.
 
 Our project is focused on analyzing and understanding the pricing dynamics of eggs and bacon across various counties. We aim to collect comprehensive data on these products and create a graph/map that visually represents their prices. Additionally, we will develop web-scraping spiders to automate data collection for a comprehensive product database. Finally, we will optimize the flow of crops, from supply to demand, to maximize overall profit. By combining data analysis, web scraping, and optimization techniques, our project aims to provide valuable insights and tools for decision-making in the agricultural market.
