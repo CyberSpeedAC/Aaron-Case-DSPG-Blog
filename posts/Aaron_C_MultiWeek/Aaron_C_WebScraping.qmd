@@ -1,0 +1,182 @@
+---
+title: "Web Scraping"
+author: "Aaron Case"
+date: "2023-07-14"
+categories: [Web Scraping, Research]
+---
+
+Web scraping is the process of extracting data from websites using automated software. In the context of web scraping, a Spider (also known as a web crawler) is a program or script designed to navigate through one or multiple websites and automatically extract data from multiple pages. The Spider "crawls" along the web, hence its name.
+
+Web scraping in essence is the process of extracting data from websites using automated software. As for the process, the web-scraping pipeline goes as follows.
+
+1.  Setup (Objective) - Firstly, we need to clarify our goal and identify relevant sources to assist us in achieving it.
+
+2.  Acquisition
+
+    -   Read in the raw data from online.
+    -   Format these data to be usable.
+    -   Accessing the data.
+    -   Parsing this information.
+    -   Extracting these data into meaningful and useful data structures.
+
+3.  Acquisition - This is where the spiders come into play. They are responsible for:
+
+-   Reading the raw data from online sources.
+-   Formatting the data to be usable.
+-   Accessing the data.
+-   Parsing the information.
+-   Extracting the data into meaningful and useful data structures.
+
+3.  Processing - There are various options available for this step, but the primary objective is to run the downloaded data through the necessary analyses or processes, including data analysis, to accomplish the desired goal.
+
+Before going any further I highly recommend learning or brushing up on a few concepts/topics.
+
+-   The basics of HTML
+-   Basic programming experience
+-   Pathing and Selectors
+
+The basics of HTML and programming can be easily found online and my best advice is to do some small projects to start and grow from there. The language I used for this project was python but you aren't limited to staying with it since other languages have web scraping tools and resources at your disposal.
+
+Once you've been aquanted with HTML. When we are scraping data from a website, we need a simple way to identify the specific elements on the page. Information within HTML tags are increadably valuable since the information we need to access is held within the HTML tags themselves.
+
+::: centerText
+```         
+<tag-name attribute-name= "attribute info"> ... what we want (Element contexts) ... </tag-name>
+```
+:::
+
+There are two common ways of doing this.
+
+::: columns
+::: column
+XPaths:
+
+-   Useful for web scraping tasks that involve complex page structures or nested elements
+-   Can be more difficult to write than CSS selectors, but they offer more flexibility in selecting elements on the page
+
+::: centerText
+**xpath = '//\*\[\@class="class1"\]'**
+
+\<p class="class-1"\> ... \</p\> Can see this
+
+\<div class="class-1 class-2"\> ... \</div\> Can see not this
+
+\<p class="class-12"\> ... \</p\> Can not see this
+:::
+:::
+
+::: column
+CSS selectors:
+
+-   Are often simpler and easier to write than XPath expressions, especially for basic web scraping tasks.
+-   May not be as flexible as XPath expressions in selecting elements on the page, especially for complex page structures or nested elements.
+
+::: centerText
+**css = '.class1'**
+
+\<p class="class-1"\> ... \</p\> Can see this
+
+\<div class="class-1 class-2"\> ... \</div\> Can see this
+
+\<p class="class-12"\> ... \</p\> Can not see this
+:::
+:::
+:::
+
+Both methods have there benefits so it is eniterly up to what you need to do. Each website is different in how its structured so the pathing you did for one site is not garenteed to work for another. Not only are the pathing of websites differ but the kind of website.
+
+::: columns
+::: column
+::: centerText
+**Static websites**
+:::
+
+Made up of fixed web pages that are delivered your web browser exactly as they were created. Meaning there's no magic that happens upon creation.
+
+Typically they coded in HTML and CSS and may include some basic JavaScript for interactive elements such as dropdown menus or image sliders. (Normally this does not affect us when Scraping)
+
+Examples: company brochures, personal blogs, and simple online portfolios, etc.
+
+These are easier to create and maintain, but they are less flexible and cannot handle large amounts of data or user interactions.
+
+These are much faster to scrape. Everything is there and we don't have to wait for the page to load!
+:::
+
+::: column
+::: centerText
+**Dynamic websites**
+:::
+
+Dynamic websites are generated on the fly by a web application or content management system (CMS). Meaning a lot of magic happens upon loading a page.
+
+The content is not fixed, and it can change based on user interactions, database queries, or other dynamic factors.
+
+Examples: Social media platforms, E-commerce sites, and most online marketplaces.
+
+These are more complex to create and maintain, but they are more flexible and can handle large amounts of data or user interactions
+
+These are much slower to scrape. We need to wait for the page to load before we can start scraping the page!
+:::
+:::
+
+There are many web scraping tools available, but two of the one's that I've the most success in are Scrapy and Selenium.
+
+Scrapy is a Python package that is primarily used for web scraping. Scrapy provides a framework that offers a simple web crawling tool to extract data from websites. These tools are commonly known as spiders and allow for easy extraction of desired information. A spider program can crawl through websites and extracts data from them (Just like real spiders crawl through there webs). Scrapy works by sending HTTP requests to websites and receiving HTML responses, then the spider parses the HTML to extract the data it needs. There is a Data camp course that is currently available to use and is highly recommended watching.
+
+Pros of Scrapy:
+1. Speed: Scrapy is designed to be fast and efficient, thanks to its integration with the asynchronous networking framework, Twisted. It can handle large volumes of data and process thousands of requests per second without slowing down.
+2. Scalability: Scrapy is capable of handling large-scale projects, making it ideal for projects that require scalability. It can efficiently handle a high volume of data and requests, ensuring smooth and uninterrupted scraping operations.
+3. Customizability: Scrapy is highly customizable and can be easily configured to work with various websites and data formats. It allows us to specify how the spider should navigate through websites and extract the desired data, providing flexibility and control.
+4. Robustness: Scrapy is a reliable web scraping framework that can crawl websites, automatically discover URLs, extract data, and process it through item pipelines. It offers robust functionality for automating the scraping process, ensuring efficient and accurate data extraction.
+5. Data Cleaning Support: Scrapy comes with built-in support for data cleaning, making it easier to clean and normalize scraped data. This feature simplifies the process of ensuring the quality and consistency of the extracted data.
+
+Cons of Scrapy:
+1. Learning Curve: Scrapy can have a steep learning curve, especially for those new to web scraping, XPath/CSS selectors, or asynchronous programming. It may require a significant time investment to learn and effectively use Scrapy, making it less suitable if you have limited time available. Additionally, some knowledge of Python is necessary to utilize Scrapy effectively.
+2. JavaScript Limitation: Scrapy does not have built-in support for JavaScript, which means it cannot scrape websites and other dynamic web content heavily reliant on JavaScript for rendering. Since many websites depend on JavaScript, Scrapy may not be suitable for scraping such content.
+3. Data Cleaning Limitations: While Scrapy provides data cleaning assistance, additional time may still be required to manually clean and process the data that was collected.
+
+In summary, Scrapy offers speed, scalability, customizability, robustness, and data cleaning support. However, it has a steep learning curve, and lacks JavaScript support.
+
+Selenium is another Python package which is used for automating web browsers. It allows you to control a browser programatically, which mimics the actions of a what a user will do. Selenium uses a web driver to control your web browser and can interact with several different browsers (such as Chrome, Firefox, and Safari). Selenium works by opening up a web browser and navigates to the target website. The user can then interact with the website using Selenium commands. Just like Scrapy, Selenium can also extract data from the website using XPath and CSS selectors.
+
+Pros of Selenium:
+1. Cross-Browser Compatibility: Selenium supports a wide range of web browsers, including Chrome, Firefox, Safari, and others. This cross-browser compatibility ensures that Selenium can be used effectively across different browser environments.
+2. Powerful for Web Scraping: Selenium enables automation of a web browser, making it a powerful tool for web scraping. It can navigate through web pages, interact with elements, and extract desired data, providing extensive capabilities for scraping purposes.
+3. Dynamic Web Handling: Selenium is capable of handling JavaScript, AJAX, and cookies. This allows it to effectively interact with dynamic web content and perform actions that rely on these technologies, ensuring comprehensive web scraping capabilities.
+4. Complex Web Interactions: Selenium excels in handling more complex interactions with websites, such as clicking buttons, filling out forms, scrolling, and more. This capability allows Selenium to simulate user behavior and perform tasks that require a more human-like approach, making it a versatile and powerful tool for specific tasks.
+5. Relatively Easy to Use: Selenium is known for its user-friendly nature, making it relatively easy to use, especially for those familiar with web development and programming concepts. Its straightforward API and documentation contribute to its ease of use.
+
+Cons of Selenium:
+1. Performance and Resource Intensive: Selenium can be slow and resource-intensive, especially when automating complex tasks or interacting with multiple pages. It relies on having a web browser open to run, which can be problematic if your internet or computer is slow. This can result in significant delays when working with large datasets, making it less ideal for such scenarios.
+2. Prone to Errors: Selenium is prone to errors and requires extensive debugging and testing. This necessitates thorough testing and troubleshooting to ensure the reliability of the automation process.
+3. Setup and Configuration Challenges: Setting up and configuring Selenium can be challenging, particularly when dealing with complex web pages or unusual website configurations. Additionally, maintaining test scripts can be difficult as web applications are updated or changed.
+
+In summary, Selenium offers cross-browser compatibility, powerful web scraping capabilities, the ability to handle dynamic web content, and support for complex web interactions. However, it can be slow and resource-intensive, prone to errors, and challenging to set up and configure at the start.
+
+Comparing the two: 
+
+1. Built-in Support for XPath and CSS Selectors: Both Scrapy and Selenium offer built-in support for XPath and CSS selectors, making it easier to locate and extract specific elements from web pages.
+
+2. Requires Technical Knowledge: Both Scrapy and Selenium require technical knowledge, particularly in Python and web development concepts such as HTML, JavaScript, and selectors. This knowledge is necessary to effectively utilize the features and capabilities of these tools.
+
+3. Flexibility and Customizability: Both Scrapy and Selenium are highly flexible and customizable to suit specific tasks. Scrapy allows for the customization of spider behavior, data extraction, and item processing pipelines. Selenium, on the other hand, enables the customization of interactions with web elements and the browser.
+
+4. Not Suitable for All Websites: Both Scrapy and Selenium can face challenges when dealing with certain websites. They can be stopped by CAPTCHAs or face IP blocking, which can restrict their access to websites that have implemented such measures.
+
+5. Resource-Intensive: Both Scrapy and Selenium can be resource-intensive, but Selenium tends to be more resource-intensive due to its reliance on having a web browser open. This can consume significant system resources, especially when automating complex tasks or interacting with multiple web pages.
+
+6. Integration with Other Python Tools: Both Scrapy and Selenium can be used in conjunction with other Python tools. For example, Scrapy can be combined with libraries like Beautiful Soup and Requests to enhance data extraction and processing capabilities.
+
+7. Open Source: Both Scrapy and Selenium are open-source projects, meaning they are freely available and can be modified and customized as per the user's requirements.
+
+8. Large and Active Community: Both Scrapy and Selenium have large and active communities of developers. This means that there is ample documentation, tutorials, and support available, making it easier to get help and contribute to the development of these tools.
+
+In summary, Scrapy and Selenium share similarities such as built-in support for XPath and CSS selectors, the requirement of technical knowledge, flexibility, and customizability. However, they also have differences in terms of suitability for different websites, resource-intensiveness (with Selenium being more resource-intensive), integration with other Python tools, and the size and activity of their respective communities.
+
+For this and simmular projects, I strongly recommend using Scrapy spiders whenever possible. Scrapy's speed, efficiency, and overall better performance make the process of building spiders much more tolerable. However, when it comes to more complex tasks and websites, Selenium is the way to go. It's important to acknowledge that there are other tools and resources available that may be better or more efficient for the project scope. One example is Scrapy Splash, a Python package that works as an extension for Scrapy and provides a JavaScript rendering service. This allows Scrapy to handle JavaScript and other dynamic web content, similar to Selenium. Although I didn't have enough time to fully explore and understand Scrapy Splash, it would have been the preferred tool for handling such websites if I had more time to master it. Instead, I used Selenium since I had more success in getting it to work.
+
+It is important to note that this post is a starting point and is intended for educational purposes only. There are both positive and negative aspects associated with web scraping, so it is crucial to approach it with a strong ethical mindset. The web scrapers I have developed for this project adhere to specific rules.
+
+When scraping websites, I actively monitor the process. If any issues arise, I promptly halt the code and wait for 20 to 30 minutes before retrying. Additionally, when making multiple requests, I ensure to space them out and introduce a few seconds of delay. This approach helps prevent overloading the website's server and negatively impacting its performance. Furthermore, I make a conscious effort to refrain from interfering with the website's functionality, only interacting with buttons or elements when necessary. Unless explicitly required for the scraping task, I avoid downloading any unnecessary content. In the case of images, I follow and save the image URL rather than downloading the image immediately, ensuring that I only retrieve the specific images needed at any given point.
+
+By following these practices, I aim to maintain a responsible and respectful approach to web scraping, minimizing any potential negative effects on the websites being scraped.
