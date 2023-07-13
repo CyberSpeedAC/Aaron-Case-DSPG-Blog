@@ -1,7 +1,8 @@
 ---
-title: "Presentation"
+title: "Data Driven Insights for Local Food Market: AI, Pricing and Crop Flow"
 author: "AI/Local Food Team"
 date: "2023-07-14"
+image: "images/TitleImage.PNG"
 categories: [Presentation]
 format: 
   html:
@@ -10,27 +11,77 @@ format:
 css: style.css
 ---
 
-INTRO HERE
+## **Meet our team** {.centerH2}
 
-\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~
+![](images/MicrosoftTeams-image%20(12).png){fig-align="center" width="652"}
 
-## Web Scraping: Automating Data Collection
+#### About the Project {.centerH2}
 
-To ensure the success of our project, the first step we take is web scraping. Gathering a substantial amount of data is crucial for our project. Specifically, we aim to track various products and identify the websites that feature these products. Performing this task manually is not only time-consuming but also prone to errors and incredibly tedious.
+The project aims to address the need for localized and up-to-date demand forecasting information for Iowa's local food producers. For this, we choose three products, eggs, Bacon and Tomatoes as they are non processed food items that are produced locally.
 
-To overcome these challenges, we have developed web crawlers or Spiders to automate the process. This automation not only saves time but also guarantees accurate and up-to-date data collection.
+Our project is focused on analyzing and understanding the pricing dynamics of eggs and bacon across various counties. We aim to collect comprehensive data on these products and create a graph/map that visually represents their prices. Additionally, we will develop web-scraping spiders to automate data collection for a comprehensive product database. Finally, we will optimize the flow of crops, from supply to demand, to maximize overall profit. By combining data analysis, web scraping, and optimization techniques, our project aims to provide valuable insights and tools for decision-making in the agricultural market.
 
-**Spider (web crawler)**: programs or scripts specifically designed to automate website navigation and extract the desired data.
+![](images/final2.2-01.png){fig-align="center"}
 
-## General Spider Procedure
+**What** we plan to achieve:
+
+-   Our primary goal is to create a comprehensive map showcasing the prices of eggs and bacon across different counties. This map will enable us to identify trends, patterns, and customer preferences in pricing, helping businesses make informed decisions.
+
+-   We also aim to develop efficient web-scraping spiders that automate data collection, saving time and improving the accuracy of the collected information.
+
+-   Furthermore, we will showcase the effectiveness of these spiders with a specific crop example, demonstrating their ability to extract relevant data.
+
+-   Finally, we will optimize the crop flow to maximize overall profit, considering factors such as demand estimation, supply dynamics, and transportation costs.
+
+-   Ultimately, we aim to provide insights, tools, and strategies that enhance decision-making and profitability within the local food market.
+
+**How** we plan to achieve:
+
+To achieve our objectives,
+
+-   we will employ a multi-faceted approach that combines data analysis, web scraping, and optimization techniques. We will collect comprehensive pricing data for eggs and bacon across different counties, employing data mining and analysis to identify trends, patterns, and customer preferences. The collected data will be visualized in a comprehensive map that highlights key insights.
+
+-   We will develop web-scraping spiders specifically tailored to gather data from selected websites. These spiders will automate the data collection process, ensuring a continuous and efficient flow of information for our comprehensive product database.
+
+-   Through a specific crop example, we will showcase the capabilities of our web-scraping spiders, demonstrating their effectiveness in retrieving data for various agricultural products. This demonstration will highlight their value in supporting data-driven decision-making processes.
+
+-   To optimize the crop flow, we will employ demand estimation methodologies, analyze supply dynamics, consider transportation costs, and apply optimization techniques. By considering these factors, we can identify the most profitable routes and strategies for crop distribution, resulting in increased profitability and improved resource allocation.
+
+**Why** it is important:
+
+This project holds immense importance for several reasons.
+
+-   Firstly, understanding the pricing dynamics of eggs and bacon allows businesses to adapt their strategies, optimize pricing, and remain competitive. The comprehensive map will provide valuable insights into market trends, customer preferences, and suitable selling locations, empowering businesses to make informed decisions.
+
+-   Automating data collection through web-scraping spiders is crucial for timely and accurate information gathering. It saves time, improves data accuracy, and facilitates the creation of a comprehensive product database. This enables businesses to stay up-to-date with market trends and make informed decisions.
+
+-   The optimization of crop flow is vital for maximizing profitability and resource allocation. By analyzing demand and supply dynamics, transportation costs, and market trends, businesses can identify the most profitable routes and strategies for crop distribution. This optimization minimizes waste, improves efficiency, and contributes to sustainable agricultural practices.
+
+## Web Scraping: Automating Data Collection {.centerH2}
+
+Due to the success of last year's project, we were able to gather extensive data on products using web scrapers. This year, we were assigned a similar task but with different products. However, we encountered a significant challenge.
+
+Over the past year, the website we were scraping underwent significant changes, rendering our previous methods and processes obsolete. Upon closer examination, we discovered numerous unintentional flaws in our approach. Unfortunately, the scraper we had built was only capable of functioning under very specific circumstances, severely limiting our ability to collect data effectively even if we were able to repair it.
+
+To ensure the success of our current project, it is crucial to gather a substantial amount of data. However, manually performing this task is not only time-consuming but also prone to errors and incredibly tedious. To overcome these challenges, we have developed web crawlers or spiders to automate the process. This automation not only saves time but also guarantees accurate and up-to-date data collection.
+
+In simple terms, a **spider** or **web crawler** is a program or script specifically designed to automate website navigation and extract desired data. These spiders are not only capable of replicating our previous work but also surpassing the achievements of the previous year's project by a considerable margin.
+
+## General Spider Procedure {.centerH2}
 
 ![](images/GeneralSpiderProcedure.png)
 
-## Our Spider Procedure
+Some examples of what the spider would be able to see are is esentally anything on the web page. So for example Text content, Images, Links, etc. Their vision would look something like this:
+
+**\<tag-name attribute-name= "attribute info"\> ... what we want (Element contexts) ... \</tag-name\>**
+
+## Our Spider Procedure {.centerH2}
 
 ![](images/OurSpiderProcedure.png){fig-align="center"}
 
-## What the spiders were able to achieve
+We needed to make multiple spiders to handle there own specific websites because not all websites are the same. Which is why our procedure is slightly more complex.
+
+## What the spiders were able to achieve {.centerH2}
 
 ::: {layout-ncol="2"}
 ![We were able to scrape all these stores\
@@ -58,7 +109,7 @@ SWATI PART HERE
 
 \~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~\~
 
-## Optimization of the crop flow
+## Optimization of the crop flow {.centerH2}
 
 -   The price of the product varies across different stores and cities
 
@@ -78,7 +129,7 @@ We have chosen tomatoes as an example to illustrate our approach. Our analysis b
 
 ![](images/Picture1.png){fig-align="center" width="678"}
 
-## Demand and supply estimation
+## Demand and supply estimation {.centerH2}
 
 ![](images/Supply%20demand-01.png){fig-align="center" width="624"}
 
@@ -86,13 +137,13 @@ Our estimation of the supply-demand ratio for tomatoes in Iowa is 0.06658, which
 
 For a detailed explanation of how we estimated the demand and supply, please refer to [HERE](link_need_to_be_inserted).
 
-## Map visualization of demand and supply
+## Map visualization of demand and supply {.centerH2}
 
 <iframe src="https://public.tableau.com/views/supply_demand_diff/Supply?:language=en-US&amp;:display_count=n&amp;:origin=viz_share_link:showVizHome=no&amp;:embed=true&quot;" width="1024" height="614">
 
 </iframe>
 
-## Why a combined strategy is necessary?
+## Why a combined strategy is necessary? {.centerH2}
 
 Let's imagine a county acting as a single farmer. In order to maximize its profit, the farmer will aim to sell its product to the county that offers the highest price, while also taking transportation costs into account.
 
@@ -102,7 +153,7 @@ As a result, there would be an influx of products, potentially leading to an ove
 
 Therefore, it becomes crucial for the farmers (counties) to adopt a collaborative strategy.
 
-## Demonstration of the optimization model
+## Demonstration of the optimization model {.centerH2}
 
 To provide a demonstration, we select a small subset of counties (24 out of a total of 99 counties) where the gap between supply and demand is relatively modest.
 
@@ -112,25 +163,29 @@ For our analysis, we took into account the Ford F-350 truck with a carrying capa
 
 ![](images/subset.png){fig-align="center" width="667"}
 
-## Solution of the distribution problem
+## Solution of the distribution problem {.centerH2}
 
 <iframe title="Report Section" width="1260" height="620" src="https://app.powerbi.com/view?r=eyJrIjoiMjQ5YzBjZTMtMzY5OC00YmY4LWFlYzUtZjJhYTk4ZmJkNmE1IiwidCI6IjAzNDdkODlhLTAxNzQtNGRkMy1hZGViLTMzMzljODljMzVmNSIsImMiOjN9" frameborder="0" allowFullScreen="true">
 
 </iframe>
 
-## Profit retrained in collaborative strategy compared to operating individually
+## Profit retrained in collaborative strategy compared to operating individually {.centerH2}
 
 <iframe title="profit_retained" width="1280" height="720" src="https://app.powerbi.com/view?r=eyJrIjoiMWU2YmFhOTUtMTVmZS00Zjg3LTlkMzUtYjIyZmUyNWUyYzQ0IiwidCI6IjAzNDdkODlhLTAxNzQtNGRkMy1hZGViLTMzMzljODljMzVmNSIsImMiOjN9" frameborder="0" allowFullScreen="true">
 
 </iframe>
 
-## Limitations
+## Limitations {.centerH2}
 
 1.  Consideration of Euclidean distance instead of real-world road distance
 2.  Consideration of \$/Metric Ton/Mile instead of \$/Truck-load/Mile
 
-## Future Work
+## Future Work {.centerH2}
 
 1.  Taking care of the limitations mentioned above.
 2.  Focus on the profit retained section during optimization.
 3.  Integration of where to plant crops to this model.
+
+\~\~\~\~\~\~\~\~\~\~\~\~
+
+CONCLUSION

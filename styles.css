@@ -1,4 +1,8 @@
 /* css styles */
+.centerH2 h2 {
+  text-align: center;
+}
+
 .centerH3 h3 {
   text-align: center;
 }
