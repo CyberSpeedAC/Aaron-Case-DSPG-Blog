@@ -83,10 +83,10 @@ CSS selectors:
 :::
 :::
 
-Both methods have there benefits so it is eniterly up to what you need to do. Each website is different in how its structured so the pathing you did for one site is not garenteed to work for another. Not only are the pathing of websites differ but the kind of website.
+Both methods have their benefits, so the choice between them depends entirely on your specific needs. It is important to note that each website is structured differently, meaning that the pathing or scraping approach used for one site may not necessarily work for another. Additionally, not only does the structure of websites vary, but also the type of website itself.
 
-::: columns
-::: column
+::: {.columns}
+::: {.column width="48%"}
 ::: centerText
 **Static websites**
 :::
@@ -102,7 +102,11 @@ These are easier to create and maintain, but they are less flexible and cannot h
 These are much faster to scrape. Everything is there and we don't have to wait for the page to load!
 :::
 
-::: column
+::: {.column width="4%"}
+
+:::
+
+::: {.column width="48%"}
 ::: centerText
 **Dynamic websites**
 :::
@@ -119,13 +123,14 @@ These are much slower to scrape. We need to wait for the page to load before we 
 :::
 :::
 
+
 There are many web scraping tools available, but two of the one's that I've the most success in are Scrapy and Selenium.
 
 Scrapy is a Python package that is primarily used for web scraping. Scrapy provides a framework that offers a simple web crawling tool to extract data from websites. These tools are commonly known as spiders and allow for easy extraction of desired information. A spider program can crawl through websites and extracts data from them (Just like real spiders crawl through there webs). Scrapy works by sending HTTP requests to websites and receiving HTML responses, then the spider parses the HTML to extract the data it needs. There is a Data camp course that is currently available to use and is highly recommended watching.
 
 Pros of Scrapy:
 
-1.   Speed: Scrapy is designed to be fast and efficient, thanks to its integration with the asynchronous networking framework, Twisted. It can handle large volumes of data and process thousands of requests per second without slowing down.
+1.  Speed: Scrapy is designed to be fast and efficient, thanks to its integration with the asynchronous networking framework, Twisted. It can handle large volumes of data and process thousands of requests per second without slowing down.
 2.  Scalability: Scrapy is capable of handling large-scale projects, making it ideal for projects that require scalability. It can efficiently handle a high volume of data and requests, ensuring smooth and uninterrupted scraping operations.
 3.  Customizability: Scrapy is highly customizable and can be easily configured to work with various websites and data formats. It allows us to specify how the spider should navigate through websites and extract the desired data, providing flexibility and control.
 4.  Robustness: Scrapy is a reliable web scraping framework that can crawl websites, automatically discover URLs, extract data, and process it through item pipelines. It offers robust functionality for automating the scraping process, ensuring efficient and accurate data extraction. 5. Data Cleaning Support: Scrapy comes with built-in support for data cleaning, making it easier to clean and normalize scraped data. This feature simplifies the process of ensuring the quality and consistency of the extracted data.
