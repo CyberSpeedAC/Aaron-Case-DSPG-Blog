@@ -17,7 +17,7 @@ toc: true
 
 ![](images/TheTeamImage.png){fig-align="center"}
 
-## Introduction {.centerH2}
+## **Introduction** {.centerH2}
 
 This project aims to enhance local food markets by providing valuable insights and optimizing the flow of crops. To achieve this, we have chosen three locally produced, non-processed food items: eggs, bacon, and tomatoes.
 
@@ -56,7 +56,7 @@ This project holds immense importance for several reasons.
 
 -   Optimizing crop flow is vital for maximizing profitability and resource allocation. By analyzing demand and supply dynamics, transportation costs, and market trends, businesses can identify the most profitable routes and strategies for crop distribution. This optimization minimizes waste, improves efficiency, and promotes sustainable agricultural practices.
 
-## Web Scraping: Automating Data Collection {.centerH2}
+## **Web Scraping: Automating Data Collection** {.centerH2}
 
 From the success of last year's project, we were able to gather extensive data on products using web scrapers. This year, we were assigned a similar task but with different products. However, we encountered a significant challenge.
 
@@ -155,7 +155,7 @@ We conducted data collection on three products, Bacon, eggs and tomatoes, creati
 
 ![](images/tomato%205.PNG){fig-align="center" width="665"}
 
-## Optimization of the crop flow {.centerH2}
+## **Optimization of the crop flow** {.centerH2}
 
 In the previous section,
 
@@ -244,7 +244,7 @@ The chart displays the ratio between the highest possible profit that could be a
 6.  Focus on the profit retained section during the crop flow optimization.
 7.  Integration of where to plant the crops to the crop flow optimization model.
 
-## Conclusion {.centerH2}
+## **Conclusion** {.centerH2}
 
 In conclusion, our project aimed to enhance local food markets by providing valuable insights and tools.
 
@@ -256,7 +256,7 @@ We demonstrated an optimization model of crop flow aimed at maximizing profit. W
 
 In summary, this project holds significance as it provides valuable insights and tools that greatly enhance decision-making within the local food market. It empowers businesses to stay informed about market trends and optimize the allocation of resources, thereby contributing to the growth and long-term sustainability of the local food farm sector.
 
-## Data Sources
+## **Data Sources**
 
 #### Store Websites Scraped
 
