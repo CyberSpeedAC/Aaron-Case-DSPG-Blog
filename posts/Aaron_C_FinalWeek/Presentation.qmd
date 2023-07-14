@@ -13,7 +13,7 @@ css: style.css
 toc: true
 ---
 
-# Data Driven Insights for Local Food Market: AI, Pricing and Crop Flow
+### **Data Driven Insights for Local Food Market:AI, Pricing and Crop Flow**
 
 ![](images/TheTeamImage.png){fig-align="center"}
 
@@ -25,7 +25,7 @@ We initially focused on developing web-scraping spiders to collect data on crop 
 
 ![](images/final2.2-01.png){fig-align="center"}
 
-### What we plan to achieve:
+### **What** we plan to achieve:
 
 -   Our primary goal is to create a comprehensive map showcasing the prices of eggs and bacon across different counties. This map will enable us to identify pricing trends, patterns, and customer preferences, thereby assisting businesses in making informed decisions.
 
@@ -37,7 +37,7 @@ We initially focused on developing web-scraping spiders to collect data on crop 
 
 -   Ultimately, we aim to provide insights, tools, and strategies that enhance decision-making and profitability within the local food market.
 
-### How we plan to achieve:
+### **How** we plan to achieve:
 
 To achieve our objectives,
 
@@ -46,7 +46,7 @@ To achieve our objectives,
 -   With specific crops, we will showcase the capabilities of our web-scraping spiders, demonstrating their effectiveness in retrieving data for various agricultural products. This demonstration will highlight their value in supporting data-driven decision-making processes.
 -   To optimize the crop flow, we will employ demand estimation methodologies, analyze supply dynamics, consider transportation costs, and apply optimization techniques. By considering these factors, we can identify the most profitable routes and strategies for crop distribution, resulting in increased profitability and improved resource allocation.
 
-### Why it is important:
+### **Why** it is important:
 
 This project holds immense importance for several reasons.
 
@@ -93,16 +93,7 @@ We needed to make multiple spiders to handle there own specific websites because
 
 ![The output of the spiders](images/ExtractedData.png){fig-align="center"}
 
-### Future Improvements {.centerH3}
-
-1.  General optimizations
-2.  Implementing parallel processing: Splits execution of code and running them simultaneously
-3.  More spiders for additional websites
-4.  Exploration of different web scraping methods
-
-**These Spiders are more than capable to expand to other products!**
-
-![](images/ExtractedDataSample.PNG)
+![**These Spiders are more than capable to expand to other products!**](images/ExtractedDataSample.PNG)
 
 ## **Data Analysis** {.centerH2}
 
@@ -122,21 +113,15 @@ We conducted data collection on three products, Bacon, eggs and tomatoes, creati
 
 </iframe>
 
-<iframe src="https://public.tableau.com/views/Book7_16892664732770/Discountdistribution?:language=en-US&amp;publish=yes&amp;:display_count=n&amp;:origin=viz_share_link:showVizHome=no&amp;:embed=true&quot;" width="900" height="614">
-
-</iframe>
-
-</iframe>
-
 ![](images/bacon%201.PNG){fig-align="center"}
 
 ::: columns
 ::: column
-![](images/bacon%202.PNG)
+![](images/bacon%202.PNG){width="450"}
 :::
 
 ::: column
-![](images/bacon%203.PNG)
+![](images/bacon%203.PNG){width="450" height="278"}
 :::
 :::
 
@@ -156,39 +141,19 @@ We conducted data collection on three products, Bacon, eggs and tomatoes, creati
 
 ![](images/egg%203.PNG){fig-align="center"}
 
-::: columns
-::: column
-![](images/egg%206.PNG)
-:::
+![](images/egg%206.PNG) ![](images/egg%207.PNG)
 
-::: column
-![](images/egg%207.PNG)
-:::
-:::
-
-![](images/egg%204-01.PNG){fig-align="center"}
+![](images/egg%204-01.PNG){fig-align="center" width="546"}
 
 #### **Product**: Tomatoes {.centerH4}
 
-::: columns
-::: column
-![](images/tomato%202.PNG)
-:::
+![](images/tomato%202.PNG){fig-align="center" width="672"}
 
-::: column
-![](images/tomato%203.PNG)
-:::
-:::
+![](images/tomato%203.PNG){fig-align="center" width="671"}
 
-::: columns
-::: column
-![](images/tomato%204.PNG)
-:::
+![](images/tomato%204.PNG){fig-align="center" width="682"}
 
-::: column
-![](images/tomato%205.PNG)
-:::
-:::
+![](images/tomato%205.PNG){fig-align="center" width="665"}
 
 ## Optimization of the crop flow {.centerH2}
 
@@ -206,7 +171,7 @@ In this section,
 
 -   Ignored production costs as they have no influence on crop distribution
 
-We have chosen tomatoes as an example to illustrate our approach. Our analysis begins with estimating the demand and supply of tomatoes in various counties across Iowa. We will then focus on optimizing the distribution of tomato crops over an 8-week timeline, specifically from late July to mid-September.
+We have chosen tomatoes as an example to illustrate our approach. Our analysis begins with estimating the demand and supply of tomatoes in various counties across Iowa. We will then focus on optimizing the distribution of tomatoes over an 8-week timeline, specifically from late July to mid-September.
 
 ![](images/Picture1.png){fig-align="center" width="678"}
 
@@ -228,9 +193,7 @@ The supply tab of the visualization indicates the level of demand for each count
 
 ### Why a combined strategy is necessary? {.centerH3}
 
-Let's imagine a county acting as a single farmer. In order to maximize its profit, the farmer will aim to sell its product to the county that offers the highest price, while also taking transportation costs into account.
-
-In this scenario, all the farmers (counties) will try to sell their tomatoes to a single county that offers the highest price.
+Let's imagine a county acting alone. In order to maximize its profit, the county will aim to sell its product to the counties that offers the highest price, while also taking transportation costs into account. In this scenario, every county will try to follow the same strategy.
 
 As a result, there would be an influx of products, potentially leading to an oversupply where the demand may not match. Consequently, the price could decrease, while certain counties might face a shortage of tomatoes.
 
@@ -240,7 +203,7 @@ Therefore, it becomes crucial for the farmers (counties) to adopt a collaborativ
 
 To provide a demonstration, we select a small subset of counties (24 out of a total of 99 counties) where the gap between supply and demand is relatively modest.
 
-In these selected counties, we simulate the prices of tomatoes using a normal distribution with a mean of 2.25 and a standard deviation of 0.25.
+In these selected counties, we simulated the prices of tomatoes using a normal distribution with a mean of 2.25 and a standard deviation of 0.25.
 
 For our analysis, we took into account the Ford F-350 truck with a carrying capacity of 7640 lb and a fuel efficiency of 15 mpg. We assumed that the truck would travel in a straight line (Euclidean distance) from the origin to the destination. Additionally, we considered a gas price of \$3.5/gallon.
 
@@ -269,29 +232,29 @@ The chart displays the ratio between the highest possible profit that could be a
 1.  Consideration of Euclidean distance instead of real-world road distance
 2.  Consideration of \$/Metric Ton/Mile instead of \$/Truck-load/Mile
 
-### Future Work {.centerH3}
+</br>
 
-1.  Taking care of the limitations mentioned above.
-2.  Focus on the profit retained section during optimization.
-3.  Integration of where to plant crops to this model.
+### Future Work for the project {.centerH3}
 
-Future Improvements:
+1.  General optimization and improvements to the spiders.
+2.  Implementing parallel processing: Splits execution of code and running them simultaneously
+3.  More spiders for additional websites
+4.  Exploration of different web scraping methods
+5.  After the data scrap, further insights can be generated by analyzing more data.
+6.  Focus on the profit retained section during the crop flow optimization.
+7.  Integration of where to plant the crops to the crop flow optimization model.
 
-1.  Further insights can be generated by analyzing more data.
+## Conclusion {.centerH2}
 
-## CONCLUSION {.centerH2}
-
-In conclusion, our project aimed to enhance local food markets by providing valuable insights and tools, with a specific focus on eggs, bacon, and tomatoes
+In conclusion, our project aimed to enhance local food markets by providing valuable insights and tools.
 
 Our web-scraping spiders automate the process of data collection, which not only saves time but also improves accuracy. These spiders are designed to extract relevant data, thereby supporting data-driven decision-making. This tool serves a critical role in constructing a comprehensive dataset that is essential for AI applications, particularly in demand forecasting and crop management.
 
 The insights and comprehensive map we have presented regarding the prices of eggs and bacon across various counties provide valuable information on trends and patterns. This empowers local food farms to make informed decisions and adjust their strategies accordingly, ensuring they stay competitive in the market.
 
-We demonstrated an optimization model aimed at maximizing profit through efficient crop flow. While we utilized estimated and mock data for the demonstration, having access to the original dataset in the future would enable more accurate logistics and further enhance the effectiveness of the model.
+We demonstrated an optimization model of crop flow aimed at maximizing profit. While we utilized estimated and mock data for the demonstration, having access to the original dataset in the future would enable accurate logistics and further enhance the effectiveness of the model.
 
 In summary, this project holds significance as it provides valuable insights and tools that greatly enhance decision-making within the local food market. It empowers businesses to stay informed about market trends and optimize the allocation of resources, thereby contributing to the growth and long-term sustainability of the local food farm sector.
-
-In summary, this project holds significant importance as it provides valuable insights and tools that greatly enhance decision-making within the local food market. It empowers businesses to stay well-informed about market trends and optimize the allocation of resources, thereby contributing to the growth and long-term sustainability of the local food farm sector.
 
 ## Data Sources
 
@@ -304,3 +267,16 @@ In summary, this project holds significant importance as it provides valuable in
 -   [Russ's Market](https://www.russmarket.com/)
 -   [Iowa Food Hub](https://iowa-food-hub.myshopify.com)
 -   [Joia Food Farm](https://www.joiafoodfarm.com/)
+-   [agmrc.org](agmrc.org)
+-   [quickstats.nass.usda.gov](quickstats.nass.usda.gov)
+
+#### Software and tools:
+
+1.  Python and packages (pandas, selenium, scrapy, gurobipy)
+2.  Tableau
+3.  Microsoft excel 
+4.  R - Quarto Blog
+5.  Power BI
+6.  Google geocoder API
+7.  GitHub for Documentation
+8.  Gurobi Optimizer
